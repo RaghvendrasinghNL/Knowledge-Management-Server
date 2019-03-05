@@ -174,8 +174,11 @@
     <Compile Include="Comment.cs">
       <DependentUpon>KnowledgeManagementContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MyPostController.cs" />
+    <Compile Include="Controllers\NotificationController.cs" />
+    <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -197,6 +200,7 @@
     <Compile Include="Like.cs">
       <DependentUpon>KnowledgeManagementContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoginRequestModel.cs" />
     <Compile Include="Notification.cs">
       <DependentUpon>KnowledgeManagementContext.tt</DependentUpon>
     </Compile>
@@ -207,6 +211,7 @@
     <Compile Include="Report.cs">
       <DependentUpon>KnowledgeManagementContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Services\AccountService.cs" />
     <Compile Include="Tag.cs">
       <DependentUpon>KnowledgeManagementContext.tt</DependentUpon>
     </Compile>
@@ -284,7 +289,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
