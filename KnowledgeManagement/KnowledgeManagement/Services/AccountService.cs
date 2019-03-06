@@ -27,14 +27,8 @@ namespace KnowledgeManagement.Services
             return true;
         }
 
-        private void test() {
-            var model = new LoginRequestModel();
-            model.EmailId = "email";
-            model.LoginToken = null;
-
-            var accountService = new AccountService();
-            accountService.AddUserLoginToken(model);
-        }
+        
+        
 
     }
 }

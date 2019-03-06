@@ -1,14 +1,24 @@
-﻿using System;
+﻿using KnowledgeManagement.Models;
+using KnowledgeManagement.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
+
 namespace KnowledgeManagement.Controllers
 {
     public class LoginController : ApiController
     {
+        private AccountService ac;
+        LoginController()
+        {
+            ac = new AccountService();
+        }
+
+
         // GET: api/Login
         public IEnumerable<string> Get()
         {
@@ -22,8 +32,15 @@ namespace KnowledgeManagement.Controllers
         }
 
         // POST: api/Login
-        public void Post([FromBody]string value)
+        public IHttpActionResult Post([FromBody]LoginRequestModel loginRequestModel)
         {
+            var result = ac.AddUserLoginToken(loginRequestModel);
+            if (result)
+            {
+                return Ok();
+            }
+            return NotFound();
+
         }
 
         // PUT: api/Login/5
