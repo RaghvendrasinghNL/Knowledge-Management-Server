@@ -201,6 +201,7 @@
       <DependentUpon>KnowledgeManagementContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginRequestModel.cs" />
+    <Compile Include="Models\PostRequestModel.cs" />
     <Compile Include="Notification.cs">
       <DependentUpon>KnowledgeManagementContext.tt</DependentUpon>
     </Compile>
@@ -212,6 +213,7 @@
       <DependentUpon>KnowledgeManagementContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Services\AccountService.cs" />
+    <Compile Include="Services\PostServices.cs" />
     <Compile Include="Tag.cs">
       <DependentUpon>KnowledgeManagementContext.tt</DependentUpon>
     </Compile>
