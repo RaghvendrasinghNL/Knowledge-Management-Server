@@ -12,7 +12,7 @@ namespace KnowledgeManagement.Controllers
 {
     public class CommentController : ApiController
     {
-        KnowledgeManagementDevEntities commentService = new KnowledgeManagementDevEntities();
+        CommentService commentService = new CommentService();
         // GET api/<control
         public IEnumerable<string> Get()
         {
