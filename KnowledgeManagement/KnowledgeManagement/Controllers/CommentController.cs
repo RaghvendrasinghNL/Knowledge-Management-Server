@@ -1,14 +1,18 @@
-﻿using System;
+﻿using KnowledgeManagement.Models;
+using KnowledgeManagement.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
+
 namespace KnowledgeManagement.Controllers
 {
     public class CommentController : ApiController
     {
+        CommentService commentService = new CommentService();
         // GET api/<controller>
         public IEnumerable<string> Get()
         {
@@ -16,14 +20,17 @@ namespace KnowledgeManagement.Controllers
         }
 
         // GET api/<controller>/5
-        public string Get(int id)
+        public List<CommentModel> Get(int id)
         {
-            return "value";
+            var result = commentService.GetCommentById(id);
+
+            return result;
         }
 
         // POST api/<controller>
-        public void Post([FromBody]string value)
+        public void Post([FromBody]CommentModel comment)
         {
+            commentService.AddComment(comment);
         }
 
         // PUT api/<controller>/5

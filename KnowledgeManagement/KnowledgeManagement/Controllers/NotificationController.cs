@@ -1,4 +1,6 @@
-﻿using System;
+﻿using KnowledgeManagement.Models;
+using KnowledgeManagement.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,6 +11,7 @@ namespace KnowledgeManagement.Controllers
 {
     public class NotificationController : ApiController
     {
+        NotificationService notificationService = new NotificationService();
         // GET api/<controller>
         public IEnumerable<string> Get()
         {
@@ -16,9 +19,11 @@ namespace KnowledgeManagement.Controllers
         }
 
         // GET api/<controller>/5
-        public string Get(int id)
+        public NotificationModel Get(int Id)
         {
-            return "value";
+            var result = notificationService.GetNotificationById(Id);
+
+            return result;
         }
 
         // POST api/<controller>
