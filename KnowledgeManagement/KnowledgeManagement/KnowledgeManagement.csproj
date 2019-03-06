@@ -16,7 +16,7 @@
     <AssemblyName>KnowledgeManagement</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -200,9 +200,8 @@
     <Compile Include="Like.cs">
       <DependentUpon>KnowledgeManagementContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CommentModel.cs" />
     <Compile Include="Models\LoginRequestModel.cs" />
-    <Compile Include="Models\NotificationModel.cs" />
+    <Compile Include="Models\PostRequestModel.cs" />
     <Compile Include="Notification.cs">
       <DependentUpon>KnowledgeManagementContext.tt</DependentUpon>
     </Compile>
@@ -214,8 +213,7 @@
       <DependentUpon>KnowledgeManagementContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Services\AccountService.cs" />
-    <Compile Include="Services\CommentService.cs" />
-    <Compile Include="Services\NotificationService.cs" />
+    <Compile Include="Services\PostServices.cs" />
     <Compile Include="Tag.cs">
       <DependentUpon>KnowledgeManagementContext.tt</DependentUpon>
     </Compile>
@@ -346,7 +344,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>54355</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:54355/</IISUrl>
+          <IISUrl>http://192.168.1.226/KnowledgeManagement</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
