@@ -12,8 +12,8 @@ namespace KnowledgeManagement.Controllers
 {
     public class CommentController : ApiController
     {
-        CommentService commentService = new CommentService();
-        // GET api/<controller>
+        KnowledgeManagementDevEntities commentService = new KnowledgeManagementDevEntities();
+        // GET api/<control
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
