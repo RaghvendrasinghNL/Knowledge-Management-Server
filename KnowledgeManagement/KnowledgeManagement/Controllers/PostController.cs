@@ -29,11 +29,11 @@ namespace KnowledgeManagement.Controllers
             return Ok(data);
         }
 
-        public IHttpActionResult Post([FromBody] AddPostRequestModel post)
+        /*public IHttpActionResult Post([FromBody] AddPostRequestModel post)
         {
             db.AddPost1.Add(post);
             db.SaveChanges();
             return Ok();
-        }
+        }*/
     }
 }

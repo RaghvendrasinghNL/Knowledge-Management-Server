@@ -200,6 +200,7 @@
     <Compile Include="Like.cs">
       <DependentUpon>KnowledgeManagementContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AddPostRequestModel.cs" />
     <Compile Include="Models\CountLikedPost.cs" />
     <Compile Include="Models\LoginRequestModel.cs" />
     <Compile Include="Models\PostRequestModel.cs" />
