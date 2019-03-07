@@ -29,6 +29,6 @@ namespace KnowledgeManagement.Controllers
             return Ok(data);
         }
 
- 
+        
+        }
     }
-}
