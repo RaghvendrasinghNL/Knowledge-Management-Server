@@ -8,16 +8,14 @@ using System.Net.Http;
 using System.Web.Http;
 
 
+
 namespace KnowledgeManagement.Controllers
 {
     public class CommentController : ApiController
     {
         CommentService commentService = new CommentService();
         // GET api/<control
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+       
 
         // GET api/<controller>/5
         public List<CommentModel> Get(int id)
@@ -33,14 +31,6 @@ namespace KnowledgeManagement.Controllers
             commentService.AddComment(comment);
         }
 
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
-        }
+     
     }
 }
