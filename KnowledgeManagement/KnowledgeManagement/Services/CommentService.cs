@@ -21,12 +21,10 @@ namespace KnowledgeManagement.Services
             public void AddComment(CommentModel comment)
             {
                 Comment obj = new Comment();
-                //obj.PostId = comment.;
                 obj.UserId = comment.UserId;
                 obj.Content = comment.Content;
                 obj.CommentDate = DateTime.Now;
                 obj.UserId = comment.UserId;
-                //obj.CommentId = comment.CommentId;
                 db.Comments.Add(obj);
                 db.SaveChanges();
 

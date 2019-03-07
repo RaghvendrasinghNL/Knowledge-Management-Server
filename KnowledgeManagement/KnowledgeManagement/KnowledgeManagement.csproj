@@ -202,8 +202,8 @@
     </Compile>
     <Compile Include="Models\AddPostRequestModel.cs" />
     <Compile Include="Models\CommentModel.cs" />
+    <Compile Include="Models\CountLikedPost.cs" />
     <Compile Include="Models\LoginRequestModel.cs" />
-    <Compile Include="Models\NotificationModel.cs" />
     <Compile Include="Models\PostRequestModel.cs" />
     <Compile Include="Notification.cs">
       <DependentUpon>KnowledgeManagementContext.tt</DependentUpon>
@@ -216,8 +216,7 @@
       <DependentUpon>KnowledgeManagementContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Services\AccountService.cs" />
-    <Compile Include="Services\CommentService.cs" />
-    <Compile Include="Services\NotificationService.cs" />
+    <Compile Include="Services\LikeServices.cs" />
     <Compile Include="Services\PostServices.cs" />
     <Compile Include="Tag.cs">
       <DependentUpon>KnowledgeManagementContext.tt</DependentUpon>
@@ -349,7 +348,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>54355</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/KnowledgeManagement</IISUrl>
+          <IISUrl>http://localhost:54355/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
