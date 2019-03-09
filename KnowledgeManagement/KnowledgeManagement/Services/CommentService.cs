@@ -12,9 +12,12 @@ namespace KnowledgeManagement.Services
             public List<CommentModel> GetCommentById(int id)
             {
 
-                var result = db.Comments.Where(w => w.PostId == id).Select(s =>
-                  new CommentModel { PostId = s.PostId, Content = s.Content, UserId = s.UserId, CommentDate = s.CommentDate })
-                  .ToList();
+                var result = db.Comments.Where(w => w.PostId == id).Select(s => new CommentModel
+                {
+                    PostId = s.PostId,
+                    Content = s.Content,
+                    UserId = s.UserId,
+                    CommentDate = s.CommentDate }).ToList();
 
                 return result;
             }

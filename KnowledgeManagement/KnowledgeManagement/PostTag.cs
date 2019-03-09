@@ -12,18 +12,13 @@ namespace KnowledgeManagement
     using System;
     using System.Collections.Generic;
     
-    public partial class Tag
+    public partial class PostTag
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tag()
-        {
-            this.PostTags = new HashSet<PostTag>();
-        }
-    
+        public int PostId { get; set; }
         public int TagId { get; set; }
-        public string TagName { get; set; }
+        public int Id { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PostTag> PostTags { get; set; }
+        public virtual Post Post { get; set; }
+        public virtual Tag Tag { get; set; }
     }
 }

@@ -21,6 +21,7 @@ namespace KnowledgeManagement
             this.Likes = new HashSet<Like>();
             this.Notifications = new HashSet<Notification>();
             this.Reports = new HashSet<Report>();
+            this.PostTags = new HashSet<PostTag>();
         }
     
         public int PostId { get; set; }
@@ -29,7 +30,6 @@ namespace KnowledgeManagement
         public System.DateTime PostDate { get; set; }
         public int UserId { get; set; }
         public int CategoryId { get; set; }
-        public int TagId { get; set; }
     
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -38,9 +38,10 @@ namespace KnowledgeManagement
         public virtual ICollection<Like> Likes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Notification> Notifications { get; set; }
-        public virtual Tag Tag { get; set; }
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Report> Reports { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PostTag> PostTags { get; set; }
     }
 }
