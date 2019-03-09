@@ -204,7 +204,10 @@
     <Compile Include="Models\CommentModel.cs" />
     <Compile Include="Models\CountLikedPost.cs" />
     <Compile Include="Models\LoginRequestModel.cs" />
+    <Compile Include="Models\LogOutRequestModel.cs" />
+    <Compile Include="Models\MyPostModel.cs" />
     <Compile Include="Models\NotificationModel.cs" />
+    <Compile Include="Models\PageParameterModel.cs" />
     <Compile Include="Models\PostRequestModel.cs" />
     <Compile Include="Notification.cs">
       <DependentUpon>KnowledgeManagementContext.tt</DependentUpon>
@@ -220,6 +223,8 @@
     <Compile Include="Services\AddPostServices.cs" />
     <Compile Include="Services\CommentService.cs" />
     <Compile Include="Services\LikeServices.cs" />
+    <Compile Include="Services\LogOutService.cs" />
+    <Compile Include="Services\MyPostService.cs" />
     <Compile Include="Services\NotificationService.cs" />
     <Compile Include="Services\PostServices.cs" />
     <Compile Include="Tag.cs">

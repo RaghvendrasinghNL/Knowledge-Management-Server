@@ -10,7 +10,7 @@ namespace KnowledgeManagement.Services
     public class PostServices
     {
         private readonly KnowledgeManagementDevEntities db;
-
+        private int PageSize = 5;
         public PostServices()
         {
             db = new KnowledgeManagementDevEntities();
@@ -27,6 +27,12 @@ namespace KnowledgeManagement.Services
                         }).ToList();
             return result;
 
+        }
+
+        public void GetPaginatedPosts(List<Post> posts, int pageNumber)
+        {
+            posts.Skip((pageNumber - 1) * PageSize).Take(PageSize).ToList();
+            
         }
     }
 }

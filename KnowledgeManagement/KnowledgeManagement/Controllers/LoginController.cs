@@ -17,7 +17,7 @@ namespace KnowledgeManagement.Controllers
         {
             ac = new AccountService();
         }
-
+        private LogOutService ls = new LogOutService();
 
         // GET: api/Login
         public IEnumerable<string> Get()
@@ -49,8 +49,10 @@ namespace KnowledgeManagement.Controllers
         }
 
         // DELETE: api/Login/5
-        public void Delete(int id)
+        public IHttpActionResult Delete(LogOutRequestModel logOut)
         {
+            ls.LogOut(logOut);
+            return Ok();
         }
     }
 }
