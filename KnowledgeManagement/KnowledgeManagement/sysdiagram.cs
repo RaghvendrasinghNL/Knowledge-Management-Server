@@ -12,15 +12,12 @@ namespace KnowledgeManagement
     using System;
     using System.Collections.Generic;
     
-    public partial class Notification
+    public partial class sysdiagram
     {
-        public int NotificationId { get; set; }
-        public int NotificationType { get; set; }
-        public int IsRead { get; set; }
-        public int PostId { get; set; }
-        public int UserId { get; set; }
-    
-        public virtual User User { get; set; }
-        public virtual Post Post { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

@@ -14,7 +14,7 @@ namespace KnowledgeManagement.Services
         {
             
             Post post = new Post();
-            post.Heading = AddPost.Heading;
+            post.Title = AddPost.Title;
             post.PostDate = DateTime.Now;
             post.Description = AddPost.Description;
             post.UserId = AddPost.UserId;

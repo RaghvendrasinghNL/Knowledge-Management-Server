@@ -45,7 +45,7 @@
             <PropertyRef Name="PostId" />
           </Key>
           <Property Name="PostId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Heading" Type="varchar(max)" Nullable="false" />
+          <Property Name="Title" Type="varchar(max)" Nullable="false" />
           <Property Name="Description" Type="varchar(max)" Nullable="false" />
           <Property Name="PostDate" Type="datetime" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
@@ -67,6 +67,16 @@
           <Property Name="Comment" Type="varchar(max)" Nullable="false" />
           <Property Name="PostId" Type="int" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Tag">
           <Key>
@@ -252,6 +262,7 @@
           <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PostTags" EntityType="Self.PostTags" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Report" EntityType="Self.Report" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tag" EntityType="Self.Tag" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Comments__PostId__4AB81AF0" Association="Self.FK__Comments__PostId__4AB81AF0">
@@ -317,7 +328,7 @@
           </Key>
           <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Posts" Relationship="Self.FK__Post__CategoryId__3F466844" FromRole="Category" ToRole="Post" />
+          <NavigationProperty Name="Posts" Relationship="KnowledgeManagementDevModel.FK__Post__CategoryId__3F466844" FromRole="Category" ToRole="Post" />
         </EntityType>
         <EntityType Name="Comment">
           <Key>
@@ -328,8 +339,8 @@
           <Property Name="CommentDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="PostId" Type="Int32" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Post" Relationship="Self.FK__Comments__PostId__4AB81AF0" FromRole="Comments" ToRole="Post" />
           <NavigationProperty Name="User" Relationship="Self.FK__Comments__UserId__4BAC3F29" FromRole="Comments" ToRole="Users" />
+          <NavigationProperty Name="Post" Relationship="KnowledgeManagementDevModel.FK__Comments__PostId__4AB81AF0" FromRole="Comment" ToRole="Post" />
         </EntityType>
         <EntityType Name="Like">
           <Key>
@@ -338,8 +349,8 @@
           <Property Name="LikeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PostId" Type="Int32" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Post" Relationship="Self.FK__Likes__PostId__46E78A0C" FromRole="Likes" ToRole="Post" />
           <NavigationProperty Name="User" Relationship="Self.FK__Likes__UserId__47DBAE45" FromRole="Likes" ToRole="Users" />
+          <NavigationProperty Name="Post" Relationship="KnowledgeManagementDevModel.FK__Likes__PostId__46E78A0C" FromRole="Like" ToRole="Post" />
         </EntityType>
         <EntityType Name="Notification">
           <Key>
@@ -350,26 +361,8 @@
           <Property Name="IsRead" Type="Int32" Nullable="false" />
           <Property Name="PostId" Type="Int32" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Post" Relationship="Self.FK__Notificat__PostI__5070F446" FromRole="Notification" ToRole="Post" />
           <NavigationProperty Name="User" Relationship="Self.FK__Notificat__UserI__5165187F" FromRole="Notification" ToRole="Users" />
-        </EntityType>
-        <EntityType Name="Post">
-          <Key>
-            <PropertyRef Name="PostId" />
-          </Key>
-          <Property Name="PostId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Heading" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="PostDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="CategoryId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Category" Relationship="Self.FK__Post__CategoryId__3F466844" FromRole="Post" ToRole="Category" />
-          <NavigationProperty Name="Comments" Relationship="Self.FK__Comments__PostId__4AB81AF0" FromRole="Post" ToRole="Comments" />
-          <NavigationProperty Name="Likes" Relationship="Self.FK__Likes__PostId__46E78A0C" FromRole="Post" ToRole="Likes" />
-          <NavigationProperty Name="Notifications" Relationship="Self.FK__Notificat__PostI__5070F446" FromRole="Post" ToRole="Notification" />
-          <NavigationProperty Name="User" Relationship="Self.FK__Post__UserId__3E52440B" FromRole="Post" ToRole="Users" />
-          <NavigationProperty Name="Reports" Relationship="Self.FK__Report__PostId__4316F928" FromRole="Post" ToRole="Report" />
-          <NavigationProperty Name="PostTags" Relationship="KnowledgeManagementDevModel.FK_PostTags_Post" FromRole="Post" ToRole="PostTag" />
+          <NavigationProperty Name="Post" Relationship="KnowledgeManagementDevModel.FK__Notificat__PostI__5070F446" FromRole="Notification" ToRole="Post" />
         </EntityType>
         <EntityType Name="Report">
           <Key>
@@ -379,8 +372,8 @@
           <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PostId" Type="Int32" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Post" Relationship="Self.FK__Report__PostId__4316F928" FromRole="Report" ToRole="Post" />
           <NavigationProperty Name="User" Relationship="Self.FK__Report__UserId__440B1D61" FromRole="Report" ToRole="Users" />
+          <NavigationProperty Name="Post" Relationship="KnowledgeManagementDevModel.FK__Report__PostId__4316F928" FromRole="Report" ToRole="Post" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -397,33 +390,9 @@
           <NavigationProperty Name="Comments" Relationship="Self.FK__Comments__UserId__4BAC3F29" FromRole="Users" ToRole="Comments" />
           <NavigationProperty Name="Likes" Relationship="Self.FK__Likes__UserId__47DBAE45" FromRole="Users" ToRole="Likes" />
           <NavigationProperty Name="Notifications" Relationship="Self.FK__Notificat__UserI__5165187F" FromRole="Users" ToRole="Notification" />
-          <NavigationProperty Name="Posts" Relationship="Self.FK__Post__UserId__3E52440B" FromRole="Users" ToRole="Post" />
           <NavigationProperty Name="Reports" Relationship="Self.FK__Report__UserId__440B1D61" FromRole="Users" ToRole="Report" />
+          <NavigationProperty Name="Posts" Relationship="KnowledgeManagementDevModel.FK__Post__UserId__3E52440B" FromRole="User" ToRole="Post" />
         </EntityType>
-        <Association Name="FK__Post__CategoryId__3F466844">
-          <End Role="Category" Type="Self.Category" Multiplicity="1" />
-          <End Role="Post" Type="Self.Post" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Category">
-              <PropertyRef Name="CategoryId" />
-            </Principal>
-            <Dependent Role="Post">
-              <PropertyRef Name="CategoryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Comments__PostId__4AB81AF0">
-          <End Role="Post" Type="Self.Post" Multiplicity="1" />
-          <End Role="Comments" Type="Self.Comment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Post">
-              <PropertyRef Name="PostId" />
-            </Principal>
-            <Dependent Role="Comments">
-              <PropertyRef Name="PostId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Comments__UserId__4BAC3F29">
           <End Role="Users" Type="Self.User" Multiplicity="1" />
           <End Role="Comments" Type="Self.Comment" Multiplicity="*" />
@@ -433,18 +402,6 @@
             </Principal>
             <Dependent Role="Comments">
               <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Likes__PostId__46E78A0C">
-          <End Role="Post" Type="Self.Post" Multiplicity="1" />
-          <End Role="Likes" Type="Self.Like" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Post">
-              <PropertyRef Name="PostId" />
-            </Principal>
-            <Dependent Role="Likes">
-              <PropertyRef Name="PostId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -460,18 +417,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Notificat__PostI__5070F446">
-          <End Role="Post" Type="Self.Post" Multiplicity="1" />
-          <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Post">
-              <PropertyRef Name="PostId" />
-            </Principal>
-            <Dependent Role="Notification">
-              <PropertyRef Name="PostId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Notificat__UserI__5165187F">
           <End Role="Users" Type="Self.User" Multiplicity="1" />
           <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
@@ -481,30 +426,6 @@
             </Principal>
             <Dependent Role="Notification">
               <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Post__UserId__3E52440B">
-          <End Role="Users" Type="Self.User" Multiplicity="1" />
-          <End Role="Post" Type="Self.Post" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Post">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Report__PostId__4316F928">
-          <End Role="Post" Type="Self.Post" Multiplicity="1" />
-          <End Role="Report" Type="Self.Report" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Post">
-              <PropertyRef Name="PostId" />
-            </Principal>
-            <Dependent Role="Report">
-              <PropertyRef Name="PostId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -525,54 +446,25 @@
           <EntitySet Name="Comments" EntityType="Self.Comment" />
           <EntitySet Name="Likes" EntityType="Self.Like" />
           <EntitySet Name="Notifications" EntityType="Self.Notification" />
-          <EntitySet Name="Posts" EntityType="Self.Post" />
           <EntitySet Name="Reports" EntityType="Self.Report" />
           <EntitySet Name="Users" EntityType="Self.User" />
-          <AssociationSet Name="FK__Post__CategoryId__3F466844" Association="Self.FK__Post__CategoryId__3F466844">
-            <End Role="Category" EntitySet="Categories" />
-            <End Role="Post" EntitySet="Posts" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Comments__PostId__4AB81AF0" Association="Self.FK__Comments__PostId__4AB81AF0">
-            <End Role="Post" EntitySet="Posts" />
-            <End Role="Comments" EntitySet="Comments" />
-          </AssociationSet>
           <AssociationSet Name="FK__Comments__UserId__4BAC3F29" Association="Self.FK__Comments__UserId__4BAC3F29">
             <End Role="Users" EntitySet="Users" />
             <End Role="Comments" EntitySet="Comments" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Likes__PostId__46E78A0C" Association="Self.FK__Likes__PostId__46E78A0C">
-            <End Role="Post" EntitySet="Posts" />
-            <End Role="Likes" EntitySet="Likes" />
           </AssociationSet>
           <AssociationSet Name="FK__Likes__UserId__47DBAE45" Association="Self.FK__Likes__UserId__47DBAE45">
             <End Role="Users" EntitySet="Users" />
             <End Role="Likes" EntitySet="Likes" />
           </AssociationSet>
-          <AssociationSet Name="FK__Notificat__PostI__5070F446" Association="Self.FK__Notificat__PostI__5070F446">
-            <End Role="Post" EntitySet="Posts" />
-            <End Role="Notification" EntitySet="Notifications" />
-          </AssociationSet>
           <AssociationSet Name="FK__Notificat__UserI__5165187F" Association="Self.FK__Notificat__UserI__5165187F">
             <End Role="Users" EntitySet="Users" />
             <End Role="Notification" EntitySet="Notifications" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Post__UserId__3E52440B" Association="Self.FK__Post__UserId__3E52440B">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Post" EntitySet="Posts" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Report__PostId__4316F928" Association="Self.FK__Report__PostId__4316F928">
-            <End Role="Post" EntitySet="Posts" />
-            <End Role="Report" EntitySet="Reports" />
           </AssociationSet>
           <AssociationSet Name="FK__Report__UserId__440B1D61" Association="Self.FK__Report__UserId__440B1D61">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report" EntitySet="Reports" />
           </AssociationSet>
           <EntitySet Name="PostTags" EntityType="KnowledgeManagementDevModel.PostTag" />
-          <AssociationSet Name="FK_PostTags_Post" Association="KnowledgeManagementDevModel.FK_PostTags_Post">
-            <End Role="Post" EntitySet="Posts" />
-            <End Role="PostTag" EntitySet="PostTags" />
-          </AssociationSet>
           <EntitySet Name="Tags" EntityType="KnowledgeManagementDevModel.Tag" />
           <AssociationSet Name="FK_PostTags_Tag" Association="KnowledgeManagementDevModel.FK_PostTags_Tag">
             <End Role="Tag" EntitySet="Tags" />
@@ -582,6 +474,36 @@
             <End Role="Tag" EntitySet="Tags" />
             <End Role="Tag1" EntitySet="Tags" />
           </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="KnowledgeManagementDevModel.sysdiagram" />
+          <EntitySet Name="Posts" EntityType="KnowledgeManagementDevModel.Post" />
+          <AssociationSet Name="FK__Post__CategoryId__3F466844" Association="KnowledgeManagementDevModel.FK__Post__CategoryId__3F466844">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Post" EntitySet="Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Comments__PostId__4AB81AF0" Association="KnowledgeManagementDevModel.FK__Comments__PostId__4AB81AF0">
+            <End Role="Post" EntitySet="Posts" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Likes__PostId__46E78A0C" Association="KnowledgeManagementDevModel.FK__Likes__PostId__46E78A0C">
+            <End Role="Post" EntitySet="Posts" />
+            <End Role="Like" EntitySet="Likes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Notificat__PostI__5070F446" Association="KnowledgeManagementDevModel.FK__Notificat__PostI__5070F446">
+            <End Role="Post" EntitySet="Posts" />
+            <End Role="Notification" EntitySet="Notifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Post__UserId__3E52440B" Association="KnowledgeManagementDevModel.FK__Post__UserId__3E52440B">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Post" EntitySet="Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Report__PostId__4316F928" Association="KnowledgeManagementDevModel.FK__Report__PostId__4316F928">
+            <End Role="Post" EntitySet="Posts" />
+            <End Role="Report" EntitySet="Reports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostTags_Post" Association="KnowledgeManagementDevModel.FK_PostTags_Post">
+            <End Role="Post" EntitySet="Posts" />
+            <End Role="PostTag" EntitySet="PostTags" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="PostTag">
           <Key>
@@ -590,21 +512,9 @@
           <Property Name="PostId" Type="Int32" Nullable="false" />
           <Property Name="TagId" Type="Int32" Nullable="false" />
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Post" Relationship="KnowledgeManagementDevModel.FK_PostTags_Post" FromRole="PostTag" ToRole="Post" />
           <NavigationProperty Name="Tag" Relationship="KnowledgeManagementDevModel.FK_PostTags_Tag" FromRole="PostTag" ToRole="Tag" />
+          <NavigationProperty Name="Post" Relationship="KnowledgeManagementDevModel.FK_PostTags_Post" FromRole="PostTag" ToRole="Post" />
         </EntityType>
-        <Association Name="FK_PostTags_Post">
-          <End Type="KnowledgeManagementDevModel.Post" Role="Post" Multiplicity="1" />
-          <End Type="KnowledgeManagementDevModel.PostTag" Role="PostTag" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Post">
-              <PropertyRef Name="PostId" />
-            </Principal>
-            <Dependent Role="PostTag">
-              <PropertyRef Name="PostId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Tag">
           <Key>
             <PropertyRef Name="TagId" />
@@ -634,6 +544,118 @@
             </Principal>
             <Dependent Role="Tag1">
               <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="PostId" />
+          </Key>
+          <Property Name="PostId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PostDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="KnowledgeManagementDevModel.FK__Post__CategoryId__3F466844" FromRole="Post" ToRole="Category" />
+          <NavigationProperty Name="Comments" Relationship="KnowledgeManagementDevModel.FK__Comments__PostId__4AB81AF0" FromRole="Post" ToRole="Comment" />
+          <NavigationProperty Name="Likes" Relationship="KnowledgeManagementDevModel.FK__Likes__PostId__46E78A0C" FromRole="Post" ToRole="Like" />
+          <NavigationProperty Name="Notifications" Relationship="KnowledgeManagementDevModel.FK__Notificat__PostI__5070F446" FromRole="Post" ToRole="Notification" />
+          <NavigationProperty Name="User" Relationship="KnowledgeManagementDevModel.FK__Post__UserId__3E52440B" FromRole="Post" ToRole="User" />
+          <NavigationProperty Name="Reports" Relationship="KnowledgeManagementDevModel.FK__Report__PostId__4316F928" FromRole="Post" ToRole="Report" />
+          <NavigationProperty Name="PostTags" Relationship="KnowledgeManagementDevModel.FK_PostTags_Post" FromRole="Post" ToRole="PostTag" />
+        </EntityType>
+        <Association Name="FK__Post__CategoryId__3F466844">
+          <End Type="KnowledgeManagementDevModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="KnowledgeManagementDevModel.Post" Role="Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Post">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Comments__PostId__4AB81AF0">
+          <End Type="KnowledgeManagementDevModel.Post" Role="Post" Multiplicity="1" />
+          <End Type="KnowledgeManagementDevModel.Comment" Role="Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Likes__PostId__46E78A0C">
+          <End Type="KnowledgeManagementDevModel.Post" Role="Post" Multiplicity="1" />
+          <End Type="KnowledgeManagementDevModel.Like" Role="Like" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="Like">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Notificat__PostI__5070F446">
+          <End Type="KnowledgeManagementDevModel.Post" Role="Post" Multiplicity="1" />
+          <End Type="KnowledgeManagementDevModel.Notification" Role="Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="Notification">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Post__UserId__3E52440B">
+          <End Type="KnowledgeManagementDevModel.User" Role="User" Multiplicity="1" />
+          <End Type="KnowledgeManagementDevModel.Post" Role="Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Post">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Report__PostId__4316F928">
+          <End Type="KnowledgeManagementDevModel.Post" Role="Post" Multiplicity="1" />
+          <End Type="KnowledgeManagementDevModel.Report" Role="Report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="Report">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostTags_Post">
+          <End Type="KnowledgeManagementDevModel.Post" Role="Post" Multiplicity="1" />
+          <End Type="KnowledgeManagementDevModel.PostTag" Role="PostTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="PostTag">
+              <PropertyRef Name="PostId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -682,18 +704,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Posts">
-            <EntityTypeMapping TypeName="KnowledgeManagementDevModel.Post">
-              <MappingFragment StoreEntitySet="Post">
-                <ScalarProperty Name="PostId" ColumnName="PostId" />
-                <ScalarProperty Name="Heading" ColumnName="Heading" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="PostDate" ColumnName="PostDate" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Reports">
             <EntityTypeMapping TypeName="KnowledgeManagementDevModel.Report">
               <MappingFragment StoreEntitySet="Report">
@@ -732,6 +742,29 @@
               <MappingFragment StoreEntitySet="Tag">
                 <ScalarProperty Name="TagName" ColumnName="TagName" />
                 <ScalarProperty Name="TagId" ColumnName="TagId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="KnowledgeManagementDevModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Posts">
+            <EntityTypeMapping TypeName="KnowledgeManagementDevModel.Post">
+              <MappingFragment StoreEntitySet="Post">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PostDate" ColumnName="PostDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -8,7 +8,7 @@ namespace KnowledgeManagement.Models
     public class PostRequestModel
     {
         public int PostId { get; set; }
-        public string Heading  { get; set; }
+        public string Title  { get; set; }
         public string Description { get; set; }
         public  DateTime PostDate { get; set; }
     }

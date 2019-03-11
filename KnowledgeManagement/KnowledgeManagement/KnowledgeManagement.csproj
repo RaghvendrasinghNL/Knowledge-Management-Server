@@ -230,6 +230,9 @@
     <Compile Include="Services\MyPostService.cs" />
     <Compile Include="Services\NotificationService.cs" />
     <Compile Include="Services\PostServices.cs" />
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>KnowledgeManagementContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Tag.cs">
       <DependentUpon>KnowledgeManagementContext.tt</DependentUpon>
     </Compile>

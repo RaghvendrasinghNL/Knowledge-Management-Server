@@ -27,6 +27,7 @@
         <EntityTypeShape EntityType="KnowledgeManagementDevModel.Tag" Width="1.5" PointX="7.75" PointY="12.75" />
         <AssociationConnector Association="KnowledgeManagementDevModel.FK_PostTags_Tag" />
         <AssociationConnector Association="KnowledgeManagementDevModel.FK_Tag_Tag" />
+        <EntityTypeShape EntityType="KnowledgeManagementDevModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

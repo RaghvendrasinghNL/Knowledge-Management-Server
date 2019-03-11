@@ -20,7 +20,7 @@ namespace KnowledgeManagement.Services
                         select new PostRequestModel
                         {
                             PostDate = l.PostDate,
-                            Heading = l.Heading,
+                            Title = l.Title,
                             Description = l.Description,
                             PostId = l.PostId
 

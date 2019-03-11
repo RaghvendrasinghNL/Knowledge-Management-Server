@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 using KnowledgeManagement.Models;
 
 namespace KnowledgeManagement.Services
@@ -10,10 +11,10 @@ namespace KnowledgeManagement.Services
     {
         private readonly KnowledgeManagementDevEntities db;
 
+        
         public AccountService() {
             db = new KnowledgeManagementDevEntities();
         }
-
         public bool AddUserLoginToken(LoginRequestModel loginRequestModel) {
             var user = db.Users.Where(w => w.EmailId == loginRequestModel.EmailId).FirstOrDefault();
 

@@ -25,7 +25,7 @@ namespace KnowledgeManagement
         }
     
         public int PostId { get; set; }
-        public string Heading { get; set; }
+        public string Title { get; set; }
         public string Description { get; set; }
         public System.DateTime PostDate { get; set; }
         public int UserId { get; set; }
