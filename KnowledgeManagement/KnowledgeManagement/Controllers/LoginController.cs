@@ -12,6 +12,7 @@ namespace KnowledgeManagement.Controllers
 {
     public class LoginController : ApiController
     {
+        KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
         private AccountService ac;
         LoginController()
         {
@@ -31,6 +32,7 @@ namespace KnowledgeManagement.Controllers
             return NotFound();
 
         }
+
 
 
         // DELETE: api/Login/5

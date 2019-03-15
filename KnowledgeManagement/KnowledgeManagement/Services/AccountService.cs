@@ -12,6 +12,7 @@ namespace KnowledgeManagement.Services
         private readonly KnowledgeManagementDevEntities db;
 
         
+
         public AccountService() {
             db = new KnowledgeManagementDevEntities();
         }
