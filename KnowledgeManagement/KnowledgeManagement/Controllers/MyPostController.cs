@@ -11,6 +11,7 @@ namespace KnowledgeManagement.Controllers
 {
     public class MyPostController : ApiController
     {
+        
         private AddPostServices Mpc = new AddPostServices();
         
 
@@ -19,7 +20,11 @@ namespace KnowledgeManagement.Controllers
         {
             Mpc.AddNewPost(value);
         }
+        private MyPostServices Mp = new MyPostServices();
+        public IHttpActionResult Get(int Id)
+        {
+            return Ok(Mp.MySeeRecentPost(Id));
+        }
 
-       
     }
 }

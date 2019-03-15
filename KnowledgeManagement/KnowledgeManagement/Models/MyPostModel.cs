@@ -9,9 +9,9 @@ namespace KnowledgeManagement.Models
     {
         public int UserId { get; set; }
         public int PostId { get; set; }
-        public int Heading { get; set; }
-        public int Description { get; set; }
-        public int Tags { get; set; }
-        public int PostDate { get; set; }
+        public string Heading { get; set; }
+        public string Description { get; set; }
+        public List<int> Tags { get; set; }
+        public DateTime PostDate { get; set; }
     }
 }

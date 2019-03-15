@@ -3,6 +3,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using KnowledgeManagement.App_Start;
 using KnowledgeManagement.Models;
 using KnowledgeManagement.Services;
 
@@ -16,7 +17,8 @@ namespace KnowledgeManagement.Controllers
             Ps = new PostServices();
             Ls = new LikeServices();
         }
-
+        
+        [CustomAuthorize]
         public IHttpActionResult Get(int Id)
         {
             return Ok(Ls.LikedPostCount(Id));

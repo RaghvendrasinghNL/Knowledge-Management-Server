@@ -15,14 +15,17 @@ namespace KnowledgeManagement.Services
             db = new KnowledgeManagementDevEntities();
         }
 
-        public IEnumerable<MyPostModel> SeeRecentPost()
+        public IEnumerable<MyPostModel> MySeeRecentPost(int UserId)
         {
             var result = (from l in db.Posts
-
+                          where l.UserId == UserId
                           select new MyPostModel
                           {
-
-
+                              PostId = l.PostId,
+                              Heading =l.Heading,
+                              Description =l.Description,
+                             // Tags = l.PostTags,
+                              PostDate = l.PostDate
                           }).ToList();
             return result;
         }
