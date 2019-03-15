@@ -1,4 +1,5 @@
-﻿using KnowledgeManagement.Models;
+﻿using KnowledgeManagement.App_Start;
+using KnowledgeManagement.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +9,13 @@ namespace KnowledgeManagement.Services
 {
     public class AddPostServices
     {
-
         KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
+        [CustomAuthorizeAttribute]
         public void AddNewPost(AddPostRequestModel AddPost)
-        {
+         {
             
             Post post = new Post();
-            post.Heading = AddPost.Heading;
+            post.Title = AddPost.Title;
             post.PostDate = DateTime.Now;
             post.Description = AddPost.Description;
             post.UserId = AddPost.UserId;

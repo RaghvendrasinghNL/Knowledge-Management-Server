@@ -25,7 +25,7 @@ namespace KnowledgeManagement
         }
     
         public int PostId { get; set; }
-        public string Heading { get; set; }
+        public string Title { get; set; }
         public string Description { get; set; }
         public System.DateTime PostDate { get; set; }
         public int UserId { get; set; }
@@ -38,10 +38,10 @@ namespace KnowledgeManagement
         public virtual ICollection<Like> Likes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Notification> Notifications { get; set; }
-        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Report> Reports { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PostTag> PostTags { get; set; }
+        public virtual User User { get; set; }
     }
 }

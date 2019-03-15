@@ -25,5 +25,7 @@ namespace KnowledgeManagement
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PostTag> PostTags { get; set; }
+        public virtual Tag Tag1 { get; set; }
+        public virtual Tag Tag2 { get; set; }
     }
 }
