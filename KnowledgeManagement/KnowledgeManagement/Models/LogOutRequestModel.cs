@@ -5,11 +5,9 @@ using System.Web;
 
 namespace KnowledgeManagement.Models
 {
-    public class LoginRequestModel
+    public class LogOutRequestModel
     {
-        public string LoginToken { get; set; }
         public string EmailId { get; set; }
-        public int UserId { get; set; }
-       
+        public string LoginToken { get; set; }
     }
 }

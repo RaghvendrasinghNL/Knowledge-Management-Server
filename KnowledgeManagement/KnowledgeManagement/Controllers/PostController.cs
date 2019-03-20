@@ -3,6 +3,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using KnowledgeManagement.App_Start;
 using KnowledgeManagement.Models;
 using KnowledgeManagement.Services;
 
@@ -11,21 +12,15 @@ namespace KnowledgeManagement.Controllers
     public class PostController : ApiController
     {
         private PostServices Ps;
-        private LikeServices Ls;
+        
         PostController() {
             Ps = new PostServices();
-            Ls = new LikeServices();
+            
         }
 
-        public IHttpActionResult Get(int Id)
+        public IHttpActionResult Get(int id)
         {
-            return Ok(Ls.LikedPostCount(Id));
-        }
-
-        // GET api/<controller>/5
-        public IHttpActionResult Get()
-        {
-            var data = Ps.SeeRecentPost();
+            var data = Ps.SeeRecentPost(id);
             return Ok(data);
         }
 

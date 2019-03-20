@@ -12,25 +12,15 @@ namespace KnowledgeManagement.Controllers
 {
     public class LoginController : ApiController
     {
+        KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
         private AccountService ac;
         LoginController()
         {
             ac = new AccountService();
         }
+        private LogOutService ls = new LogOutService();
 
-
-        // GET: api/Login
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET: api/Login/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
+       
         // POST: api/Login
         public IHttpActionResult Post([FromBody]LoginRequestModel loginRequestModel)
         {
@@ -43,14 +33,13 @@ namespace KnowledgeManagement.Controllers
 
         }
 
-        // PUT: api/Login/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+
 
         // DELETE: api/Login/5
-        public void Delete(int id)
+        public IHttpActionResult Delete(LogOutRequestModel logOut)
         {
+            ls.LogOut(logOut);
+            return Ok();
         }
     }
 }
