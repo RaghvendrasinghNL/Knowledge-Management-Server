@@ -1,29 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Runtime.Remoting.Messaging;
 using System.Web;
 using System.Web.Http.Controllers;
 
 namespace KnowledgeManagement.App_Start
 {
-   
-        public class CustomAuthorizeAttribute : System.Web.Http.AuthorizeAttribute
+
+    public class CustomAuthorizeAttribute : System.Web.Http.AuthorizeAttribute
+    {
+        private readonly KnowledgeManagementDevEntities context = new KnowledgeManagementDevEntities();
+
+        
+
+
+                public override void OnAuthorization(HttpActionContext actionContext)
+            {
+
+                var tokenListFromHeader = actionContext.Request.Headers.Where(w => w.Key == "token").
+                    FirstOrDefault();
+                var tokenFromHeader = tokenListFromHeader.Value.FirstOrDefault();
+                Console.WriteLine("attribute called " + tokenFromHeader);
+
+                // get associated user with this token
+               var userFromDb = context.Users.Where(w => w.Token == tokenFromHeader).FirstOrDefault();
+                if (userFromDb == null)
+                {
+                    // the token is invalid 
+                    actionContext.Response = actionContext.Request.
+                        CreateResponse(HttpStatusCode.Unauthorized);
+                }
+                else
+                {
+                    HttpContext.Current.Session["userId"] = userFromDb.UserId;
+                }
+
+                base.OnAuthorization(actionContext);
+            }
+            
+        protected override void HandleUnauthorizedRequest(HttpActionContext actionContext)
         {
-        KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
 
-            public override void OnAuthorization(HttpActionContext actionContext)
-            {
-                var token = actionContext.Request.Headers.Where(w => w.Key == "token").FirstOrDefault();
-                
-
-
-
-                Console.WriteLine("attribute called " + token.Value);
-            }
-
-            protected override void HandleUnauthorizedRequest(HttpActionContext actionContext)
-            {
-
-            }
         }
     }
+}

@@ -1,10 +1,12 @@
-﻿using KnowledgeManagement.Models;
+﻿using KnowledgeManagement.App_Start;
+using KnowledgeManagement.Models;
 using KnowledgeManagement.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 
 namespace KnowledgeManagement.Controllers
@@ -21,8 +23,11 @@ namespace KnowledgeManagement.Controllers
             Mpc.AddNewPost(value);
         }
         private MyPostServices Mp = new MyPostServices();
+
+       // [CustomAuthorize]
         public IHttpActionResult Get(int Id)
         {
+           // var userId = Convert.ToString(HttpContext.Current.Session["userId"]);
             return Ok(Mp.MySeeRecentPost(Id));
         }
 
