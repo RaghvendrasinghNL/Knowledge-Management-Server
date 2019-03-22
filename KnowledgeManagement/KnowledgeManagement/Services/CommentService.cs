@@ -27,7 +27,7 @@ namespace KnowledgeManagement.Services
                 obj.UserId = comment.UserId;
                 obj.Content = comment.Content;
                 obj.CommentDate = DateTime.Now;
-                obj.UserId = comment.UserId;
+                obj.PostId = comment.PostId;
                 db.Comments.Add(obj);
                 db.SaveChanges();
 
