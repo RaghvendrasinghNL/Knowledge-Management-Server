@@ -18,7 +18,7 @@ namespace KnowledgeManagement.App_Start
 
 
 
-                Console.WriteLine("attribute called " + token.Value);
+              Console.WriteLine("attribute called " + token.Value);
             }
 
             protected override void HandleUnauthorizedRequest(HttpActionContext actionContext)

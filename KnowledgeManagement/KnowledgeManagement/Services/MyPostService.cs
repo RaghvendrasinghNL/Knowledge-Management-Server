@@ -22,7 +22,7 @@ namespace KnowledgeManagement.Services
                           select new MyPostModel
                           {
                               PostId = l.PostId,
-                              Heading =l.Heading,
+                              Heading =l.Title,
                               Description =l.Description,
                              // Tags = l.PostTags,
                               PostDate = l.PostDate
