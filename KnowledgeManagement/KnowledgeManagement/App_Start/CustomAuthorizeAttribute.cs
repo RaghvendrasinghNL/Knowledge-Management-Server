@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KnowledgeManagement.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -35,8 +36,19 @@ namespace KnowledgeManagement.App_Start
                 }
                 else
                 {
-                    HttpContext.Current.Session["userId"] = userFromDb.UserId;
-                }
+                var userInfo = new UserDetails
+                {
+                    UserId = userFromDb.UserId,
+                    FirstName = userFromDb.FirstName,
+                    Lastname = userFromDb.LastName,
+                    EmailId = userFromDb.EmailId
+                   /* isActive = userFromDb.isActive,
+                    isModerator= userFromDb.isModerator*/
+                };
+                CallContext.SetData("UserInfo", userInfo);
+               
+
+            }
 
                 base.OnAuthorization(actionContext);
             }

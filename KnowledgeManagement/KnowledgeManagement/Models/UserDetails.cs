@@ -8,10 +8,10 @@ namespace KnowledgeManagement.Models
     public class UserDetails
     {
         public int UserId { get; set; }
-        public int FirstName { get; set; }
-        public int Lastname { get; set; }
-        public int EmailId { get; set; }
-        public int isActive { get; set; }
-        public int isModerator { get; set; }
+        public string FirstName { get; set; }
+        public string Lastname { get; set; }
+        public string EmailId { get; set; }
+        public bool isActive { get; set; }
+        public bool isModerator { get; set; }
     }
 }

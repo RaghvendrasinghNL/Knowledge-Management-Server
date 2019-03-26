@@ -7,10 +7,7 @@ namespace KnowledgeManagement.Models
 {
     public class CountLikedPost
     {
-
-        public int PostId { get; set; }
         public int UserId { get; set; }
-        
-
+        public int PostId { get; set; }
     }
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Runtime.Remoting.Messaging;
 using System.Web;
 using System.Web.Http;
 
@@ -24,12 +25,15 @@ namespace KnowledgeManagement.Controllers
         }
         private MyPostServices Mp = new MyPostServices();
 
-       // [CustomAuthorize]
-        public IHttpActionResult Get(int Id)
+       [CustomAuthorize]
+        public IHttpActionResult Get()
         {
-           // var userId = Convert.ToString(HttpContext.Current.Session["userId"]);
-            return Ok(Mp.MySeeRecentPost(Id));
+            var userInfo =  CallContext.GetData("UserInfo") as UserDetails;
+            return Ok(Mp.MySeeRecentPost(userInfo.UserId));
         }
 
+        
+
     }
-}
+
+    }
