@@ -11,6 +11,6 @@ namespace KnowledgeManagement.Models
         public int UserId { get; set; }
         public DateTime CommentDate { get; set; }
         public int PostId { get; set; }
-        public int CommentId { get; set; }
+        //public int CommentId { get; set; }
     }
 }
