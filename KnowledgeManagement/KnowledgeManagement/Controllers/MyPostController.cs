@@ -19,9 +19,13 @@ namespace KnowledgeManagement.Controllers
         
 
         // POST api/<controller>
-        public void Post([FromBody]AddPostRequestModel value)
+       [CustomAuthorize]
+        public IHttpActionResult Post([FromBody]AddPostRequestModel AddPost)
         {
-            Mpc.AddNewPost(value);
+            var userInfo = CallContext.GetData("UserInfo") as UserDetails;
+            AddPost.UserId = userInfo.UserId;
+            Mpc.AddNewPost(AddPost);
+            return Ok();
         }
         private MyPostServices Mp = new MyPostServices();
 
@@ -29,7 +33,9 @@ namespace KnowledgeManagement.Controllers
         public IHttpActionResult Get()
         {
             var userInfo =  CallContext.GetData("UserInfo") as UserDetails;
-            return Ok(Mp.MySeeRecentPost(userInfo.UserId));
+            return Ok(Mp.MySeeRecentPost(userInfo.UserId));  //(id));
+                
+
         }
 
         

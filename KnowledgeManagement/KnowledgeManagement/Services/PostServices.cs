@@ -10,7 +10,7 @@ namespace KnowledgeManagement.Services
     public class PostServices
     {
         private readonly KnowledgeManagementDevEntities db;
-        //private int PageSize = 5;
+        private int PageSize = 5;
         public PostServices()
         {
             db = new KnowledgeManagementDevEntities();
@@ -33,11 +33,11 @@ namespace KnowledgeManagement.Services
                               PostId = l.PostId
 
                           }).ToList();
-            foreach(PostRequestModel p in result)
+            foreach (PostRequestModel p in result)
             {
                 p.Likes = (from posts in db.Likes
-                                  where posts.PostId == p.PostId
-                                  select posts.UserId).Count();
+                           where posts.PostId == p.PostId
+                           select posts.UserId).Count();
 
             }
             return result;
@@ -65,16 +65,15 @@ namespace KnowledgeManagement.Services
 
             return result;
 
+        }*/
+
+
         }
-
-       
-
 
         public void GetPaginatedPosts(List<Post> posts, int pageNumber)
         {
             posts.Skip((pageNumber - 1) * PageSize).Take(PageSize).ToList();
             
-        } */
+        } 
         }
     }
-}

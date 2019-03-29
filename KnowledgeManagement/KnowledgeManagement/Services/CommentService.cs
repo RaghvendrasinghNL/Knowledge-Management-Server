@@ -1,7 +1,9 @@
-﻿using KnowledgeManagement.Models;
+﻿using KnowledgeManagement.App_Start;
+using KnowledgeManagement.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Web;
 
 namespace KnowledgeManagement.Services
@@ -12,17 +14,22 @@ namespace KnowledgeManagement.Services
             public List<CommentModel> GetCommentById(int id)
             {
 
-                var result = db.Comments.Where(w => w.PostId == id).Select(s => new CommentModel
+                var result =( from c in db.Comments join u in db.Users on c.UserId equals u.UserId
+                where c.PostId == id
+                select new CommentModel
                 {
-                    PostId = s.PostId,
-                    Content = s.Content,
-                    UserId = s.UserId,
-                    CommentDate = s.CommentDate }).ToList();
+                    PostId = c.PostId,
+                    Content = c.Content,
+                    UserId = c.UserId,
+                    Name = u.FirstName,       
+                    CommentDate = c.CommentDate }).ToList();
 
                 return result;
             }
+            
             public void AddComment(CommentModel comment)
             {
+            
                 Comment obj = new Comment();
                 obj.UserId = comment.UserId;
                 obj.Content = comment.Content;
