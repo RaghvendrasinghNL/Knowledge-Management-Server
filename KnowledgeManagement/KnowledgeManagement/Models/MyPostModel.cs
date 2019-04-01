@@ -8,6 +8,7 @@ namespace KnowledgeManagement.Models
     public class MyPostModel
     {
         public int UserId { get; set; }
+        public string FirstName { get; set; }
         public int PostId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }

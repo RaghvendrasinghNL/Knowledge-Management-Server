@@ -146,7 +146,6 @@
     <Compile Include="App_Start\CustomAuthorizeAttribute.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\Session.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
@@ -217,6 +216,7 @@
     <Compile Include="Models\LogOutRequestModel.cs" />
     <Compile Include="Models\MyPostModel.cs" />
     <Compile Include="Models\NotificationModel.cs" />
+    <Compile Include="Models\Notify.cs" />
     <Compile Include="Models\PageParameterModel.cs" />
     <Compile Include="Models\PostRequestModel.cs" />
     <Compile Include="Models\UserDetails.cs" />
@@ -374,7 +374,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>54355</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:4201</IISUrl>
+          <IISUrl>http://localhost/KnowledgeManagement</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

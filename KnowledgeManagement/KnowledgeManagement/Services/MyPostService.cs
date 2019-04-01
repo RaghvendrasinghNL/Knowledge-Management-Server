@@ -1,30 +1,32 @@
-﻿using KnowledgeManagement.Models;
+﻿using KnowledgeManagement.App_Start;
+using KnowledgeManagement.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Web;
 
 namespace KnowledgeManagement.Services
 {
     public class MyPostServices
     {
-        private readonly KnowledgeManagementDevEntities db;
+        KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
 
-        public MyPostServices()
-        {
-            db = new KnowledgeManagementDevEntities();
-        }
-
+       [CustomAuthorize]
         public IEnumerable<MyPostModel> MySeeRecentPost(int UserId)
         {
-            var result = (from l in db.Posts
-                          where l.UserId == UserId
+            var userInfo = CallContext.GetData("UserInfo") as UserDetails;
+            var result = (from l in db.Posts join t in db.PostTags on l.PostId equals t.PostId
+                          where l.UserId == UserId && l.IsDeleted == true
+
                           select new MyPostModel
+
                           {
+                              FirstName = userInfo.FirstName,
                               PostId = l.PostId,
                               Title =l.Title,
                               Description =l.Description,
-                             // Tags = l.PostTags,
+                              //Tags 
                               PostDate = l.PostDate
                           }).ToList();
             return result;

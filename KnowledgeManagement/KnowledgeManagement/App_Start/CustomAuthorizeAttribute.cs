@@ -41,9 +41,10 @@ namespace KnowledgeManagement.App_Start
                     UserId = userFromDb.UserId,
                     FirstName = userFromDb.FirstName,
                     Lastname = userFromDb.LastName,
-                    EmailId = userFromDb.EmailId
-                   /* isActive = userFromDb.isActive,
-                    isModerator= userFromDb.isModerator*/
+                    EmailId = userFromDb.EmailId,
+                    /*isActive = userFromDb.isActive,
+                    isModerator = userFromDb.isModerator;*/
+                    
                 };
                 CallContext.SetData("UserInfo", userInfo);
                

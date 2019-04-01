@@ -17,10 +17,10 @@ namespace KnowledgeManagement.Controllers
             Ps = new PostServices();
             
         }
-
+        
         public IHttpActionResult Get(int id)
         {
-            var data = Ps.SeeRecentPost(id);
+            var data = Ps.SeeRecentPost(id); //Category id
             return Ok(data);
         }
 

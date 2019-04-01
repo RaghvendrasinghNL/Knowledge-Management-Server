@@ -21,6 +21,12 @@ namespace KnowledgeManagement.Controllers
 
             return result;
         }
+
+        public IHttpActionResult Get(string token)
+        {
+            var result = notificationService.GetUserNotification(token);
+            return Ok(result);
+        }
         
     }
 }
