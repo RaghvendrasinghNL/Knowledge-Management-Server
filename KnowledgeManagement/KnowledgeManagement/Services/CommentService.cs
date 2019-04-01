@@ -36,10 +36,18 @@ namespace KnowledgeManagement.Services
                 obj.CommentDate = DateTime.Now;
                 obj.PostId = comment.PostId;
                 db.Comments.Add(obj);
-                db.SaveChanges();
+                
 
+            Notification obj1 = new Notification();
+            obj1.NotificationId = 1; // auto increment 
+            obj1.NotificationType = 0;//comment is 0 like is 1 
+            obj1.IsRead = 0;
+            obj1.PostId = comment.PostId;
+            obj1.UserId = comment.UserId;
+            db.Notifications.Add(obj1);
+            db.SaveChanges();
 
-            }
+        }
 
         }
 

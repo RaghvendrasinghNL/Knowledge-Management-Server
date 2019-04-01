@@ -17,7 +17,9 @@ namespace KnowledgeManagement.Services
         {
             var userInfo = CallContext.GetData("UserInfo") as UserDetails;
             var result = (from l in db.Posts join t in db.PostTags on l.PostId equals t.PostId
-                          where l.UserId == UserId && l.IsDeleted == true
+                          join ta in db.Tags on t.TagId equals ta.TagId
+                          
+                          where l.UserId == UserId && l.IsDeleted == true 
 
                           select new MyPostModel
 
