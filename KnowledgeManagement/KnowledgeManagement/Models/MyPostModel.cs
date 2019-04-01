@@ -13,5 +13,6 @@ namespace KnowledgeManagement.Models
         public string Description { get; set; }
         public List<int> Tags { get; set; }
         public DateTime PostDate { get; set; }
+       
     }
 }
