@@ -18,6 +18,7 @@ namespace KnowledgeManagement.Controllers
             
         }
         
+       // [CustomAuthorize]
         public IHttpActionResult Get(int id)
         {
             var data = Ps.SeeRecentPost(id); //Category id
