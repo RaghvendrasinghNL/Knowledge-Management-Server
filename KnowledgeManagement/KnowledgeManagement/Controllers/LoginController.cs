@@ -1,10 +1,12 @@
-﻿using KnowledgeManagement.Models;
+﻿using KnowledgeManagement.App_Start;
+using KnowledgeManagement.Models;
 using KnowledgeManagement.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Runtime.Remoting.Messaging;
 using System.Web.Http;
 
 
@@ -22,6 +24,7 @@ namespace KnowledgeManagement.Controllers
 
        
         // POST: api/Login
+       
         public IHttpActionResult Post([FromBody]LoginRequestModel loginRequestModel)
         {
             var result = ac.AddUserLoginToken(loginRequestModel);
@@ -36,9 +39,12 @@ namespace KnowledgeManagement.Controllers
 
 
         // DELETE: api/Login/5
-        public IHttpActionResult Delete(LogOutRequestModel logOut)
+        [CustomAuthorize]
+        public IHttpActionResult Delete()
         {
-            ls.LogOut(logOut);
+            var userInfo = CallContext.GetData("UserInfo") as UserDetails;
+            var UserId = userInfo.UserId;
+            ls.LogOut(UserId);
             return Ok();
         }
     }
