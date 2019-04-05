@@ -27,6 +27,7 @@ namespace KnowledgeManagement.Services
         public List<string> GetUserNotification(string token)
         {
             var user = db.Users.FirstOrDefault(u => u.Token == token);
+
             var post = db.Posts.Where(p => p.UserId == user.UserId);
             List<Notify> notification = new List<Notify>();
             foreach (var p in post)
