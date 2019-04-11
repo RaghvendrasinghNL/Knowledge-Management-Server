@@ -10,6 +10,9 @@ namespace KnowledgeManagement.Services
 {
     public class CommentService
     {
+        /// <summary>
+        /// It will let the user to comment on the posts
+        /// </summary>
            KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
             public List<CommentModel> GetCommentById(int id)
             {
@@ -18,13 +21,19 @@ namespace KnowledgeManagement.Services
                 where c.PostId == id
                 select new CommentModel
                 {
-                    PostId = c.PostId,
-                    Content = c.Content,
-                    UserId = c.UserId,
-                    Name = u.FirstName,       
-                    CommentDate = c.CommentDate }).ToList();
+                    PostId = c.PostId,        //Post Id
+                    Content = c.Content,      //Content of the comment
+                    UserId = c.UserId,        //UserId
+                    Name = u.FirstName,       //First Name Of User
+                    CommentDate = c.CommentDate }).ToList();            //Comment Date
+               foreach (CommentModel p in result)
+            {
+                p.Count = (from posts in db.Comments
+                           where posts.PostId == p.PostId
+                           select posts.UserId).Count();
 
-                return result;
+            }
+            return result;
             }
             
             public void AddComment(CommentModel comment)

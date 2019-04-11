@@ -6,6 +6,9 @@ using System.Web;
 
 namespace KnowledgeManagement.Services
 {
+    /// <summary>
+    /// This will show notification to the user whenevr there is any comment or like in the posts.
+    /// </summary>
     public class NotificationService
     {
         KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();

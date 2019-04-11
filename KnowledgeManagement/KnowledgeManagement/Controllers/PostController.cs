@@ -17,11 +17,15 @@ namespace KnowledgeManagement.Controllers
             Ps = new PostServices();
             
         }
-        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="categoryid">This model will request FirstName,PostId,Description,Title,PostDate</param>
+        /// <returns>Posts</returns>
        // [CustomAuthorize]
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult Get(int categoryid)
         {
-            var data = Ps.SeeRecentPost(id); //Category id
+            var data = Ps.SeeRecentPost(categoryid); //Category id
             return Ok(data);
         }
 

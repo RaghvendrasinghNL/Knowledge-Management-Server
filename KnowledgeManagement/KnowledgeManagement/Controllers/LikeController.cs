@@ -15,11 +15,15 @@ namespace KnowledgeManagement.Controllers
         KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
        
 
-        // POST: api/Like
+        /// <summary>
+        /// It will help user to like a post
+        /// </summary>
+        /// <param name="value">This model will take UserId and PostId </param>
+        /// <returns> Help User to like a post</returns>
         [CustomAuthorize]
         public IHttpActionResult Post([FromBody]CountLikedPost value)
         {
-            var userInfo = CallContext.GetData("UserInfo") as UserDetails;
+            var userInfo = CallContext.GetData("UserInfo") as UserDetails;          //Fetching UserId by using TokenId
             using (var res = new KnowledgeManagementDevEntities())
             {
                 res.Likes.Add(new Like()
@@ -29,11 +33,11 @@ namespace KnowledgeManagement.Controllers
                 });
 
                 Notification obj1 = new Notification();
-                //obj1.NotificationId = 1; // auto increment 
-                obj1.NotificationType = 1;//comment is 0 like is 1 
+                //obj1.NotificationId = 1;           // auto increment 
+                obj1.NotificationType = 1;          //0 for comment and 1 for like
                 obj1.IsRead = 0;
-                obj1.PostId = value.PostId;
-                obj1.UserId = userInfo.UserId;
+                obj1.PostId = value.PostId;         //Post Id
+                obj1.UserId = userInfo.UserId;      //User Id
                 db.Notifications.Add(obj1);
 
                 res.SaveChanges();

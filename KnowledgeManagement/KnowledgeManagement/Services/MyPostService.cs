@@ -10,6 +10,9 @@ namespace KnowledgeManagement.Services
 {
     public class MyPostServices
     {
+        /// <summary>
+        /// It will let to see posts and also to delete them
+        /// </summary>
         KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
 
        [CustomAuthorize]
@@ -32,6 +35,15 @@ namespace KnowledgeManagement.Services
                               PostDate = l.PostDate
                           }).ToList();
             return result;
+        }
+
+        [CustomAuthorize]
+        public void DeleteRecentPost(int UserId)
+        {
+            var postdelete = db.Posts.Where(s => s.PostId == UserId).FirstOrDefault();
+            postdelete.IsDeleted = false;
+            db.SaveChanges();
+
         }
     }
 }

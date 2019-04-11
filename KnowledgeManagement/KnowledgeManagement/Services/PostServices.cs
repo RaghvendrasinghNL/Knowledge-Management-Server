@@ -7,6 +7,9 @@ using System.Web.Http;
 
 namespace KnowledgeManagement.Services
 {
+    /// <summary>
+    /// It will let the user to see all posts
+    /// </summary>
     public class PostServices
     {
         private readonly KnowledgeManagementDevEntities db;
@@ -42,30 +45,7 @@ namespace KnowledgeManagement.Services
             }
             return result;
 
-            /*
-            var result = (from l in db.Posts
-                          join a in db.Users on l.UserId equals a.UserId
-                          where l.CategoryId == CategoryId
-                          orderby l.PostDate
-                          join b in db.Likes on l.PostId equals b.PostId
-                          group  b by b.PostId into grp
-
-                          select new PostRequestModel
-                          {
-                              //remove post id 
-                              PostId = grp.Key,
-                              UserId = grp.Count(),
-                              Name = a.FirstName,
-                              PostDate = l.PostDate,
-                              Title = l.Title,
-                              Description = l.Description,
-                              PostId = l.PostId
-
-                          }).ToList();
-
-            return result;
-
-        }*/
+            
 
 
         }

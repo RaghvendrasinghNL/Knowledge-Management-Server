@@ -22,23 +22,27 @@ namespace KnowledgeManagement.Controllers
 
        
         // POST: api/Login
+        /// <summary>
+        /// It help user to get login
+        /// </summary>
+        /// <param name="loginRequestModel">The model will request UserId,TokenId,EmailId</param>
+        /// <returns>If found it will return ok else NotFound</returns>
         public IHttpActionResult Post([FromBody]LoginRequestModel loginRequestModel)
         {
-            var result = ac.AddUserLoginToken(loginRequestModel);
+            var result = ac.AddUserLoginToken(loginRequestModel);           
             if (result)
             {
-                return Ok();
+                return Ok();            
             }
             return NotFound();
 
         }
 
 
-
-        // DELETE: api/Login/5
+         // DELETE: api/Login/5
         public IHttpActionResult Delete(LogOutRequestModel logOut)
         {
-            ls.LogOut(logOut);
+            ls.LogOut(logOut);          //LogOut
             return Ok();
         }
     }

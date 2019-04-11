@@ -8,7 +8,9 @@ namespace KnowledgeManagement.Services
 {
     public class LogOutService
     {
-
+        /// <summary>
+        /// It will Logout the user
+        /// </summary>
         private readonly KnowledgeManagementDevEntities db;
 
         public LogOutService()

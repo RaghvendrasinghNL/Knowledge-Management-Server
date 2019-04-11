@@ -15,13 +15,17 @@ namespace KnowledgeManagement.Controllers
        
 
     
-        public NotificationModel Get(int Id)
+        public NotificationModel Get(int UserId)
         {
-            var result = notificationService.GetNotificationById(Id);
+            NotificationModel result = notificationService.GetNotificationById(UserId);
 
             return result;
         }
-
+        /// <summary>
+        /// It will show the notification to the user when anyone like or comment on his posts
+        /// </summary>
+        /// <param name="token">This model will request Type and IsRead</param>
+        /// <returns>Show the notification if there is like or comment by anyone</returns>
         public IHttpActionResult Get(string token)
         {
             var result = notificationService.GetUserNotification(token);
