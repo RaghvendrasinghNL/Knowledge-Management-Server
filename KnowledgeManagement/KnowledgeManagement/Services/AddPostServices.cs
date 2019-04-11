@@ -26,7 +26,11 @@ namespace KnowledgeManagement.Services
 
             Post post = new Post();
             post.Title = AddPost.Title;
+            
+
+            
             post.PostDate = DateTime.Now;
+
             post.Description = AddPost.Description;
             post.UserId = AddPost.UserId;
             post.CategoryId = AddPost.CategoryId;

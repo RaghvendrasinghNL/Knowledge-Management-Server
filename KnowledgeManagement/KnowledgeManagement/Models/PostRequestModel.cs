@@ -12,6 +12,7 @@ namespace KnowledgeManagement.Models
         public string Description { get; set; }
         public  DateTime PostDate { get; set; }
         public string Name { get; set; }
+        public int IsLiked { get; set; }
        
         public int UserId { get; set; }
         public int Likes { get; set; }
