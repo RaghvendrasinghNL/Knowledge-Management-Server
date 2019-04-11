@@ -18,11 +18,12 @@ namespace KnowledgeManagement.Services
             db = new KnowledgeManagementDevEntities();
         }
 
-        public void LogOut(LogOutRequestModel logOut)
+        public void LogOut(int UserId)
         {
-            var model = new LogOutRequestModel();
-            model.EmailId = logOut.EmailId;
-            model.LoginToken = null;
+            var userdetails = db.Users.Where(w => w.UserId == UserId).FirstOrDefault();
+            userdetails.Token = "null";
+            db.Entry(userdetails).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
 
         }
     }

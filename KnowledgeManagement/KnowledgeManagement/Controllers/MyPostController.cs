@@ -31,7 +31,7 @@ namespace KnowledgeManagement.Controllers
         {
             var userInfo =  CallContext.GetData("UserInfo") as UserDetails;
             return Ok(Mp.MySeeRecentPost(userInfo.UserId));  //(id));
-                
+      
 
         }
         /// <summary>
