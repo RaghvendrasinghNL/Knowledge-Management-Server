@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Runtime.Remoting.Messaging;
 using System.Web.Http;
 using KnowledgeManagement.App_Start;
 using KnowledgeManagement.Models;
@@ -17,15 +18,14 @@ namespace KnowledgeManagement.Controllers
             Ps = new PostServices();
             
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="categoryid">This model will request FirstName,PostId,Description,Title,PostDate</param>
-        /// <returns>Posts</returns>
-       // [CustomAuthorize]
-        public IHttpActionResult Get(int categoryid)
+        
+       [CustomAuthorize]
+        public IHttpActionResult Get(int id)
         {
-            var data = Ps.SeeRecentPost(categoryid); //Category id
+           
+            var userInfo = CallContext.GetData("UserInfo") as UserDetails;
+            var userId = userInfo.UserId;
+            var data = Ps.SeeRecentPost(id,userId); //Category id
             return Ok(data);
         }
 

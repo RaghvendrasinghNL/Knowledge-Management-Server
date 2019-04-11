@@ -15,38 +15,37 @@ namespace KnowledgeManagement.Controllers
         KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
        
 
-        /// <summary>
-        /// It will help user to like a post
-        /// </summary>
-        /// <param name="value">This model will take UserId and PostId </param>
-        /// <returns> Help User to like a post</returns>
+        // POST: api/Like
         [CustomAuthorize]
         public IHttpActionResult Post([FromBody]CountLikedPost value)
         {
-            var userInfo = CallContext.GetData("UserInfo") as UserDetails;          //Fetching UserId by using TokenId
-            using (var res = new KnowledgeManagementDevEntities())
-            {
-                res.Likes.Add(new Like()
-                { 
+            var userInfo = CallContext.GetData("UserInfo") as UserDetails;
+            
+                Like postLiked = new Like()
+                {
+                    
                     UserId = userInfo.UserId,
-                    PostId = value.PostId
-                });
-
+                    PostId = value.PostId,
+                    
+                };
+                db.Likes.Add(postLiked);
+                //db.Entry(postLiked).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                
                 Notification obj1 = new Notification();
-                //obj1.NotificationId = 1;           // auto increment 
-                obj1.NotificationType = 1;          //0 for comment and 1 for like
+                //obj1.NotificationId = 1; // auto increment
+                
+                obj1.NotificationType = 1;//comment is 0 like is 1 
                 obj1.IsRead = 0;
-                obj1.PostId = value.PostId;         //Post Id
-                obj1.UserId = userInfo.UserId;      //User Id
+                obj1.PostId = value.PostId;
+                obj1.UserId = userInfo.UserId;
                 db.Notifications.Add(obj1);
-
-                res.SaveChanges();
                 db.SaveChanges();
 
 
                 return Ok();
 
-            }
+            
 
         }
 
