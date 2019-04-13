@@ -33,7 +33,7 @@ namespace KnowledgeManagement
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Like> Likes { get; set; }
         public virtual DbSet<Post> Posts { get; set; }
+        public virtual DbSet<Like> Likes { get; set; }
     }
 }

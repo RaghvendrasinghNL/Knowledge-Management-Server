@@ -17,30 +17,32 @@ namespace KnowledgeManagement.Services
         }
         public IEnumerable<PostRequestModel> SeeRecentPost(int CategoryId)
         {
-            var result = (from l in db.Posts
-                          join a in db.Users on l.UserId equals a.UserId
-                          where l.CategoryId == CategoryId
-                          orderby l.PostDate
+             var result = (from l in db.Posts
+                           join a in db.Users on l.UserId equals a.UserId
+                           where l.CategoryId == CategoryId 
+                           orderby l.PostDate
 
-                          select new PostRequestModel
-                          {
-                              //remove post id 
+                           select new PostRequestModel
+                           {
+                               //remove post id 
 
-                              Name = a.FirstName,
-                              PostDate = l.PostDate,
-                              Title = l.Title,
-                              Description = l.Description,
-                              PostId = l.PostId
+                               Name = a.FirstName,
+                               PostDate = l.PostDate,
+                               Title = l.Title,
+                               Description = l.Description,
+                               PostId = l.PostId
 
-                          }).ToList();
-            foreach (PostRequestModel p in result)
-            {
-                p.Likes = (from posts in db.Likes
-                           where posts.PostId == p.PostId
-                           select posts.UserId).Count();
+                           }).ToList();
+             foreach (PostRequestModel p in result)
+             {
+                 p.Likes = (from posts in db.Likes
+                            where posts.PostId == p.PostId
+                            select posts.UserId).Count();
 
-            }
-            return result;
+             }
+             return result;
+
+           
 
             /*
             var result = (from l in db.Posts

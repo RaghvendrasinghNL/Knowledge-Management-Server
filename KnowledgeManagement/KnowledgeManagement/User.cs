@@ -20,8 +20,8 @@ namespace KnowledgeManagement
             this.Comments = new HashSet<Comment>();
             this.Notifications = new HashSet<Notification>();
             this.Reports = new HashSet<Report>();
-            this.Likes = new HashSet<Like>();
             this.Posts = new HashSet<Post>();
+            this.Likes = new HashSet<Like>();
         }
     
         public int UserId { get; set; }
@@ -40,8 +40,8 @@ namespace KnowledgeManagement
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Report> Reports { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Like> Likes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Post> Posts { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Like> Likes { get; set; }
     }
 }
