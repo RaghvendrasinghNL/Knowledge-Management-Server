@@ -23,7 +23,12 @@ namespace KnowledgeManagement.Services
                     UserId = c.UserId,
                     Name = u.FirstName,       
                     CommentDate = c.CommentDate }).ToList();
-
+                foreach (CommentModel p in result)
+            {
+                p.count = (from posts in db.Comments
+                           where posts.PostId == p.PostId
+                           select posts.UserId).Count();
+            }
                 return result;
             }
             

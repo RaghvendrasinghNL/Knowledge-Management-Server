@@ -51,6 +51,7 @@
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="CategoryId" Type="int" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="UserImage" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="PostTags">
           <Key>
@@ -556,6 +557,7 @@
           <NavigationProperty Name="Reports" Relationship="KnowledgeManagementDevModel.FK__Report__PostId__4316F928" FromRole="Post" ToRole="Report" />
           <NavigationProperty Name="PostTags" Relationship="KnowledgeManagementDevModel.FK_PostTags_Post" FromRole="Post" ToRole="PostTag" />
           <NavigationProperty Name="Likes" Relationship="KnowledgeManagementDevModel.FK_Like_Post" FromRole="Post" ToRole="Like" />
+          <Property Name="UserImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK__Post__CategoryId__02084FDA">
           <End Type="KnowledgeManagementDevModel.Category" Role="Category" Multiplicity="1" />
@@ -754,6 +756,7 @@
           <EntitySetMapping Name="Posts">
             <EntityTypeMapping TypeName="KnowledgeManagementDevModel.Post">
               <MappingFragment StoreEntitySet="Post">
+                <ScalarProperty Name="UserImage" ColumnName="UserImage" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />

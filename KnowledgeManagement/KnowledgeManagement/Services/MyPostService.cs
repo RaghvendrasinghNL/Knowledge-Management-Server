@@ -45,6 +45,8 @@ namespace KnowledgeManagement.Services
                           let Title = query.Post
                           let Description = query.Post
                           let PostDate = query.Post
+                          
+                          
 
                           //select list of tagid from PostTags where t.postid==l.postid
                           select new MyPostModel
@@ -58,6 +60,13 @@ namespace KnowledgeManagement.Services
                               TagName = g.Select(e => e.Tag.TagName).ToList(),
                               PostDate = PostDate.PostDate
                           }).ToList();
+
+            foreach (var x in result)
+            {
+                x.Image = (from l in db.Posts
+                           where l.PostId == x.PostId
+                           select l.UserImage).FirstOrDefault();
+            }
             return result; 
         }
     }

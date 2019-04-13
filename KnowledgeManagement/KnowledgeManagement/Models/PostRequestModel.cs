@@ -16,7 +16,10 @@ namespace KnowledgeManagement.Models
        
         public int UserId { get; set; }
         public int Likes { get; set; }
+        public int Count { get; set; }
 
+        public string Image { get; set; }
+        public List<string> TagName { get; set; }
 
     }
 }

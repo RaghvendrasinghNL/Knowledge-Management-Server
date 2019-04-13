@@ -35,6 +35,7 @@ namespace KnowledgeManagement.Services
             post.UserId = AddPost.UserId;
             post.CategoryId = AddPost.CategoryId;
             post.IsDeleted = true;
+            post.UserImage = AddPost.Image;
             db.Posts.Add(post);
             db.SaveChanges();
 
