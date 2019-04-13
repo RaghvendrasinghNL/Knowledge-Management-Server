@@ -7,17 +7,17 @@
       <Diagram DiagramId="fae9e9ce4ed74ed095a8096e285fb077" Name="Diagram1">
         <EntityTypeShape EntityType="KnowledgeManagementDevModel.Category" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
         <EntityTypeShape EntityType="KnowledgeManagementDevModel.Comment" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="KnowledgeManagementDevModel.Notification" Width="1.5" PointX="6" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="KnowledgeManagementDevModel.PostTag" Width="1.5" PointX="5.25" PointY="11.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="KnowledgeManagementDevModel.Report" Width="1.5" PointX="8.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowledgeManagementDevModel.Report" Width="1.5" PointX="8.5" PointY="11.375" IsExpanded="true" />
         <EntityTypeShape EntityType="KnowledgeManagementDevModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KnowledgeManagementDevModel.Tag" Width="1.5" PointX="3" PointY="15.5" IsExpanded="true" />
         <AssociationConnector Association="KnowledgeManagementDevModel.FK_PostTags_Tag" ManuallyRouted="false" />
         <AssociationConnector Association="KnowledgeManagementDevModel.FK_Tag_Tag" ManuallyRouted="false" />
         <EntityTypeShape EntityType="KnowledgeManagementDevModel.User" Width="1.5" PointX="0.75" PointY="6.625" />
         <AssociationConnector Association="KnowledgeManagementDevModel.FK__Comments__UserId__10566F31" />
-        <AssociationConnector Association="KnowledgeManagementDevModel.FK__Notificat__UserI__123EB7A3" />
         <AssociationConnector Association="KnowledgeManagementDevModel.FK__Report__UserId__114A936A" />
+        <EntityTypeShape EntityType="KnowledgeManagementDevModel.Notification" Width="1.5" PointX="5.25" PointY="7.625" />
+        <AssociationConnector Association="KnowledgeManagementDevModel.FK__Notificat__UserI__123EB7A3" />
         <EntityTypeShape EntityType="KnowledgeManagementDevModel.Post" Width="1.5" PointX="3" PointY="11.125" />
         <AssociationConnector Association="KnowledgeManagementDevModel.FK__Post__CategoryId__02084FDA" />
         <AssociationConnector Association="KnowledgeManagementDevModel.FK__Comments__PostId__4AB81AF0" />
@@ -25,7 +25,7 @@
         <AssociationConnector Association="KnowledgeManagementDevModel.FK__Post__UserId__14270015" />
         <AssociationConnector Association="KnowledgeManagementDevModel.FK__Report__PostId__4316F928" />
         <AssociationConnector Association="KnowledgeManagementDevModel.FK_PostTags_Post" />
-        <EntityTypeShape EntityType="KnowledgeManagementDevModel.Like" Width="1.5" PointX="8.25" PointY="12.75" />
+        <EntityTypeShape EntityType="KnowledgeManagementDevModel.Like" Width="1.5" PointX="8.25" PointY="7.75" />
         <AssociationConnector Association="KnowledgeManagementDevModel.FK_Like_Post" />
         <AssociationConnector Association="KnowledgeManagementDevModel.FK_Like_Users" />
         </Diagram>

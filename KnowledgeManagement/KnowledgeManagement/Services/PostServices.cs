@@ -1,9 +1,6 @@
 ﻿using KnowledgeManagement.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Http;
 
 namespace KnowledgeManagement.Services
 {
@@ -15,67 +12,65 @@ namespace KnowledgeManagement.Services
         {
             db = new KnowledgeManagementDevEntities();
         }
-        public IEnumerable<PostRequestModel> SeeRecentPost(int CategoryId)
+        public IEnumerable<PostRequestModel> SeeRecentPost(int CategoryId, int UserId)
         {
              var result = (from l in db.Posts
-                           join a in db.Users on l.UserId equals a.UserId
-                           where l.CategoryId == CategoryId 
-                           orderby l.PostDate
+                            join a in db.Users on l.UserId equals a.UserId
+                            where l.CategoryId == CategoryId
+                            
+                            select new PostRequestModel
+                            {
+                                Name = a.FirstName,
+                                PostDate = l.PostDate,
+                                Title = l.Title,
+                                Description = l.Description,
+                                PostId = l.PostId,
+                                Image= l.UserImage,
 
-                           select new PostRequestModel
-                           {
-                               //remove post id 
-
-                               Name = a.FirstName,
-                               PostDate = l.PostDate,
-                               Title = l.Title,
-                               Description = l.Description,
-                               PostId = l.PostId
-
-                           }).ToList();
-             foreach (PostRequestModel p in result)
-             {
-                 p.Likes = (from posts in db.Likes
-                            where posts.PostId == p.PostId
-                            select posts.UserId).Count();
-
-             }
-             return result;
-
-           
-
-            /*
-            var result = (from l in db.Posts
-                          join a in db.Users on l.UserId equals a.UserId
-                          where l.CategoryId == CategoryId
-                          orderby l.PostDate
-                          join b in db.Likes on l.PostId equals b.PostId
-                          group  b by b.PostId into grp
-
-                          select new PostRequestModel
-                          {
-                              //remove post id 
-                              PostId = grp.Key,
-                              UserId = grp.Count(),
-                              Name = a.FirstName,
-                              PostDate = l.PostDate,
-                              Title = l.Title,
-                              Description = l.Description,
-                              PostId = l.PostId
-
-                          }).ToList();
-
-            return result;
-
-        }*/
+                            }).ToList();
 
 
+              foreach (var item in result)
+              {
+                  var data = db.Likes.FirstOrDefault(l => l.UserId == UserId && l.PostId == item.PostId);
+                  if (data == null)
+                      item.IsLiked = 0;
+                  else
+                      item.IsLiked = 1;
+              }
+
+
+              foreach (PostRequestModel p in result)
+              {
+                  p.Likes = (from posts in db.Likes
+                             where posts.PostId == p.PostId
+                             select posts.UserId).Count();
+
+              }
+
+               foreach (var posts in result)
+              {
+                  posts.Count = (from c in db.Comments
+                             where c.PostId == posts.PostId
+                             select c.PostId).Count();
+
+              }
+            foreach (var x in result)
+            {
+                x.TagName = (from posttags in db.PostTags
+                             join tag in db.Tags on posttags.TagId equals tag.TagId
+                             where posttags.PostId == x.PostId
+                             select tag.TagName).ToList();
+            }
+              return result;
+
+      
         }
 
         public void GetPaginatedPosts(List<Post> posts, int pageNumber)
         {
             posts.Skip((pageNumber - 1) * PageSize).Take(PageSize).ToList();
-            
-        } 
+
         }
     }
+}

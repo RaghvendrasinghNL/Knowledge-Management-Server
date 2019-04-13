@@ -1,13 +1,7 @@
 ﻿using KnowledgeManagement.App_Start;
 using KnowledgeManagement.Models;
 using KnowledgeManagement.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Runtime.Remoting.Messaging;
-using System.Web;
 using System.Web.Http;
 
 namespace KnowledgeManagement.Controllers
@@ -28,7 +22,10 @@ namespace KnowledgeManagement.Controllers
             return Ok();
         }
         private MyPostServices Mp = new MyPostServices();
-
+      /// <summary>
+      /// It will show the recent posts
+      /// </summary>
+      /// <returns>All Posts</returns>
        [CustomAuthorize]
         public IHttpActionResult Get()
         {
@@ -37,9 +34,19 @@ namespace KnowledgeManagement.Controllers
       
 
         }
+        /// <summary>
+        /// It will let the user delete his own posts
+        /// </summary>
+        /// <param name="id">This model will request UserId,FirstName,PostId,Title,Description,Tags,PostDate</param>
+        /// <returns>Help user to delete his posts</returns>
+        [CustomAuthorize]
+        public IHttpActionResult Delete(int id) // PostId
+        {
+            var userInfo = CallContext.GetData("UserInfo") as UserDetails;
+            Mp.DeleteRecentPost(id);
+            return Ok();
 
-        
-
+        }
     }
 
-    }
+}

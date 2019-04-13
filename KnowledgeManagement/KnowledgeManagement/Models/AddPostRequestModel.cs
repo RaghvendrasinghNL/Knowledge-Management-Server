@@ -12,5 +12,6 @@ namespace KnowledgeManagement.Models
         public int UserId { get; set; }
         public int CategoryId { get; set; }
         public List<int> Tags { get; set; }
+        public string Image { get; set; }
     }
 }

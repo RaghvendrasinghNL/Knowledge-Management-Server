@@ -12,7 +12,9 @@ namespace KnowledgeManagement.Services
         private readonly KnowledgeManagementDevEntities db;
 
         
-
+        /// <summary>
+        ///  It will let user Login 
+        /// </summary>
         public AccountService() {
             db = new KnowledgeManagementDevEntities();
         }
