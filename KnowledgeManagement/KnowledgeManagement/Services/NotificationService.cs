@@ -7,30 +7,34 @@ using System.Web;
 namespace KnowledgeManagement.Services
 {
     /// <summary>
-    /// 
+    /// This will show notification to the user whenevr there is any comment or like in the posts.
     /// </summary>
     public class NotificationService
     {
         KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
 
-       
-        /// <summary>
-        /// This methid will return list of all notifications associated to a user.
-        /// </summary>
-        /// <param name="UserId">the user who is logged in</param>
-        /// <returns>list of string array denoting notification.</returns>
-        public List<Notify> GetUserNotification(int UserId)
+        public NotificationModel GetNotificationById(int Id)
         {
-            var user = db.Users.FirstOrDefault(u => u.UserId == UserId);
-            var posts = (from p in db.Posts
-                         where p.UserId == user.UserId
-                         select p).ToList();
-           
-                //db.Posts.Where(p => p.UserId == user.UserId);
-           List<Notify> notifs = new List<Notify>();
-            foreach (var p in posts)
+            var result = db.Notifications.Where(w => w.NotificationId == Id).Select(w =>
+                         new NotificationModel
+                         {
+                             Type = w.NotificationType,
+                             IsRead=w.IsRead
+
+                         }
+            ).FirstOrDefault();
+
+            return result;
+        }
+
+        public List<string> GetUserNotification(string token)
+        {
+            var user = db.Users.FirstOrDefault(u => u.Token == token);
+            var post = db.Posts.Where(p => p.UserId == user.UserId);
+            List<Notify> notification = new List<Notify>();
+            foreach (var p in post)
             {
-                var notifications = (from n in db.Notifications
+                var notifications = from n in db.Notifications
                             join u in db.Users on n.UserId equals u.UserId
                             where n.PostId == p.PostId
                             select new Notify
@@ -39,23 +43,25 @@ namespace KnowledgeManagement.Services
                                 IsRead = n.IsRead,
                                 PostName = p.Title,
                                 DoneBy = u.FirstName
-                            }).ToList();
-
-                notifs.AddRange(notifications);
+                            };
+                foreach(var notif in notifications)
+                {
+                    notification.Add(notif);
+                }
             }
 
-            return notifs;
-           /* List<string> UserNotifications = new List<string>();
+            List<string> UserNotifications = new List<string>();
 
-            foreach (var notif in notifs)
+            foreach (var notif in notification)
             {
-                var status = (notif.Type == 1) ? "Liked" : "Commented";
-                string str = "Your post named: " + notif.PostName + " is " + status + " by "+ notif.DoneBy;
+                var status = (notif.Type == 1) ? "Liked" : "Commennt";
+                string str = "Your post named: " + notif.PostName + " is " + status + " by " + notif.DoneBy;
                 UserNotifications.Add(str);
             }
-                       return UserNotifications;*/
 
-    }
+            return UserNotifications;
+
+        }
 
     }
 }

@@ -12,7 +12,9 @@ namespace KnowledgeManagement.Services
 
     public class AddPostServices
     {
-
+        /// <summary>
+        /// It will let user to AddPost 
+        /// </summary>
         KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
 

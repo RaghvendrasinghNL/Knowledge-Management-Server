@@ -27,15 +27,19 @@ namespace KnowledgeManagement.Controllers
            
             return result;
         }
-
+        /// <summary>
+        /// It will let the user to comment on Post
+        /// </summary>
+        /// <param name="comment">The Model will request Content,UserId,CommentDate,PostId,Name</param>
+        /// <returns>Help user to comment on a post </returns>
         
         [CustomAuthorize]
         public IHttpActionResult Post([FromBody]CommentModel comment)
         {
             var userInfo = CallContext.GetData("UserInfo") as UserDetails;
-            comment.UserId = userInfo.UserId;
+            comment.UserId = userInfo.UserId;           //User Info
             
-            commentService.AddComment(comment);
+            commentService.AddComment(comment);         //Add Comment
             return Ok();
         }
 

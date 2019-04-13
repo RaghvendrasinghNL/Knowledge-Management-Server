@@ -12,7 +12,7 @@ namespace KnowledgeManagement.Models
         public DateTime CommentDate { get; set; }
         public int PostId { get; set; }
         public string Name { get; set; }
-        public int count { get; set; }
-        //public int CommentId { get; set; }
+        public int Count { get; set; }
+        
     }
 }
