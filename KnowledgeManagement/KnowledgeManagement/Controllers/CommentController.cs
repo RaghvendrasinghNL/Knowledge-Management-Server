@@ -37,9 +37,9 @@ namespace KnowledgeManagement.Controllers
         public IHttpActionResult Post([FromBody]CommentModel comment)
         {
             var userInfo = CallContext.GetData("UserInfo") as UserDetails;
-            comment.UserId = userInfo.UserId;           //User Info
+            comment.UserId = userInfo.UserId;           
             
-            commentService.AddComment(comment);         //Add Comment
+            commentService.AddComment(comment);         
             return Ok();
         }
 
