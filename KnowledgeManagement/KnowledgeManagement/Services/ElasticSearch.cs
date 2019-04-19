@@ -65,7 +65,7 @@ namespace KnowledgeManagement.Services
           Query(q => q.MatchPhrase(m => m.Field(f => f.Tags).Field(ff => ff.Title).Query(query))));*/
             var res = GetElasticClient().Search<ElasticSearchModel>(s => s.Index(IndexName)
             .Type(TypePost).From(0).Size(20).
-           Query(q => q.MultiMatch(c=> c.Fields(f => f.Field(p=> p.Title).Fields(w=> w.Tags)).Fuzziness(Fuzziness.Auto).Query(query))));
+           Query(q => q.MultiMatch(c=> c.Fields(f => f.Field(p=> p.Title).Fields(w=> w.Tags)).Query(query))));
       
 
             var records = new List<ElasticSearchModel>();
@@ -76,9 +76,9 @@ namespace KnowledgeManagement.Services
             }
             return records;
         }
+        
 
-
-        public List<PostRequestModel> GetSearchedResult(string query)
+        public  List<PostRequestModel> GetSearchedResult(string query)
         {
 
             ///get all record from elastic for given search criteria
@@ -97,9 +97,22 @@ namespace KnowledgeManagement.Services
 
 
                                    }).FirstOrDefault();*/
+                /* var postRecord = (from s in db.Posts
+                                   join u in db.Users on s.UserId equals u.UserId
+                                   where s.PostId == p.PostId
+                                   select new PostRequestModel
+                                   {
+                                       PostId = s.PostId,
+                                       Title = s.Title,
+                                       Description = s.Description,
+                                       PostDate = s.PostDate,
+                                       Name = u.FirstName,
+                                       Image = s.UserImage
+
+                                   }).FirstOrDefault();*/
                 var postRecord = (from s in db.Posts
                                   join u in db.Users on s.UserId equals u.UserId
-                                  where s.PostId == p.PostId
+                                  where s.PostId == p.PostId 
                                   select new PostRequestModel
                                   {
                                       PostId = s.PostId,
@@ -107,11 +120,24 @@ namespace KnowledgeManagement.Services
                                       Description = s.Description,
                                       PostDate = s.PostDate,
                                       Name = u.FirstName,
+                                      Image = s.UserImage
 
                                   }).FirstOrDefault();
+   
+                
+                    postRecord.TagName = (from posttags in db.PostTags
+                                 join tag in db.Tags on posttags.TagId equals tag.TagId
+                                 where posttags.PostId == postRecord.PostId
+                                 select tag.TagName).ToList();
+                
 
-               
+                
+                    postRecord.Likes = (from posts in db.Likes
+                               where posts.PostId == postRecord.PostId
+                               select posts.UserId).Count();
+
                 data.Add(postRecord);
+                
 
             }
             // finally create model of PostRequestModel

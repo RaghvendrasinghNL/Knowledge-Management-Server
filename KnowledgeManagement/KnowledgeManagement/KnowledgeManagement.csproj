@@ -191,6 +191,7 @@
     <Compile Include="Controllers\ElasticSearchController.cs" />
     <Compile Include="Controllers\LikeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ModeratorNotifationController.cs" />
     <Compile Include="Controllers\MyPostController.cs" />
     <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\PostController.cs" />
@@ -251,6 +252,7 @@
     <Compile Include="Services\ElasticSearch.cs" />
     <Compile Include="Services\LikeService.cs" />
     <Compile Include="Services\LogOutService.cs" />
+    <Compile Include="Services\ModeratorNotificationServices.cs" />
     <Compile Include="Services\MyPostService.cs" />
     <Compile Include="Services\NotificationService.cs" />
     <Compile Include="Services\PostServices.cs" />
