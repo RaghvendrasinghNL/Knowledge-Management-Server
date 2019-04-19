@@ -14,7 +14,7 @@ namespace KnowledgeManagement.Services
             public List<Notify> GetModeratorNotification(int UserId)
             {
 
-                var user = db.Users.FirstOrDefault(u => u.UserId == UserId && u.isModerator == true);
+                var user = db.Users.FirstOrDefault(u => u.UserId == UserId && u.isModerator == 1);
                 var posts = (from p in db.Posts
                              where p.UserId == user.UserId
                              select p).ToList();
