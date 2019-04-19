@@ -15,7 +15,8 @@ namespace KnowledgeManagement.Controllers
         private readonly string Url = "http://localhost:9200";
         // GET: api/ElasticSearch
         public IHttpActionResult Get(string query)
-        {
+        
+{
             var uri = new Uri(Url);
             var elasticClient = new ElasticSearch();
 

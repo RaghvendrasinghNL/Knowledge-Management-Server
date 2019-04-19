@@ -19,6 +19,14 @@ namespace KnowledgeManagement.Services
             report.Comment = Spam.Comment;
             report.UserId = Spam.UserId;
             db.Reports.Add(report);
+             
+            Notification notif = new Notification();
+           
+            notif.NotificationType = 2; 
+            notif.IsRead = 0;
+            notif.PostId = Spam.PostId;
+            notif.UserId = Spam.UserId;
+            db.Notifications.Add(notif);
             db.SaveChanges();
         }
     }
