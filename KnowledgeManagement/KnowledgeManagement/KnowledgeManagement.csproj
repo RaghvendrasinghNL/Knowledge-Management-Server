@@ -249,11 +249,11 @@
     <Compile Include="Services\AddPostServices.cs" />
     <Compile Include="Services\CommentService.cs" />
     <Compile Include="Services\ElasticSearch.cs" />
+    <Compile Include="Services\LikeService.cs" />
     <Compile Include="Services\LogOutService.cs" />
     <Compile Include="Services\MyPostService.cs" />
     <Compile Include="Services\NotificationService.cs" />
     <Compile Include="Services\PostServices.cs" />
-    <Compile Include="Services\ReportSpamService.cs" />
     <Compile Include="Services\SpamServices.cs" />
     <Compile Include="sysdiagram.cs">
       <DependentUpon>Model1.tt</DependentUpon>

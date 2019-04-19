@@ -12,6 +12,6 @@ namespace KnowledgeManagement.Models
         public string Lastname { get; set; }
         public string EmailId { get; set; }
         public bool isActive { get; set; }
-        public bool isModerator { get; set; }
+        public int? isModerator { get; set; }
     }
 }

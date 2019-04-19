@@ -22,10 +22,14 @@ namespace KnowledgeManagement.Controllers
        [CustomAuthorize]
         public IHttpActionResult Get(int id)
         {
-           
+            var logger = NLog.LogManager.GetCurrentClassLogger();
+            logger.Info("entering into the categories");
             var userInfo = CallContext.GetData("UserInfo") as UserDetails;
             var userId = userInfo.UserId;
             var data = Ps.SeeRecentPost(id,userId); //Category id
+            
+            var logger1 = NLog.LogManager.GetCurrentClassLogger();
+            logger1.Info("Back to Post controller and returing result");
             return Ok(data);
         }
 

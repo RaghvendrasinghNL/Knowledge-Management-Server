@@ -98,7 +98,7 @@
           <Property Name="Password" Type="varchar" MaxLength="100" />
           <Property Name="Token" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="isActive" Type="bit" />
-          <Property Name="isModerator" Type="bit" />
+          <Property Name="isModerator" Type="int" />
         </EntityType>
         <Association Name="FK__Comments__PostId__4AB81AF0">
           <End Role="Post" Type="Self.Post" Multiplicity="1" />
@@ -341,8 +341,8 @@
           <Property Name="CommentDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="PostId" Type="Int32" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="KnowledgeManagementDevModel.FK__Comments__UserId__10566F31" FromRole="Comment" ToRole="User" />
           <NavigationProperty Name="Post" Relationship="KnowledgeManagementDevModel.FK__Comments__PostId__4AB81AF0" FromRole="Comment" ToRole="Post" />
+          <NavigationProperty Name="User" Relationship="KnowledgeManagementDevModel.FK__Comments__UserId__10566F31" FromRole="Comment" ToRole="User" />
         </EntityType>
         <EntityType Name="PostTag">
           <Key>
@@ -362,8 +362,8 @@
           <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PostId" Type="Int32" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="KnowledgeManagementDevModel.FK__Report__UserId__114A936A" FromRole="Report" ToRole="User" />
           <NavigationProperty Name="Post" Relationship="KnowledgeManagementDevModel.FK__Report__PostId__4316F928" FromRole="Report" ToRole="Post" />
+          <NavigationProperty Name="User" Relationship="KnowledgeManagementDevModel.FK__Report__UserId__114A936A" FromRole="Report" ToRole="User" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -424,20 +424,7 @@
             <End Role="Tag" EntitySet="Tags" />
             <End Role="Tag1" EntitySet="Tags" />
           </AssociationSet>
-          <EntitySet Name="Users" EntityType="KnowledgeManagementDevModel.User" />
-          <AssociationSet Name="FK__Comments__UserId__10566F31" Association="KnowledgeManagementDevModel.FK__Comments__UserId__10566F31">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Comment" EntitySet="Comments" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Report__UserId__114A936A" Association="KnowledgeManagementDevModel.FK__Report__UserId__114A936A">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Report" EntitySet="Reports" />
-          </AssociationSet>
           <EntitySet Name="Notifications" EntityType="KnowledgeManagementDevModel.Notification" />
-          <AssociationSet Name="FK__Notificat__UserI__123EB7A3" Association="KnowledgeManagementDevModel.FK__Notificat__UserI__123EB7A3">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Notification" EntitySet="Notifications" />
-          </AssociationSet>
           <EntitySet Name="Posts" EntityType="KnowledgeManagementDevModel.Post" />
           <AssociationSet Name="FK__Post__CategoryId__02084FDA" Association="KnowledgeManagementDevModel.FK__Post__CategoryId__02084FDA">
             <End Role="Category" EntitySet="Categories" />
@@ -450,10 +437,6 @@
           <AssociationSet Name="FK__Notificat__PostI__5070F446" Association="KnowledgeManagementDevModel.FK__Notificat__PostI__5070F446">
             <End Role="Post" EntitySet="Posts" />
             <End Role="Notification" EntitySet="Notifications" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Post__UserId__14270015" Association="KnowledgeManagementDevModel.FK__Post__UserId__14270015">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Post" EntitySet="Posts" />
           </AssociationSet>
           <AssociationSet Name="FK__Report__PostId__4316F928" Association="KnowledgeManagementDevModel.FK__Report__PostId__4316F928">
             <End Role="Post" EntitySet="Posts" />
@@ -468,53 +451,28 @@
             <End Role="Post" EntitySet="Posts" />
             <End Role="Like" EntitySet="Likes" />
           </AssociationSet>
+          <EntitySet Name="Users" EntityType="KnowledgeManagementDevModel.User" />
+          <AssociationSet Name="FK__Comments__UserId__10566F31" Association="KnowledgeManagementDevModel.FK__Comments__UserId__10566F31">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
           <AssociationSet Name="FK_Like_Users" Association="KnowledgeManagementDevModel.FK_Like_Users">
             <End Role="User" EntitySet="Users" />
             <End Role="Like" EntitySet="Likes" />
           </AssociationSet>
+          <AssociationSet Name="FK__Notificat__UserI__123EB7A3" Association="KnowledgeManagementDevModel.FK__Notificat__UserI__123EB7A3">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Notification" EntitySet="Notifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Post__UserId__14270015" Association="KnowledgeManagementDevModel.FK__Post__UserId__14270015">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Post" EntitySet="Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Report__UserId__114A936A" Association="KnowledgeManagementDevModel.FK__Report__UserId__114A936A">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Report" EntitySet="Reports" />
+          </AssociationSet>
           </EntityContainer>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="EmailId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Token" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="isActive" Type="Boolean" />
-          <Property Name="isModerator" Type="Boolean" />
-          <NavigationProperty Name="Comments" Relationship="KnowledgeManagementDevModel.FK__Comments__UserId__10566F31" FromRole="User" ToRole="Comment" />
-          <NavigationProperty Name="Reports" Relationship="KnowledgeManagementDevModel.FK__Report__UserId__114A936A" FromRole="User" ToRole="Report" />
-          <NavigationProperty Name="Notifications" Relationship="KnowledgeManagementDevModel.FK__Notificat__UserI__123EB7A3" FromRole="User" ToRole="Notification" />
-          <NavigationProperty Name="Posts" Relationship="KnowledgeManagementDevModel.FK__Post__UserId__14270015" FromRole="User" ToRole="Post" />
-          <NavigationProperty Name="Likes" Relationship="KnowledgeManagementDevModel.FK_Like_Users" FromRole="User" ToRole="Like" />
-        </EntityType>
-        <Association Name="FK__Comments__UserId__10566F31">
-          <End Type="KnowledgeManagementDevModel.User" Role="User" Multiplicity="1" />
-          <End Type="KnowledgeManagementDevModel.Comment" Role="Comment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Comment">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Report__UserId__114A936A">
-          <End Type="KnowledgeManagementDevModel.User" Role="User" Multiplicity="1" />
-          <End Type="KnowledgeManagementDevModel.Report" Role="Report" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Report">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Notification">
           <Key>
             <PropertyRef Name="NotificationId" />
@@ -524,21 +482,9 @@
           <Property Name="IsRead" Type="Int32" Nullable="false" />
           <Property Name="PostId" Type="Int32" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="KnowledgeManagementDevModel.FK__Notificat__UserI__123EB7A3" FromRole="Notification" ToRole="User" />
           <NavigationProperty Name="Post" Relationship="KnowledgeManagementDevModel.FK__Notificat__PostI__5070F446" FromRole="Notification" ToRole="Post" />
+          <NavigationProperty Name="User" Relationship="KnowledgeManagementDevModel.FK__Notificat__UserI__123EB7A3" FromRole="Notification" ToRole="User" />
         </EntityType>
-        <Association Name="FK__Notificat__UserI__123EB7A3">
-          <End Type="KnowledgeManagementDevModel.User" Role="User" Multiplicity="1" />
-          <End Type="KnowledgeManagementDevModel.Notification" Role="Notification" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Notification">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Post">
           <Key>
             <PropertyRef Name="PostId" />
@@ -553,11 +499,11 @@
           <NavigationProperty Name="Category" Relationship="KnowledgeManagementDevModel.FK__Post__CategoryId__02084FDA" FromRole="Post" ToRole="Category" />
           <NavigationProperty Name="Comments" Relationship="KnowledgeManagementDevModel.FK__Comments__PostId__4AB81AF0" FromRole="Post" ToRole="Comment" />
           <NavigationProperty Name="Notifications" Relationship="KnowledgeManagementDevModel.FK__Notificat__PostI__5070F446" FromRole="Post" ToRole="Notification" />
-          <NavigationProperty Name="User" Relationship="KnowledgeManagementDevModel.FK__Post__UserId__14270015" FromRole="Post" ToRole="User" />
           <NavigationProperty Name="Reports" Relationship="KnowledgeManagementDevModel.FK__Report__PostId__4316F928" FromRole="Post" ToRole="Report" />
           <NavigationProperty Name="PostTags" Relationship="KnowledgeManagementDevModel.FK_PostTags_Post" FromRole="Post" ToRole="PostTag" />
           <NavigationProperty Name="Likes" Relationship="KnowledgeManagementDevModel.FK_Like_Post" FromRole="Post" ToRole="Like" />
           <Property Name="UserImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="KnowledgeManagementDevModel.FK__Post__UserId__14270015" FromRole="Post" ToRole="User" />
         </EntityType>
         <Association Name="FK__Post__CategoryId__02084FDA">
           <End Type="KnowledgeManagementDevModel.Category" Role="Category" Multiplicity="1" />
@@ -592,18 +538,6 @@
             </Principal>
             <Dependent Role="Notification">
               <PropertyRef Name="PostId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Post__UserId__14270015">
-          <End Type="KnowledgeManagementDevModel.User" Role="User" Multiplicity="1" />
-          <End Type="KnowledgeManagementDevModel.Post" Role="Post" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Post">
-              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -653,6 +587,36 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EmailId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Token" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="isActive" Type="Boolean" />
+          <Property Name="isModerator" Type="Int32" />
+          <NavigationProperty Name="Comments" Relationship="KnowledgeManagementDevModel.FK__Comments__UserId__10566F31" FromRole="User" ToRole="Comment" />
+          <NavigationProperty Name="Likes" Relationship="KnowledgeManagementDevModel.FK_Like_Users" FromRole="User" ToRole="Like" />
+          <NavigationProperty Name="Notifications" Relationship="KnowledgeManagementDevModel.FK__Notificat__UserI__123EB7A3" FromRole="User" ToRole="Notification" />
+          <NavigationProperty Name="Posts" Relationship="KnowledgeManagementDevModel.FK__Post__UserId__14270015" FromRole="User" ToRole="Post" />
+          <NavigationProperty Name="Reports" Relationship="KnowledgeManagementDevModel.FK__Report__UserId__114A936A" FromRole="User" ToRole="Report" />
+        </EntityType>
+        <Association Name="FK__Comments__UserId__10566F31">
+          <End Type="KnowledgeManagementDevModel.User" Role="User" Multiplicity="1" />
+          <End Type="KnowledgeManagementDevModel.Comment" Role="Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Like_Users">
           <End Type="KnowledgeManagementDevModel.User" Role="User" Multiplicity="1" />
           <End Type="KnowledgeManagementDevModel.Like" Role="Like" Multiplicity="*" />
@@ -661,6 +625,42 @@
               <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="Like">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Notificat__UserI__123EB7A3">
+          <End Type="KnowledgeManagementDevModel.User" Role="User" Multiplicity="1" />
+          <End Type="KnowledgeManagementDevModel.Notification" Role="Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Notification">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Post__UserId__14270015">
+          <End Type="KnowledgeManagementDevModel.User" Role="User" Multiplicity="1" />
+          <End Type="KnowledgeManagementDevModel.Post" Role="Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Post">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Report__UserId__114A936A">
+          <End Type="KnowledgeManagementDevModel.User" Role="User" Multiplicity="1" />
+          <End Type="KnowledgeManagementDevModel.Report" Role="Report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Report">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
@@ -728,20 +728,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="KnowledgeManagementDevModel.User">
-              <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="isModerator" ColumnName="isModerator" />
-                <ScalarProperty Name="isActive" ColumnName="isActive" />
-                <ScalarProperty Name="Token" ColumnName="Token" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Notifications">
             <EntityTypeMapping TypeName="KnowledgeManagementDevModel.Notification">
               <MappingFragment StoreEntitySet="Notification">
@@ -773,6 +759,20 @@
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="PostId" ColumnName="PostId" />
                 <ScalarProperty Name="LikeId" ColumnName="LikeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="KnowledgeManagementDevModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="isModerator" ColumnName="isModerator" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

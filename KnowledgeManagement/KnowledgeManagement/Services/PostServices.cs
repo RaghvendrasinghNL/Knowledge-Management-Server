@@ -14,7 +14,9 @@ namespace KnowledgeManagement.Services
         }
         public IEnumerable<PostRequestModel> SeeRecentPost(int CategoryId, int UserId)
         {
-             var result = (from l in db.Posts
+            var logger = NLog.LogManager.GetCurrentClassLogger();
+            logger.Info("IN SEERECENTPOST Service ");
+            var result = (from l in db.Posts
                             join a in db.Users on l.UserId equals a.UserId
                             where l.CategoryId == CategoryId
                             
@@ -62,7 +64,9 @@ namespace KnowledgeManagement.Services
                              where posttags.PostId == x.PostId
                              select tag.TagName).ToList();
             }
-              return result;
+            var logger1 = NLog.LogManager.GetCurrentClassLogger();
+            logger1.Info("returning result from SEERECENTPOST Service");
+            return result;
 
       
         }

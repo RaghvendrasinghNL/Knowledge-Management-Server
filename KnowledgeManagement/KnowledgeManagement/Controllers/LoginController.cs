@@ -1,11 +1,6 @@
 ﻿using KnowledgeManagement.App_Start;
 using KnowledgeManagement.Models;
 using KnowledgeManagement.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Runtime.Remoting.Messaging;
 using System.Web.Http;
 
@@ -22,15 +17,18 @@ namespace KnowledgeManagement.Controllers
         }
         private LogOutService ls = new LogOutService();
 
-       
+
         // POST: api/Login
-       
+
         public IHttpActionResult Post([FromBody]LoginRequestModel loginRequestModel)
         {
+            //var userInfo = CallContext.GetData("UserInfo") as UserDetails;
             var result = ac.AddUserLoginToken(loginRequestModel);
+            //loginRequestModel.isModerator = userInfo.isModerator;
             if (result)
             {
-                return Ok();
+
+                return Ok(new { isModerator = loginRequestModel.isModerator });
             }
             return NotFound();
 

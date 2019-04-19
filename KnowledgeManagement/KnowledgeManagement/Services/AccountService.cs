@@ -25,9 +25,13 @@ namespace KnowledgeManagement.Services
             {
                 return false;
             }
+
+            loginRequestModel.isModerator = user.isModerator;
             user.Token = loginRequestModel.LoginToken;
             db.Entry(user).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
+
+            
             return true;
         }
 
