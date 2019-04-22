@@ -28,6 +28,8 @@ namespace KnowledgeManagement.Services
                                          join u in db.Users on n.UserId equals u.UserId
                                          where n.PostId == p.PostId
                                          select new Notify
+
+
                                          {
                                              Type = n.NotificationType,
                                              IsRead = n.IsRead,
