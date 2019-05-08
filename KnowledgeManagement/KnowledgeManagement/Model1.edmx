@@ -69,6 +69,7 @@
           <Property Name="Comment" Type="varchar(max)" Nullable="false" />
           <Property Name="PostId" Type="int" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Isread" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -96,9 +97,9 @@
           <Property Name="LastName" Type="varchar" MaxLength="100" />
           <Property Name="EmailId" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="100" />
-          <Property Name="Token" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="isActive" Type="bit" />
           <Property Name="isModerator" Type="int" />
+          <Property Name="Token" Type="varchar" MaxLength="250" />
         </EntityType>
         <Association Name="FK__Comments__PostId__4AB81AF0">
           <End Role="Post" Type="Self.Post" Multiplicity="1" />
@@ -363,6 +364,7 @@
           <Property Name="PostId" Type="Int32" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Post" Relationship="KnowledgeManagementDevModel.FK__Report__PostId__4316F928" FromRole="Report" ToRole="Post" />
+          <Property Name="Isread" Type="Int32" Nullable="false" />
           <NavigationProperty Name="User" Relationship="KnowledgeManagementDevModel.FK__Report__UserId__114A936A" FromRole="Report" ToRole="User" />
         </EntityType>
         <EntityType Name="sysdiagram">
@@ -596,9 +598,9 @@
           <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="EmailId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Token" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="isActive" Type="Boolean" />
           <Property Name="isModerator" Type="Int32" />
+          <Property Name="Token" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Comments" Relationship="KnowledgeManagementDevModel.FK__Comments__UserId__10566F31" FromRole="User" ToRole="Comment" />
           <NavigationProperty Name="Likes" Relationship="KnowledgeManagementDevModel.FK_Like_Users" FromRole="User" ToRole="Like" />
           <NavigationProperty Name="Notifications" Relationship="KnowledgeManagementDevModel.FK__Notificat__UserI__123EB7A3" FromRole="User" ToRole="Notification" />
@@ -702,6 +704,7 @@
           <EntitySetMapping Name="Reports">
             <EntityTypeMapping TypeName="KnowledgeManagementDevModel.Report">
               <MappingFragment StoreEntitySet="Report">
+                <ScalarProperty Name="Isread" ColumnName="Isread" />
                 <ScalarProperty Name="ReportId" ColumnName="ReportId" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
                 <ScalarProperty Name="PostId" ColumnName="PostId" />
@@ -765,9 +768,9 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="KnowledgeManagementDevModel.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Token" ColumnName="Token" />
                 <ScalarProperty Name="isModerator" ColumnName="isModerator" />
                 <ScalarProperty Name="isActive" ColumnName="isActive" />
-                <ScalarProperty Name="Token" ColumnName="Token" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="EmailId" ColumnName="EmailId" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />

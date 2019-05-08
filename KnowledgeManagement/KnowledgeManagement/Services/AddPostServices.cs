@@ -1,47 +1,37 @@
-﻿using KnowledgeManagement.App_Start;
-using KnowledgeManagement.Models;
-using NLog;
+﻿using KnowledgeManagement.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Web;
 
 namespace KnowledgeManagement.Services
 {
 
     public class AddPostServices
     {
-        /// <summary>
-        /// It will let user to AddPost 
-        /// </summary>
+
         KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
-        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+        private ElasticSearch es = new ElasticSearch();
+        private static readonly NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
 
-        //NLog supports several logging levels, including INFO
-        //Logger.Debug("hi");
-
-        //[CustomAuthorize]
+        /// <summary>
+        /// This will add a entry in the post table with all the attributes and also 
+        /// entry is made in post tags table for corresponding postid
+        /// </summary>
+        /// <param name="AddPost">Addpost is the object of model and contains all the values that is 
+        /// needed to be set for the entry </param>
         public void AddNewPost(AddPostRequestModel AddPost)
         {
-            // var userInfo = CallContext.GetData("UserInfo") as UserDetails;
 
-            Post post = new Post();
-            post.Title = AddPost.Title;
-            
-
-            
-            post.PostDate = DateTime.Now;
-
-            post.Description = AddPost.Description;
-            post.UserId = AddPost.UserId;
-            post.CategoryId = AddPost.CategoryId;
-            post.IsDeleted = true;
-            post.UserImage = AddPost.Image;
+            Post post = new Post
+            {
+                Title = AddPost.Title,
+                PostDate = DateTime.Now,
+                Description = AddPost.Description,
+                UserId = AddPost.UserId,
+                CategoryId = AddPost.CategoryId,
+                IsDeleted = true,
+                UserImage = AddPost.Image
+            };
             db.Posts.Add(post);
             db.SaveChanges();
-
-
 
             foreach (int res in AddPost.Tags)
             {
@@ -51,8 +41,10 @@ namespace KnowledgeManagement.Services
                 db.PostTags.Add(posttags);
                 db.SaveChanges();
             }
+
+            es.GetSqlData();
         }
-                   
-        }
-        
+
     }
+
+}

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace KnowledgeManagement.Models
+﻿namespace KnowledgeManagement.Models
 {
-    public class UserDetails
+    public class UserDetailsModel
     {
         public int UserId { get; set; }
         public string FirstName { get; set; }

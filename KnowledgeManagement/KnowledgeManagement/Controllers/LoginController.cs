@@ -10,21 +10,20 @@ namespace KnowledgeManagement.Controllers
     public class LoginController : ApiController
     {
         KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
-        private AccountService ac;
-        LoginController()
-        {
-            ac = new AccountService();
-        }
+        private AccountService accountService = new AccountService();
         private LogOutService ls = new LogOutService();
 
 
-        // POST: api/Login
 
+        /// <summary>
+        /// This methos will add the login Token for authentication
+        /// </summary>
+        /// <param name="loginRequestModel">It is the object of LoginRequestModel userid emailid </param>
+        /// <returns>satus code 200 or code 404 if not found </returns>
         public IHttpActionResult Post([FromBody]LoginRequestModel loginRequestModel)
         {
-            //var userInfo = CallContext.GetData("UserInfo") as UserDetails;
-            var result = ac.AddUserLoginToken(loginRequestModel);
-            //loginRequestModel.isModerator = userInfo.isModerator;
+            
+            var result = accountService.AddUserLoginToken(loginRequestModel);
             if (result)
             {
 
@@ -35,12 +34,14 @@ namespace KnowledgeManagement.Controllers
         }
 
 
-
-        // DELETE: api/Login/5
+        /// <summary>
+        /// This will be used to delete the User token when logged out 
+        /// </summary>
+        /// <returns>this will return status code 200 </returns>
         [CustomAuthorize]
         public IHttpActionResult Delete()
         {
-            var userInfo = CallContext.GetData("UserInfo") as UserDetails;
+            var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
             var UserId = userInfo.UserId;
             ls.LogOut(UserId);
             return Ok();

@@ -12,27 +12,24 @@ namespace KnowledgeManagement.Controllers
 {
     public class PostController : ApiController
     {
-        private PostServices Ps;
-        
-        PostController() {
-            Ps = new PostServices();
-            
-        }
-        
-       [CustomAuthorize]
+        private PostServices Ps=new PostServices();
+        /// <summary>
+        /// This will fetch the posts from the post table 
+        /// </summary>
+        /// <param name="id">this will take category id as parameter and will fetch posts according to that </param>
+        /// <returns>A list of posts  according to categoryid </returns>
+        [CustomAuthorize]
         public IHttpActionResult Get(int id)
         {
             var logger = NLog.LogManager.GetCurrentClassLogger();
             logger.Info("entering into the categories");
-            var userInfo = CallContext.GetData("UserInfo") as UserDetails;
+            var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
             var userId = userInfo.UserId;
-            var data = Ps.SeeRecentPost(id,userId); //Category id
+            var data = Ps.SeeRecentPost(id,userId); 
             
             var logger1 = NLog.LogManager.GetCurrentClassLogger();
             logger1.Info("Back to Post controller and returing result");
             return Ok(data);
         }
-
-        
-        }
     }
+}

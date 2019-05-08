@@ -13,45 +13,30 @@ namespace KnowledgeManagement.Controllers
     public class ElasticSearchController : ApiController
     {
         private readonly string Url = "http://localhost:9200";
-        // GET: api/ElasticSearch
+        /// <summary>
+        /// This function will take a string as a parameter and will search all the post by
+        /// there title and tags
+        /// </summary>
+        /// <param name="query">It will return status code 200</param>
+        /// <returns></returns>
         public IHttpActionResult Get(string query)
-        
-{
+        {
             var uri = new Uri(Url);
             var elasticClient = new ElasticSearch();
-
-            
             return Ok(elasticClient.GetSearchedResult(query));
-
-           
-        //   return Ok(elasticClient.GetSqlData());
-
         }
 
-        // GET: api/ElasticSearch/5
-        public string Get(int id)
-        {
-            return "value";
-        }
+       
 
-        /// <summary>
-        /// Api to migrate sql data to elastic.
-        /// </summary>
+       /// <summary>
+       /// This will migrate the data from sql DB to elasticsearch DB
+       /// </summary>
         public void Post()
         {
             var elasticClient = new ElasticSearch();
-
             elasticClient.GetSqlData();
         }
 
-        // PUT: api/ElasticSearch/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/ElasticSearch/5
-        public void Delete(int id)
-        {
-        }
+       
     }
 }

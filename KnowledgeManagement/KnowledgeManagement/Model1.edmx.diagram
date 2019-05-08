@@ -22,7 +22,7 @@
         <AssociationConnector Association="KnowledgeManagementDevModel.FK_PostTags_Post" />
         <EntityTypeShape EntityType="KnowledgeManagementDevModel.Like" Width="1.5" PointX="8.375" PointY="7.375" />
         <AssociationConnector Association="KnowledgeManagementDevModel.FK_Like_Post" />
-        <EntityTypeShape EntityType="KnowledgeManagementDevModel.User" Width="1.5" PointX="0.5" PointY="6.75" />
+        <EntityTypeShape EntityType="KnowledgeManagementDevModel.User" Width="1.5" PointX="0.625" PointY="6.625" />
         <AssociationConnector Association="KnowledgeManagementDevModel.FK__Comments__UserId__10566F31" />
         <AssociationConnector Association="KnowledgeManagementDevModel.FK_Like_Users" />
         <AssociationConnector Association="KnowledgeManagementDevModel.FK__Notificat__UserI__123EB7A3" />

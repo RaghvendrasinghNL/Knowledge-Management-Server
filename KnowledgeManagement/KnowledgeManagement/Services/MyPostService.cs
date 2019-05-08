@@ -1,47 +1,33 @@
 ﻿using KnowledgeManagement.App_Start;
 using KnowledgeManagement.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
-using System.Web;
 
 namespace KnowledgeManagement.Services
 {
     public class MyPostServices
     {
-        /// <summary>
-        /// It will let to see posts and also to delete them
-        /// </summary>
+
         KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
 
-      
+        /// <summary>
+        /// This will fetch recent post assosiated with a particular user and will show 
+        /// name,postid,tags , title , description,tagid, postdate, image,like count and comment count
+        /// </summary>
+        /// <param name="UserId">This will take userId as a param and will fetch all the post
+        /// related to that </param>
+        /// <returns>A List of posts with all the parameters </returns>
         public IEnumerable<MyPostModel> MySeeRecentPost(int UserId)
         {
-           var userInfo = CallContext.GetData("UserInfo") as UserDetails;
+            var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
 
-           /* var results = from p in db.PostTags
-                          group p by p.PostId into g
-                          select new Model1
-                          {
-                              PostId=g.Key,
-                              TagId= g.Select(e => e.TagId).ToList()
-                          }; */
-           /* Model1 model = new Model1();
-            foreach (var item in results)
-            {
-                model.PostId = item.PostId;
-                model.Tags = item.TagId;
-            }*/
 
-            //return results;
-            
-           
-
-            var result = (from l in db.Posts join p in db.PostTags on l.PostId equals p.PostId
-                          join ta in db.Tags on p.TagId equals ta.TagId 
-
+            var result = (from l in db.Posts
+                          join p in db.PostTags on l.PostId equals p.PostId
+                          join ta in db.Tags on p.TagId equals ta.TagId
                           where l.UserId == UserId && l.IsDeleted == true
+                          orderby l.PostDate descending
                           group p by p.PostId into g
                           let query = g.FirstOrDefault()
                           let PostId = query.Post
@@ -49,11 +35,10 @@ namespace KnowledgeManagement.Services
                           let Description = query.Post
                           let PostDate = query.Post
                           
-                          
 
-                          //select list of tagid from PostTags where t.postid==l.postid
+
+                          ///select list of tagid from PostTags where t.postid==l.postid
                           select new MyPostModel
-
                           {
                               FirstName = userInfo.FirstName,
                               PostId = PostId.PostId,
@@ -70,13 +55,39 @@ namespace KnowledgeManagement.Services
                            where l.PostId == x.PostId
                            select l.UserImage).FirstOrDefault();
             }
-            return result; 
-        }
 
+            foreach (MyPostModel y in result)
+            {
+                y.Likes = (from k in db.Likes
+                           where k.PostId == y.PostId
+                           select k.UserId).Count();
+            }
+
+            foreach (var c in result)
+            {
+                c.Count = (from m in db.Comments
+                           where m.PostId == c.PostId
+                           select m.PostId).Count();
+            }
+            foreach (var item in result)
+            {
+                var data = db.Likes.FirstOrDefault(l => l.UserId == UserId && l.PostId == item.PostId);
+                if (data == null)
+                    item.IsLiked = 0;
+                else
+                    item.IsLiked = 1;
+            }
+            return result;
+        }
+        /// <summary>
+        /// This will delete the post which the user want to delete 
+        /// </summary>
+        /// <param name="PostId">It will take postId as the parameter and will change the value of isdeleted 
+        /// field coresponding to that </param>
         [CustomAuthorize]
-        public void DeleteRecentPost(int UserId)
+        public void DeleteRecentPost(int PostId)
         {
-            var postdelete = db.Posts.Where(s => s.PostId == UserId).FirstOrDefault();
+            var postdelete = db.Posts.Where(s => s.PostId == PostId).FirstOrDefault();
             postdelete.IsDeleted = false;
             db.SaveChanges();
 

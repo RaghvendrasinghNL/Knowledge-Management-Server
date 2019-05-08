@@ -29,9 +29,9 @@ namespace KnowledgeManagement
         public string LastName { get; set; }
         public string EmailId { get; set; }
         public string Password { get; set; }
-        public string Token { get; set; }
         public Nullable<bool> isActive { get; set; }
         public Nullable<int> isModerator { get; set; }
+        public string Token { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }

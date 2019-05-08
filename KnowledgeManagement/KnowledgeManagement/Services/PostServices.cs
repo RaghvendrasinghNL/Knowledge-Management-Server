@@ -6,57 +6,61 @@ namespace KnowledgeManagement.Services
 {
     public class PostServices
     {
-        private readonly KnowledgeManagementDevEntities db;
+        private readonly KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
         private int PageSize = 5;
-        public PostServices()
-        {
-            db = new KnowledgeManagementDevEntities();
-        }
+        /// <summary>
+        /// This will fetch recent post assosiated with a particular categoryid and will show 
+        /// name,postid,tags , title , description,tagid, postdate, image,like count and comment count
+        /// </summary>
+        ///  <param name="CategoryId">This will show according to the categoryId </param>
+        /// <param name="UserId">Will take UserId to fetch the details related to that user</param>
+        /// <returns>A List of posts with all the parameters </returns>
         public IEnumerable<PostRequestModel> SeeRecentPost(int CategoryId, int UserId)
         {
             var logger = NLog.LogManager.GetCurrentClassLogger();
             logger.Info("IN SEERECENTPOST Service ");
             var result = (from l in db.Posts
-                            join a in db.Users on l.UserId equals a.UserId
-                            where l.CategoryId == CategoryId
-                            
-                            select new PostRequestModel
-                            {
-                                Name = a.FirstName,
-                                PostDate = l.PostDate,
-                                Title = l.Title,
-                                Description = l.Description,
-                                PostId = l.PostId,
-                                Image= l.UserImage,
+                          join a in db.Users on l.UserId equals a.UserId
+                          where l.CategoryId == CategoryId && l.IsDeleted == true
+                          orderby l.PostDate descending
 
-                            }).ToList();
+                          select new PostRequestModel
+                          {
+                              Name = a.FirstName,
+                              PostDate = l.PostDate,
+                              Title = l.Title,
+                              Description = l.Description,
+                              PostId = l.PostId,
+                              Image = l.UserImage,
 
-
-              foreach (var item in result)
-              {
-                  var data = db.Likes.FirstOrDefault(l => l.UserId == UserId && l.PostId == item.PostId);
-                  if (data == null)
-                      item.IsLiked = 0;
-                  else
-                      item.IsLiked = 1;
-              }
+                          }).ToList();
 
 
-              foreach (PostRequestModel p in result)
-              {
-                  p.Likes = (from posts in db.Likes
-                             where posts.PostId == p.PostId
-                             select posts.UserId).Count();
+            foreach (var item in result)
+            {
+                var data = db.Likes.FirstOrDefault(l => l.UserId == UserId && l.PostId == item.PostId);
+                if (data == null)
+                    item.IsLiked = 0;
+                else
+                    item.IsLiked = 1;
+            }
 
-              }
 
-               foreach (var posts in result)
-              {
-                  posts.Count = (from c in db.Comments
-                             where c.PostId == posts.PostId
-                             select c.PostId).Count();
+            foreach (PostRequestModel p in result)
+            {
+                p.Likes = (from posts in db.Likes
+                           where posts.PostId == p.PostId
+                           select posts.UserId).Count();
 
-              }
+            }
+
+            foreach (var posts in result)
+            {
+                posts.Count = (from c in db.Comments
+                               where c.PostId == posts.PostId
+                               select c.PostId).Count();
+
+            }
             foreach (var x in result)
             {
                 x.TagName = (from posttags in db.PostTags
@@ -68,7 +72,7 @@ namespace KnowledgeManagement.Services
             logger1.Info("returning result from SEERECENTPOST Service");
             return result;
 
-      
+
         }
 
         public void GetPaginatedPosts(List<Post> posts, int pageNumber)

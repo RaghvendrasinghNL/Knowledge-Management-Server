@@ -191,11 +191,10 @@
     <Compile Include="Controllers\ElasticSearchController.cs" />
     <Compile Include="Controllers\LikeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\ModeratorNotifationController.cs" />
+    <Compile Include="Controllers\ModeratorNotificationController.cs" />
     <Compile Include="Controllers\MyPostController.cs" />
     <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\PostController.cs" />
-    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\SpamController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -220,19 +219,17 @@
     </Compile>
     <Compile Include="Models\AddPostRequestModel.cs" />
     <Compile Include="Models\CommentModel.cs" />
-    <Compile Include="Models\CountLikedPost.cs" />
+    <Compile Include="Models\LikedPostModel.cs" />
     <Compile Include="Models\ElasticSearchModel.cs" />
     <Compile Include="Models\LoginRequestModel.cs" />
     <Compile Include="Models\LogOutRequestModel.cs" />
-    <Compile Include="Models\Model1.cs" />
     <Compile Include="Models\MyPostModel.cs" />
     <Compile Include="Models\NotificationModel.cs" />
-    <Compile Include="Models\Notify.cs" />
     <Compile Include="Models\PageParameterModel.cs" />
     <Compile Include="Models\PostRequestModel.cs" />
     <Compile Include="Models\ReportRequestModel.cs" />
     <Compile Include="Models\SpamModel.cs" />
-    <Compile Include="Models\UserDetails.cs" />
+    <Compile Include="Models\UserDetailsModel.cs" />
     <Compile Include="Notification.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

@@ -1,24 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using KnowledgeManagement.Models;
 using System.Linq;
-using System.Web;
-using System.Web.Http;
-using KnowledgeManagement.Models;
 
 namespace KnowledgeManagement.Services
 {
+    /// <summary>
+    ///  This service will let user  to Login and will add there logintoken after verifing the emailid
+    /// </summary>
     public class AccountService
     {
         private readonly KnowledgeManagementDevEntities db;
-
-        
-        /// <summary>
-        ///  It will let user Login 
-        /// </summary>
-        public AccountService() {
+        public AccountService()
+        {
             db = new KnowledgeManagementDevEntities();
         }
-        public bool AddUserLoginToken(LoginRequestModel loginRequestModel) {
+
+        public bool AddUserLoginToken(LoginRequestModel loginRequestModel)
+        {
             var user = db.Users.Where(w => w.EmailId == loginRequestModel.EmailId).FirstOrDefault();
 
             if (user == null)
@@ -30,13 +27,8 @@ namespace KnowledgeManagement.Services
             user.Token = loginRequestModel.LoginToken;
             db.Entry(user).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
-
-            
             return true;
         }
-
-        
-        
 
     }
 }

@@ -12,25 +12,31 @@ namespace KnowledgeManagement.Controllers
         private AddPostServices Mpc = new AddPostServices();
         
 
-        // POST api/<controller>
+       /// <summary>
+       /// This method will add a post in post table
+       /// </summary>
+       /// <param name="AddPost">Will take title,description, tags, userimage,categoryid , userid as parameter </param>
+       /// <returns>return a staus code of 200 </returns>
        [CustomAuthorize]
         public IHttpActionResult Post([FromBody]AddPostRequestModel AddPost)
         {
-            var userInfo = CallContext.GetData("UserInfo") as UserDetails;
+            var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
             AddPost.UserId = userInfo.UserId;
             Mpc.AddNewPost(AddPost);
             return Ok();
         }
         private MyPostServices Mp = new MyPostServices();
+
+
       /// <summary>
-      /// It will show the recent posts
+      /// It will fetch all the post that are assosiated by a particular userId
       /// </summary>
-      /// <returns>All Posts</returns>
+      /// <returns>List of all the posts </returns>
        [CustomAuthorize]
         public IHttpActionResult Get()
         {
-            var userInfo =  CallContext.GetData("UserInfo") as UserDetails;
-            return Ok(Mp.MySeeRecentPost(userInfo.UserId));  //(id));
+            var userInfo =  CallContext.GetData("UserInfo") as UserDetailsModel;
+            return Ok(Mp.MySeeRecentPost(userInfo.UserId)); 
       
 
         }
@@ -38,11 +44,11 @@ namespace KnowledgeManagement.Controllers
         /// It will let the user delete his own posts
         /// </summary>
         /// <param name="id">This model will request UserId,FirstName,PostId,Title,Description,Tags,PostDate</param>
-        /// <returns>Help user to delete his posts</returns>
+        /// <returns>this will return status code 200</returns>
         [CustomAuthorize]
-        public IHttpActionResult Delete(int id) // PostId
+        public IHttpActionResult Delete(int id)
         {
-            var userInfo = CallContext.GetData("UserInfo") as UserDetails;
+            var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
             Mp.DeleteRecentPost(id);
             return Ok();
 

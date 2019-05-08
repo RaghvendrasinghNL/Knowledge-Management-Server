@@ -11,16 +11,19 @@ using System.Web.Http;
 
 namespace KnowledgeManagement.Controllers
 {
-    public class ModeratorNotifationController : ApiController
+    public class ModeratorNotificationController : ApiController
     {
-        // GET: api/ModeratorNotifation
+        
         ModeratorNotificationServices Mns = new ModeratorNotificationServices();
 
-
+        /// <summary>
+        /// This will fetch all the moderator notification according to a user
+        /// </summary>
+        /// <returns>This will return the status code 200 </returns>
         [CustomAuthorize]
         public IHttpActionResult Get()
         {
-            var userInfo = CallContext.GetData("UserInfo") as UserDetails;
+            var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
             var result = Mns.GetModeratorNotification(userInfo.UserId);
             return Ok(result);
         }
