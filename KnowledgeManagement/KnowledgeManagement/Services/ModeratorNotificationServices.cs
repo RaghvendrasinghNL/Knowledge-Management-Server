@@ -12,7 +12,7 @@ namespace KnowledgeManagement.Services
         /// This method will select the notification if the user is moderator
         /// </summary>
         /// <param name="UserId">Takes the userid as the input and will fetch the notifications</param>
-        /// <returns>A list pf notifications according to the userid </returns>
+        /// <returns>A list of notifications according to the userid </returns>
         public List<NotificationModel> GetModeratorNotification(int UserId)
         {
 

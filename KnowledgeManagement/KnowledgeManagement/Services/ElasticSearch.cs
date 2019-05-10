@@ -38,7 +38,9 @@ namespace KnowledgeManagement.Services
             var res = GetElasticClient().Index(post, p => p.Index(indexName).Type(typeName).Id(post.PostId));
         }
 
-
+        /// <summary>
+        /// this is for migrating data from sql to elastic db
+        /// </summary>
         public void GetSqlData()
         {
 
@@ -71,7 +73,7 @@ namespace KnowledgeManagement.Services
         /// This method will search all post related to the query entered 
         /// </summary>
         /// <param name="query">The phrase on which the search need to be performed</param>
-        /// <returns></returns>
+        /// <returns>this will return the list of posts with tags , title and postid </returns>
         public List<ElasticSearchModel> GetAllRecords(string query)
         {
             var res = GetElasticClient().Search<ElasticSearchModel>(s => s.Index(IndexName)
@@ -89,17 +91,15 @@ namespace KnowledgeManagement.Services
         }
 
         /// <summary>
-        /// 
+        /// All the post that are fetched from the elasticsearch db will be looped one by one 
+        /// and all other details for them will be fetched from sql db 
         /// </summary>
-        /// <param name="query"></param>
-        /// <returns></returns>
+        /// <param name="query">the phrase on which the searchmis performed</param>
+        /// <returns>this will return a list of posts with matching postIDs</returns>
         public List<PostRequestModel> GetSearchedResult(string query)
         {
-
-            ///get all record from elastic for given search criteria
             var results = GetAllRecords(query);
             List<PostRequestModel> data = new List<PostRequestModel>();
-            // this result will get matched to fetch record from database with matching postIds
             foreach (var p in results)
             {
 
