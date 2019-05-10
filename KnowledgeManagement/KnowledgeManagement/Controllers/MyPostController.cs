@@ -40,6 +40,24 @@ namespace KnowledgeManagement.Controllers
       
 
         }
+
+
+        [CustomAuthorize]
+        public IHttpActionResult Put([FromBody] EditPostModel editPost)
+        {
+            var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
+            editPost.UserId = userInfo.UserId;
+            var editpost = Mp.EditMyPost(editPost);
+            if (editpost)
+            {
+                return Ok();
+            }
+            else
+                return NotFound();
+        }
+
+
+
         /// <summary>
         /// It will let the user delete his own posts
         /// </summary>

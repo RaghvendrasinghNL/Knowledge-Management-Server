@@ -40,6 +40,20 @@ namespace KnowledgeManagement.Controllers
             commentService.AddComment(comment);         
             return Ok();
         }
-        
+
+        [CustomAuthorize]
+        public IHttpActionResult Put([FromBody] CommentModel editComment)
+        {
+            var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
+            editComment.UserId = userInfo.UserId;
+            var newComment = commentService.EditMyComment(editComment);
+            if (newComment)
+            {
+                return Ok();
+            }
+            else
+                return NotFound();
+        }
+
     }
 }

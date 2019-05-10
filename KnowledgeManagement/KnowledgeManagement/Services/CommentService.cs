@@ -69,6 +69,21 @@ namespace KnowledgeManagement.Services
 
         }
 
+        public bool EditMyComment(CommentModel comment)
+        {
+            var commentedit = db.Comments.Where(s => s.PostId == comment.PostId).FirstOrDefault();
+            if (commentedit.UserId != comment.UserId)
+            {
+                return false;
+            }
+
+            commentedit.Content = comment.Content;
+            commentedit.CommentDate = DateTime.Now;
+            db.Entry(commentedit).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            return true;
+        }
+
     }
 
 }

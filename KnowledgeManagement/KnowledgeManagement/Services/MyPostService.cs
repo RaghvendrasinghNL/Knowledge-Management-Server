@@ -1,5 +1,6 @@
 ﻿using KnowledgeManagement.App_Start;
 using KnowledgeManagement.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
@@ -79,6 +80,25 @@ namespace KnowledgeManagement.Services
             }
             return result;
         }
+
+        public bool EditMyPost(EditPostModel editPost)
+        {
+            var postedit = db.Posts.Where(s => s.PostId == editPost.PostId).FirstOrDefault();
+            if (postedit.UserId != editPost.UserId) {
+                return false;
+            }
+
+            postedit.Description = editPost.Description;
+            postedit.PostDate = DateTime.Now;
+            db.Entry(postedit).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            return true;
+        }
+
+
+
+
+
         /// <summary>
         /// This will delete the post which the user want to delete 
         /// </summary>
