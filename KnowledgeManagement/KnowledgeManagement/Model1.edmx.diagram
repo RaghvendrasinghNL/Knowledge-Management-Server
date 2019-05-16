@@ -28,6 +28,9 @@
         <AssociationConnector Association="KnowledgeManagementDevModel.FK__Notificat__UserI__123EB7A3" />
         <AssociationConnector Association="KnowledgeManagementDevModel.FK__Post__UserId__14270015" />
         <AssociationConnector Association="KnowledgeManagementDevModel.FK__Report__UserId__114A936A" />
+        <EntityTypeShape EntityType="KnowledgeManagementDevModel.CommentReport" Width="1.5" PointX="7.25" PointY="4.375" />
+        <AssociationConnector Association="KnowledgeManagementDevModel.FK_CommentReport_Comments" />
+        <AssociationConnector Association="KnowledgeManagementDevModel.FK_CommentReport_Users" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -364,8 +364,11 @@
     <Compile Include="Comment.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="CommentReport.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\CommentController.cs" />
-    <Compile Include="Controllers\defaultController.cs" />
+    <Compile Include="Controllers\ReportCommentController.cs" />
     <Compile Include="Controllers\ElasticSearchController.cs" />
     <Compile Include="Controllers\LikeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -406,6 +409,7 @@
     <Compile Include="Models\NotificationModel.cs" />
     <Compile Include="Models\PageParameterModel.cs" />
     <Compile Include="Models\PostRequestModel.cs" />
+    <Compile Include="Models\ReportCommentModel.cs" />
     <Compile Include="Models\ReportRequestModel.cs" />
     <Compile Include="Models\SpamModel.cs" />
     <Compile Include="Models\UserDetailsModel.cs" />
@@ -426,6 +430,7 @@
     <Compile Include="Services\AddPostServices.cs" />
     <Compile Include="Services\CommentService.cs" />
     <Compile Include="Services\ElasticSearch.cs" />
+    <Compile Include="Services\LikedPostServices.cs" />
     <Compile Include="Services\LikeService.cs" />
     <Compile Include="Services\LogOutService.cs" />
     <Compile Include="Services\ModeratorNotificationServices.cs" />

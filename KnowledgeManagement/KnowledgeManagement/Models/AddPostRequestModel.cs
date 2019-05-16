@@ -3,15 +3,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace KnowledgeManagement.Models
 {
-    public class AddPostRequestModel: IValidatableObject
+    public class AddPostRequestModel
     {
-        /// <summary>
-        /// Title of the Post
-        /// </summary>
+        [Required]
         public string Title { get; set; }
-        /// <summary>
-        /// Description of the post
-        /// </summary>
+        [Required]
         public string Description { get; set; }
         /// <summary>
         /// Id for the User
@@ -21,19 +17,12 @@ namespace KnowledgeManagement.Models
         /// Id for the category
         /// </summary>
         public int CategoryId { get; set; }
-        /// <summary>
-        /// Tags for the post
-        /// </summary>
+        [Required]
         public List<int> Tags { get; set; }
         /// <summary>
         /// Image of the user
         /// </summary>
         public string Image { get; set; }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            
-            throw new System.NotImplementedException();
-        }
     }
 }

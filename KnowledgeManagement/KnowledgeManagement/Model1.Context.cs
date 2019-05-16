@@ -35,5 +35,6 @@ namespace KnowledgeManagement
         public virtual DbSet<Post> Posts { get; set; }
         public virtual DbSet<Like> Likes { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<CommentReport> CommentReports { get; set; }
     }
 }

@@ -22,6 +22,18 @@ namespace KnowledgeManagement.Controllers
         {
             var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
             AddPost.UserId = userInfo.UserId;
+            if (AddPost.Title.Equals(null))
+            {
+                return BadRequest("Enter the title");
+            }
+            if (AddPost.Description.Equals(null))
+            {
+                return BadRequest("Enter Description");
+            }
+            if (AddPost.Tags.Equals(null))
+            {
+                return BadRequest("Enter Tags");
+            }
             Mpc.AddNewPost(AddPost);
             return Ok();
         }

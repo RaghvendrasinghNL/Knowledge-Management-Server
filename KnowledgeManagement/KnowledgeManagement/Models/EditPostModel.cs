@@ -19,5 +19,6 @@ namespace KnowledgeManagement.Models
         /// Id of the user
         /// </summary>
         public int UserId { get; set; }
+        public List<int> Tags { get; set; }
     }
 }

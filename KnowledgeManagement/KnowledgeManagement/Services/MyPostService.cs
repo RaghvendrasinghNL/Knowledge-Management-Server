@@ -81,17 +81,37 @@ namespace KnowledgeManagement.Services
             return result;
         }
 
+
         public bool EditMyPost(EditPostModel editPost)
         {
+            
             var postedit = db.Posts.Where(s => s.PostId == editPost.PostId).FirstOrDefault();
             if (postedit.UserId != editPost.UserId) {
                 return false;
             }
 
+            
             postedit.Description = editPost.Description;
             postedit.PostDate = DateTime.Now;
             db.Entry(postedit).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
+
+            foreach (int x in editPost.Tags)
+            {
+                PostTag posttags = new PostTag();
+                var tagexists = db.PostTags.Where(a => a.TagId == x && a.PostId == editPost.PostId);
+                
+                if (tagexists.Count() == 0)
+                {
+                    posttags.PostId = editPost.PostId;
+                    posttags.TagId = x;
+                    db.PostTags.Add(posttags);
+                    db.SaveChanges();
+                }
+                else
+                    continue;
+            }
+
             return true;
         }
 

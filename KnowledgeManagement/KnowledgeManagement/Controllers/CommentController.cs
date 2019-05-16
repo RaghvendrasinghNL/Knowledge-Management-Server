@@ -1,11 +1,7 @@
 ﻿using KnowledgeManagement.App_Start;
 using KnowledgeManagement.Models;
 using KnowledgeManagement.Services;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Runtime.Remoting.Messaging;
 using System.Web.Http;
 
@@ -23,8 +19,8 @@ namespace KnowledgeManagement.Controllers
         /// <returns>A list of comments in the given post</returns>
         public List<CommentModel> Get(int id)
         {
-           var result = commentService.GetCommentById(id);
-           return result;
+            var result = commentService.GetCommentById(id);
+            return result;
         }
 
         /// <summary>
@@ -36,9 +32,21 @@ namespace KnowledgeManagement.Controllers
         public IHttpActionResult Post([FromBody]CommentModel comment)
         {
             var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
-            comment.UserId = userInfo.UserId;           
-            commentService.AddComment(comment);         
-            return Ok();
+            comment.UserId = userInfo.UserId;
+            if (comment.Content.Equals(null))
+            {
+                return BadRequest("Enter Comment");
+            }
+            if (comment.PostId.Equals(null))
+            {
+                return BadRequest("Enter PostId");
+            }
+            else
+            {
+                commentService.AddComment(comment);
+                return Ok();
+            }
+
         }
 
         [CustomAuthorize]

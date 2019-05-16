@@ -22,6 +22,7 @@ namespace KnowledgeManagement
             this.Notifications = new HashSet<Notification>();
             this.Posts = new HashSet<Post>();
             this.Reports = new HashSet<Report>();
+            this.CommentReports = new HashSet<CommentReport>();
         }
     
         public int UserId { get; set; }
@@ -43,5 +44,7 @@ namespace KnowledgeManagement
         public virtual ICollection<Post> Posts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Report> Reports { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CommentReport> CommentReports { get; set; }
     }
 }
