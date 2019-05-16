@@ -5,11 +5,10 @@ using System.Web;
 
 namespace KnowledgeManagement.Models
 {
-    public class EditPostModel
+    public class ReportCommentModel
     {
-        public int PostId { get; set; }
-        public string Description { get; set; }
         public int UserId { get; set; }
-        public List<int> Tags { get; set; }
+        public int CommmentId { get; set; }
+        public string Comment { get; set; }
     }
 }

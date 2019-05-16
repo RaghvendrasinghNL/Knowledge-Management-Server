@@ -14,6 +14,12 @@ namespace KnowledgeManagement
     
     public partial class Comment
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Comment()
+        {
+            this.CommentReports = new HashSet<CommentReport>();
+        }
+    
         public int CommentId { get; set; }
         public string Content { get; set; }
         public System.DateTime CommentDate { get; set; }
@@ -22,5 +28,7 @@ namespace KnowledgeManagement
     
         public virtual Post Post { get; set; }
         public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CommentReport> CommentReports { get; set; }
     }
 }

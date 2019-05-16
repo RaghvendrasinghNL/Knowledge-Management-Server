@@ -15,7 +15,9 @@ namespace KnowledgeManagement.Controllers
     {
         KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
         LikeService like = new LikeService();
-       
+        LikedPostServices ls = new LikedPostServices();
+
+
 
         /// <summary>
         /// This function will help a user to like a post 
@@ -32,6 +34,13 @@ namespace KnowledgeManagement.Controllers
             return Ok();
         }
 
-
+        [CustomAuthorize]
+        public IHttpActionResult Get()
+        {
+            var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
+            var userid = userInfo.UserId;
+          
+            return Ok(ls.DisplaylikedPost(userid));
+        }
     }
 }

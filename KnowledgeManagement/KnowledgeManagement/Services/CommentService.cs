@@ -84,6 +84,14 @@ namespace KnowledgeManagement.Services
             return true;
         }
 
+        public void EditMyComment(ReportCommentModel reportComment)
+        {
+            CommentReport commentReport = new CommentReport();
+            commentReport.Comment = reportComment.Comment;
+            commentReport.CommentId = reportComment.CommmentId;
+            db.SaveChanges();
+        }
+
     }
 
 }

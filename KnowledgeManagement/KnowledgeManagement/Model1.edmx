@@ -12,6 +12,15 @@
           <Property Name="CategoryId" Type="int" Nullable="false" />
           <Property Name="Title" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <EntityType Name="CommentReport">
+          <Key>
+            <PropertyRef Name="ReportId" />
+          </Key>
+          <Property Name="ReportId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Comment" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CommentId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Comments">
           <Key>
             <PropertyRef Name="CommentId" />
@@ -197,6 +206,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_CommentReport_Comments">
+          <End Role="Comments" Type="Self.Comments" Multiplicity="1" />
+          <End Role="CommentReport" Type="Self.CommentReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comments">
+              <PropertyRef Name="CommentId" />
+            </Principal>
+            <Dependent Role="CommentReport">
+              <PropertyRef Name="CommentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommentReport_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="CommentReport" Type="Self.CommentReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="CommentReport">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Like_Post">
           <End Role="Post" Type="Self.Post" Multiplicity="1" />
           <End Role="Like" Type="Self.Like" Multiplicity="*" />
@@ -259,6 +292,7 @@
         </Association>
         <EntityContainer Name="KnowledgeManagementDevModelStoreContainer">
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CommentReport" EntityType="Self.CommentReport" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Like" EntityType="Self.Like" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Notification" EntityType="Self.Notification" Schema="dbo" store:Type="Tables" />
@@ -299,6 +333,14 @@
           <AssociationSet Name="FK__Report__UserId__114A936A" Association="Self.FK__Report__UserId__114A936A">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report" EntitySet="Report" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommentReport_Comments" Association="Self.FK_CommentReport_Comments">
+            <End Role="Comments" EntitySet="Comments" />
+            <End Role="CommentReport" EntitySet="CommentReport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommentReport_Users" Association="Self.FK_CommentReport_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="CommentReport" EntitySet="CommentReport" />
           </AssociationSet>
           <AssociationSet Name="FK_Like_Post" Association="Self.FK_Like_Post">
             <End Role="Post" EntitySet="Post" />
@@ -344,6 +386,7 @@
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Post" Relationship="KnowledgeManagementDevModel.FK__Comments__PostId__4AB81AF0" FromRole="Comment" ToRole="Post" />
           <NavigationProperty Name="User" Relationship="KnowledgeManagementDevModel.FK__Comments__UserId__10566F31" FromRole="Comment" ToRole="User" />
+          <NavigationProperty Name="CommentReports" Relationship="KnowledgeManagementDevModel.FK_CommentReport_Comments" FromRole="Comment" ToRole="CommentReport" />
         </EntityType>
         <EntityType Name="PostTag">
           <Key>
@@ -473,6 +516,15 @@
           <AssociationSet Name="FK__Report__UserId__114A936A" Association="KnowledgeManagementDevModel.FK__Report__UserId__114A936A">
             <End Role="User" EntitySet="Users" />
             <End Role="Report" EntitySet="Reports" />
+          </AssociationSet>
+          <EntitySet Name="CommentReports" EntityType="KnowledgeManagementDevModel.CommentReport" />
+          <AssociationSet Name="FK_CommentReport_Comments" Association="KnowledgeManagementDevModel.FK_CommentReport_Comments">
+            <End Role="Comment" EntitySet="Comments" />
+            <End Role="CommentReport" EntitySet="CommentReports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommentReport_Users" Association="KnowledgeManagementDevModel.FK_CommentReport_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="CommentReport" EntitySet="CommentReports" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Notification">
@@ -606,6 +658,7 @@
           <NavigationProperty Name="Notifications" Relationship="KnowledgeManagementDevModel.FK__Notificat__UserI__123EB7A3" FromRole="User" ToRole="Notification" />
           <NavigationProperty Name="Posts" Relationship="KnowledgeManagementDevModel.FK__Post__UserId__14270015" FromRole="User" ToRole="Post" />
           <NavigationProperty Name="Reports" Relationship="KnowledgeManagementDevModel.FK__Report__UserId__114A936A" FromRole="User" ToRole="Report" />
+          <NavigationProperty Name="CommentReports" Relationship="KnowledgeManagementDevModel.FK_CommentReport_Users" FromRole="User" ToRole="CommentReport" />
         </EntityType>
         <Association Name="FK__Comments__UserId__10566F31">
           <End Type="KnowledgeManagementDevModel.User" Role="User" Multiplicity="1" />
@@ -663,6 +716,41 @@
               <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="Report">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CommentReport">
+          <Key>
+            <PropertyRef Name="ReportId" />
+          </Key>
+          <Property Name="ReportId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Comment" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CommentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Comment1" Relationship="KnowledgeManagementDevModel.FK_CommentReport_Comments" FromRole="CommentReport" ToRole="Comment" />
+          <NavigationProperty Name="User" Relationship="KnowledgeManagementDevModel.FK_CommentReport_Users" FromRole="CommentReport" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_CommentReport_Comments">
+          <End Type="KnowledgeManagementDevModel.Comment" Role="Comment" Multiplicity="1" />
+          <End Type="KnowledgeManagementDevModel.CommentReport" Role="CommentReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comment">
+              <PropertyRef Name="CommentId" />
+            </Principal>
+            <Dependent Role="CommentReport">
+              <PropertyRef Name="CommentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommentReport_Users">
+          <End Type="KnowledgeManagementDevModel.User" Role="User" Multiplicity="1" />
+          <End Type="KnowledgeManagementDevModel.CommentReport" Role="CommentReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="CommentReport">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
@@ -776,6 +864,16 @@
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CommentReports">
+            <EntityTypeMapping TypeName="KnowledgeManagementDevModel.CommentReport">
+              <MappingFragment StoreEntitySet="CommentReport">
+                <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="ReportId" ColumnName="ReportId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
