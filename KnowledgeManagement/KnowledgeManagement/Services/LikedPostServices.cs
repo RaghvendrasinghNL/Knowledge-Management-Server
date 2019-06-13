@@ -23,6 +23,11 @@ namespace KnowledgeManagement.Services
                                                      Title = p.Title,
                                                      Description = p.Description,
                                                      PostId = p.PostId,
+                                                     PostDate = p.PostDate,
+                                                     FirstName = p.User.FirstName,
+                                                     Image = p.UserImage,
+                                                     Likes= p.Likes.Count(),
+                                                     
                                                     
                                                      
                                                  }).ToList();
