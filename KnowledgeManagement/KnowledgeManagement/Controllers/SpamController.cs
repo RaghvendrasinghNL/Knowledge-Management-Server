@@ -1,6 +1,6 @@
 ﻿using KnowledgeManagement.App_Start;
 using KnowledgeManagement.Models;
-using KnowledgeManagement.Services;
+using KnowledgeManagement.Business_Layer.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,21 +8,32 @@ using System.Net;
 using System.Net.Http;
 using System.Runtime.Remoting.Messaging;
 using System.Web.Http;
+using KnowledgeManagement.Business_Layer.Interface;
 
 namespace KnowledgeManagement.Controllers
 {
     public class SpamController : ApiController
     {
-        private SpamServices sp = new SpamServices();
-        
+        //private SpamServices sp = new SpamServices();
+
+        private readonly ISpamService _spam;
+
+        public SpamController(ISpamService value)
+        {
+            _spam = value;
+        }
+
 
         /// <summary>
         /// This method is used to fetch all the spammed posts 
         /// </summary>
         /// <returns>It will return the list of the posts</returns>
+
+        
         public IHttpActionResult Get()
         {
-            return Ok(sp.GetPost());
+        
+            return Ok(_spam.GetPost());
         }
 
         /// <summary>
@@ -36,7 +47,7 @@ namespace KnowledgeManagement.Controllers
         {
             var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
             addspam.UserId = userInfo.UserId;
-            sp.AddNewSpam(addspam);
+            _spam.AddNewSpam(addspam);
             return Ok();
 
         }
@@ -51,7 +62,8 @@ namespace KnowledgeManagement.Controllers
         public IHttpActionResult Delete(int id) 
         {
             var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
-            sp.DeleteRecentPost(id);
+
+            _spam.DeleteRecentPost(id);
             return Ok();
 
         }

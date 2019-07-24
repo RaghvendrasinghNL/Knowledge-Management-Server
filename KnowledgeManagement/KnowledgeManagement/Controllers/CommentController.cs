@@ -1,4 +1,5 @@
 ﻿using KnowledgeManagement.App_Start;
+using KnowledgeManagement.Business_Layer.Interface;
 using KnowledgeManagement.Models;
 using KnowledgeManagement.Services;
 using System.Collections.Generic;
@@ -11,7 +12,15 @@ namespace KnowledgeManagement.Controllers
 {
     public class CommentController : ApiController
     {
-        CommentService commentService = new CommentService();
+        //CommentService commentService = new CommentService();
+        public ICommentService _commentService;
+
+        public CommentController(ICommentService val)
+        {
+            _commentService = val;
+        }
+
+
         /// <summary>
         /// This method will fetch comment on a single post 
         /// </summary>
@@ -19,7 +28,7 @@ namespace KnowledgeManagement.Controllers
         /// <returns>A list of comments in the given post</returns>
         public List<CommentModel> Get(int id)
         {
-            var result = commentService.GetCommentById(id);
+            var result = _commentService.GetCommentById(id);
             return result;
         }
 
@@ -43,7 +52,7 @@ namespace KnowledgeManagement.Controllers
             }
             else
             {
-                commentService.AddComment(comment);
+                _commentService.AddComment(comment);
                 return Ok();
             }
 
@@ -54,7 +63,7 @@ namespace KnowledgeManagement.Controllers
         {
             var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
             editComment.UserId = userInfo.UserId;
-            var newComment = commentService.EditMyComment(editComment);
+            var newComment = _commentService.EditMyComment(editComment);
             if (newComment)
             {
                 return Ok();

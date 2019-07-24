@@ -19,7 +19,7 @@ namespace KnowledgeManagement.Services
         {
             var logger = NLog.LogManager.GetCurrentClassLogger();
             logger.Info("IN SEERECENTPOST Service ");
-            var result = (from l in db.Posts
+            var result = (from l in db.Posts 
                           join a in db.Users on l.UserId equals a.UserId
                           where l.CategoryId == CategoryId && l.IsDeleted == true
                           orderby l.PostDate descending

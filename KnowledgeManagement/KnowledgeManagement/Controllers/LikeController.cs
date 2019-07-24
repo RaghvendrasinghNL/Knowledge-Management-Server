@@ -1,4 +1,5 @@
 ﻿using KnowledgeManagement.App_Start;
+using KnowledgeManagement.Business_Layer.Interface;
 using KnowledgeManagement.Models;
 using KnowledgeManagement.Services;
 using System;
@@ -14,8 +15,15 @@ namespace KnowledgeManagement.Controllers
     public class LikeController : ApiController
     {
         KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
-        LikeService like = new LikeService();
-        LikedPostServices ls = new LikedPostServices();
+        //LikeService like = new LikeService();
+        // LikedPostServices ls = new LikedPostServices();
+
+        private ILikeService _lp;
+
+        public LikeController(ILikeService like)
+        {
+            _lp = like;
+        }
 
 
 
@@ -30,17 +38,18 @@ namespace KnowledgeManagement.Controllers
         {
             var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
             value.UserId = userInfo.UserId;
-            like.LikePost(value);
+           _lp.LikePost(value);
             return Ok();
         }
 
-        [CustomAuthorize]
-        public IHttpActionResult Get()
+      /*  [CustomAuthorize]
+        public IHttpActionResult Get( )
         {
             var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
             var userid = userInfo.UserId;
-          
+
+            // return Ok(ls.DisplaylikedPost(userid));
             return Ok(ls.DisplaylikedPost(userid));
-        }
+        }*/
     }
 }

@@ -1,15 +1,23 @@
 ﻿using KnowledgeManagement.App_Start;
 using KnowledgeManagement.Models;
-using KnowledgeManagement.Services;
+using KnowledgeManagement.Business_Layer.Service;
 using System.Runtime.Remoting.Messaging;
 using System.Web.Http;
+using KnowledgeManagement.Business_Layer.Interface;
 
 namespace KnowledgeManagement.Controllers
 {
     public class MyPostController : ApiController
     {
+
+        // private AddPostService Mpc = new AddPostService();
+
+        private readonly IMyPostService _myPost;
         
-        private AddPostServices Mpc = new AddPostServices();
+        public MyPostController(IMyPostService res)
+        {
+            _myPost = res;
+        }
         
 
        /// <summary>
@@ -34,10 +42,10 @@ namespace KnowledgeManagement.Controllers
             {
                 return BadRequest("Enter Tags");
             }
-            Mpc.AddNewPost(AddPost);
+            _myPost.AddNewPost(AddPost);
             return Ok();
         }
-        private MyPostServices Mp = new MyPostServices();
+       // private MyPostService Mp = new MyPostService();
 
 
       /// <summary>
@@ -48,7 +56,7 @@ namespace KnowledgeManagement.Controllers
         public IHttpActionResult Get()
         {
             var userInfo =  CallContext.GetData("UserInfo") as UserDetailsModel;
-            return Ok(Mp.MySeeRecentPost(userInfo.UserId)); 
+            return Ok(_myPost.MySeeRecentPost(userInfo.UserId)); 
       
 
         }
@@ -59,7 +67,7 @@ namespace KnowledgeManagement.Controllers
         {
             var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
             editPost.UserId = userInfo.UserId;
-            var editpost = Mp.EditMyPost(editPost);
+            var editpost = _myPost.EditMyPost(editPost);
             if (editpost)
             {
                 return Ok();
@@ -79,7 +87,7 @@ namespace KnowledgeManagement.Controllers
         public IHttpActionResult Delete(int id)
         {
             var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
-            Mp.DeleteRecentPost(id);
+            _myPost.DeleteRecentPost(id);
             return Ok();
 
         }

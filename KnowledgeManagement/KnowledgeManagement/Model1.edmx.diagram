@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fae9e9ce4ed74ed095a8096e285fb077" Name="Diagram1">
+      <Diagram DiagramId="fae9e9ce4ed74ed095a8096e285fb077" Name="Diagram1" ZoomLevel="77">
         <EntityTypeShape EntityType="KnowledgeManagementDevModel.Category" Width="1.5" PointX="4" PointY="11.25" IsExpanded="true" />
         <EntityTypeShape EntityType="KnowledgeManagementDevModel.Comment" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="KnowledgeManagementDevModel.PostTag" Width="1.5" PointX="8.75" PointY="10.25" IsExpanded="true" />
         <EntityTypeShape EntityType="KnowledgeManagementDevModel.Report" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="KnowledgeManagementDevModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowledgeManagementDevModel.sysdiagram" Width="1.5" PointX="17" PointY="9.875" IsExpanded="true" />
         <EntityTypeShape EntityType="KnowledgeManagementDevModel.Tag" Width="1.5" PointX="11" PointY="10.25" IsExpanded="true" />
         <AssociationConnector Association="KnowledgeManagementDevModel.FK_PostTags_Tag" ManuallyRouted="false" />
         <AssociationConnector Association="KnowledgeManagementDevModel.FK_Tag_Tag" ManuallyRouted="false" />
@@ -31,6 +31,9 @@
         <EntityTypeShape EntityType="KnowledgeManagementDevModel.CommentReport" Width="1.5" PointX="7.25" PointY="4.375" />
         <AssociationConnector Association="KnowledgeManagementDevModel.FK_CommentReport_Comments" />
         <AssociationConnector Association="KnowledgeManagementDevModel.FK_CommentReport_Users" />
+        <EntityTypeShape EntityType="KnowledgeManagementDevModel.AssociatedTag" Width="1.5" PointX="13.25" PointY="10.5" />
+        <AssociationConnector Association="KnowledgeManagementDevModel.FK__Associate__Assoc__1A9EF37A" />
+        <AssociationConnector Association="KnowledgeManagementDevModel.FK__Associate__TagId__19AACF41" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
