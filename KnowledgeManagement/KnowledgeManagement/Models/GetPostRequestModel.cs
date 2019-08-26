@@ -24,9 +24,10 @@ namespace KnowledgeManagement.Models
     {
         
         public  int CategoryId { get; set; }
-        
+        public int pageNumber { get; set; }
+
         public  SortingType SortingType { get; set; }
-        public  List<FilterType> FilterType { get; set; }
+        public  FilterType FilterType { get; set; }
         public  List<string> FilterTags { get; set; }
         public  string SearchQuery  { get; set; }
 

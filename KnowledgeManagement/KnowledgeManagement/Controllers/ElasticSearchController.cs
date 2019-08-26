@@ -45,6 +45,8 @@ namespace KnowledgeManagement.Controllers
             // var elasticClient = new ElasticSearch();
             // elasticClient.GetSqlData();
             _elasticClient.GetSqlData();
+            Console.WriteLine("Data Uploaded");
+           
 
         }
 

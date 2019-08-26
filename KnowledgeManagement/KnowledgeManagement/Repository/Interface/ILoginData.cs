@@ -9,7 +9,7 @@ namespace KnowledgeManagement.Repository.Interface
 {
     public interface ILoginData
     {
-        bool AddUserLoginToken(LoginRequestModel loginRequestModel);
+       // bool AddUserLoginToken(LoginRequestModel loginRequestModel);
         void LogOut(int UserId);
     }
 }

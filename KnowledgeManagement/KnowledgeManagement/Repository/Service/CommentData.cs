@@ -1,4 +1,5 @@
-﻿using KnowledgeManagement.Models;
+﻿using KnowledgeManagement.Filter;
+using KnowledgeManagement.Models;
 using KnowledgeManagement.Repository.Interface;
 using System;
 using System.Collections.Generic;
@@ -21,12 +22,12 @@ namespace KnowledgeManagement.Repository.Service
 
             var result = (from c in db.Comments
                           join u in db.Users on c.UserId equals u.UserId
-                          where c.PostId == id
+                          where c.PostId == id && c.IsDeleted == false
                           select new CommentModel
                           {
                               PostId = c.PostId,
                               Content = c.Content,
-                              UserId = c.UserId,
+                             UserId = c.UserId,
                               Name = u.FirstName,
                               CommentDate = c.CommentDate
                           }).ToList();
@@ -47,6 +48,8 @@ namespace KnowledgeManagement.Repository.Service
         /// </summary>
         /// <param name="comment">comment is the object for CommentModel 
         /// and require Content, userid, date, postid, name and count  </param>
+        
+
         public void AddComment(CommentModel comment)
         {
             Comment obj = new Comment
@@ -54,7 +57,8 @@ namespace KnowledgeManagement.Repository.Service
                 UserId = comment.UserId,
                 Content = comment.Content,
                 CommentDate = DateTime.Now,
-                PostId = comment.PostId
+                PostId = comment.PostId,
+                IsDeleted = false
             };
             db.Comments.Add(obj);
 

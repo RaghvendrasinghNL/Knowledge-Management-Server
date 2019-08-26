@@ -4,18 +4,25 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using PagedList;
+
 
 namespace KnowledgeManagement.Repository.Service
 {
     public class HomePageData : IHomePageData
     {
         private readonly KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
+        private int PageSize = 5;
 
-        public IEnumerable<PostRequestModel> HomePagePost(int UserId, int CategoryId, SortingType sortingtype, FilterType filtertype)
+
+
+
+        public IEnumerable<PostRequestModel> HomePagePost(int UserId, int CategoryId, SortingType sortingtype, FilterType filtertype/* int pageNumber*/)
         {
             var result = (from l in db.Posts
                           join a in db.Users on l.UserId equals a.UserId
-                          where l.CategoryId == CategoryId && l.IsDeleted == true
+                          where l.CategoryId == CategoryId && l.IsDeleted == true && !(db.Reports.Any(r=> r.PostId == l.PostId && r.UserId == UserId))
+        
                           orderby l.PostDate descending
 
                           select new PostRequestModel
@@ -27,6 +34,7 @@ namespace KnowledgeManagement.Repository.Service
                               PostId = l.PostId,
                               Image = l.UserImage,
 
+                              //  }).Skip((pageNumber - 1) * PageSize).Take(PageSize).ToList();
                           }).ToList();
 
 
@@ -69,6 +77,7 @@ namespace KnowledgeManagement.Repository.Service
                 if (sortingtype == SortingType.MaxLikes)
                 {
                     return result.OrderByDescending(r => r.Likes).ToList();
+                    
                 }
                 else if (sortingtype == SortingType.MaxComments)
                 {
@@ -111,9 +120,6 @@ namespace KnowledgeManagement.Repository.Service
             {
                 return null;
             }
-
-
-
 
         }
     }

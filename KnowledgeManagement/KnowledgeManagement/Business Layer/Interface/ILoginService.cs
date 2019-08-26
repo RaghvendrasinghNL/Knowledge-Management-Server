@@ -9,7 +9,8 @@ namespace KnowledgeManagement.Business_Layer.Interface
 {
     public interface ILoginService
     {
-        bool AddUserLoginToken(LoginRequestModel loginRequestModel);
+        Task<LoginRequestModel> Authenticatetoken(string token);
+        
         void LogOut(int UserId);
     }
 }

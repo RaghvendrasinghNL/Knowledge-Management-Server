@@ -11,19 +11,47 @@ namespace KnowledgeManagement.Repository.Service
     {
         KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
 
+        /* public void AddAssociatedTags(AssociatedTagModel associated)
+         { 
+
+             AssociatedTag at = new AssociatedTag();
+             {
+
+                 foreach (int x in associated.AssociatedId)
+                 {
+                     at.AssociatedId = x;
+                     at.TagId = associated.TagId;
+                     db.AssociatedTags.Add(at);
+                     db.SaveChanges();
+                 }
+             }
+
+
+         }*/
+
         public void AddAssociatedTags(AssociatedTagModel associated)
         {
+            var result = (from at in db.AssociatedTags1
+                          
+                          select at.GroupId).ToList().LastOrDefault();
 
-            AssociatedTag at = new AssociatedTag();
+
+            result++;
+
+            AssociatedTag1 associatedTag1 = new AssociatedTag1();
             {
-                foreach (int x in associated.AssociatedId)
+                foreach (int x in associated.TagId)
                 {
-                    at.AssociatedId = x;
-                    at.TagId = associated.TagId;
-                    db.AssociatedTags.Add(at);
+                    associatedTag1.TagId = x;
+                    associatedTag1.GroupId = result;
+
+                    db.AssociatedTags1.Add(associatedTag1);
                     db.SaveChanges();
+
                 }
+
             }
+           
 
 
         }

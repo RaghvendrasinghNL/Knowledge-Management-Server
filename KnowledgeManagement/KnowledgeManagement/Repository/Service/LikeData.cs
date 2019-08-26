@@ -26,6 +26,11 @@ namespace KnowledgeManagement.Repository.Service
                 obj1.UserId = value.UserId;
                 db.Notifications.Add(obj1);
                 db.SaveChanges();
+                value.countLikes = (from l in db.Likes
+                                    where l.PostId == value.PostId
+                                    select l.UserId
+               ).Count();
+
             }
             else
             {
@@ -42,7 +47,21 @@ namespace KnowledgeManagement.Repository.Service
                 obj1.UserId = value.UserId;
                 db.Notifications.Add(obj1);
                 db.SaveChanges();
+                value.countLikes =(from l in db.Likes
+                                                 where l.PostId == value.PostId
+                                                 select l.UserId
+                ).Count();
+
+               var data = db.Likes.FirstOrDefault(l => l.UserId == value.UserId && l.PostId == value.PostId);
+                if (data == null)
+                    value.IsLiked = 0;
+                else
+                    value.IsLiked = 1;
+
+
             }
+
+          
         }
 
 

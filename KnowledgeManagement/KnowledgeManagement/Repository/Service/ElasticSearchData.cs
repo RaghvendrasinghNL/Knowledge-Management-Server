@@ -12,8 +12,8 @@ namespace KnowledgeManagement.Repository.Service
     {
         KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
         private readonly string Url = "http://localhost:9200";
-        private readonly string IndexName = "new";
-        private readonly string TypePost = "value";
+        private readonly string IndexName = "knowledgemanagement";
+        private readonly string TypePost = "records";
 
 
         /// <summary>
@@ -78,9 +78,17 @@ namespace KnowledgeManagement.Repository.Service
         /// <returns>this will return the list of posts with tags , title and postid </returns>
         public List<ElasticSearchModel> GetAllRecords(string query)
         {
+            string wildCardQuery = "*" + query + "*";
             var res = GetElasticClient().Search<ElasticSearchModel>(s => s.Index(IndexName)
-            .Type(TypePost).From(0).Size(20).
-           Query(q => q.MultiMatch(c => c.Fields(f => f.Field(p => p.Title).Fields(w => w.Tags)).Query(query))));
+            .Type(TypePost).From(0).Size(20)
+            .Query(q => q.DisMax(c => c
+            .Name("tags")
+            .Queries(
+                qq => qq.Wildcard(w => w.Title , wildCardQuery),
+                qq => qq.Wildcard(m => m.Tags, wildCardQuery)
+    ))));
+           // .Query(q => q.MultiMatch(c => c.Fields(f => f.Field(p => p.Title).Fields(w => w.Tags)).Query(query))));
+            
 
 
             var records = new List<ElasticSearchModel>();
@@ -100,44 +108,161 @@ namespace KnowledgeManagement.Repository.Service
         /// <returns>this will return a list of posts with matching postIDs</returns>
         public List<PostRequestModel> GetSearchedResult(string query)
         {
+
             var results = GetAllRecords(query);
+
+           
+            int flagTitle = 0, flagTag = 0;
             List<PostRequestModel> data = new List<PostRequestModel>();
             foreach (var p in results)
             {
+                if (p.Title.ToUpper().Contains(query.ToUpper()))
+                {
 
-                var postRecord = (from s in db.Posts
-                                  join u in db.Users on s.UserId equals u.UserId
-                                  where s.PostId == p.PostId
-                                  select new PostRequestModel
-                                  {
-                                      PostId = s.PostId,
-                                      Title = s.Title,
-                                      Description = s.Description,
-                                      PostDate = s.PostDate,
-                                      Name = u.FirstName,
-                                      Image = s.UserImage
-
-                                  }).FirstOrDefault();
-
-
-                postRecord.TagName = (from posttags in db.PostTags
-                                      join tag in db.Tags on posttags.TagId equals tag.TagId
-                                      where posttags.PostId == postRecord.PostId
-                                      select tag.TagName).ToList();
-
-
-
-                postRecord.Likes = (from posts in db.Likes
-                                    where posts.PostId == postRecord.PostId
-                                    select posts.UserId).Count();
-
-                data.Add(postRecord);
-
-
+                   flagTitle = 1;
+                   
+                    
+                }
+                if(p.Tags.ConvertAll(x=> x.ToUpper()).Contains(query.ToUpper()))
+                {
+                    flagTag = 1;
+                    
+                   
+                } 
             }
+
             // finally create model of PostRequestModel
 
-            return data;
+           if((flagTag ==1&& flagTitle == 1)|| flagTag ==1)
+           {
+                int tagid;
+                List<int> groupid = new List<int>();
+                List<int> taglist = new List<int>();
+
+                tagid = (from s in db.Tags
+                                 where s.TagName == query
+                                 select s.TagId).FirstOrDefault();
+
+                groupid = (from j in db.AssociatedTags1
+                                   where j.TagId == tagid
+                                   select j.GroupId
+                               ).ToList();
+                if (groupid != null)
+                {
+                    foreach (var gid in groupid)
+                    {
+                        taglist = (from w in db.AssociatedTags1
+                                   where w.GroupId == gid
+                                   select w.TagId).ToList();
+
+
+                        foreach (int tagslists in taglist)
+                        {
+                            var record = (from i in db.Posts
+                                          join a in db.PostTags on i.PostId equals a.PostId
+                                          join u in db.Users on i.UserId equals u.UserId
+                                          where a.TagId == tagslists && i.IsDeleted
+                                          select new PostRequestModel
+                                          {
+                                              PostId = i.PostId,
+                                              Title = i.Title,
+                                              Description = i.Description,
+                                              PostDate = i.PostDate,
+                                              Name = u.FirstName,
+                                              Image = i.UserImage
+
+                                          }).ToList();
+                            foreach (var x in record)
+                            {
+                                x.TagName = (from posttags in db.PostTags
+                                             join t in db.Tags on posttags.TagId equals t.TagId
+                                             where posttags.PostId == x.PostId
+                                             select t.TagName).ToList();
+
+                                x.Likes = (from posts in db.Likes
+                                           where posts.PostId == x.PostId
+                                           select posts.UserId).Count();
+                            }
+                            data.AddRange(record);
+
+
+                        }
+                    }
+                }else
+                {
+                    var record = (from i in db.Posts
+                                  join a in db.PostTags on i.PostId equals a.PostId
+                                  join u in db.Users on i.UserId equals u.UserId
+                                  where a.TagId == tagid && i.IsDeleted
+                                  select new PostRequestModel
+                                  {
+                                      PostId = i.PostId,
+                                      Title = i.Title,
+                                      Description = i.Description,
+                                      PostDate = i.PostDate,
+                                      Name = u.FirstName,
+                                      Image = i.UserImage
+
+                                  }).ToList();
+                    foreach (var x in record)
+                    {
+                        x.TagName = (from posttags in db.PostTags
+                                     join t in db.Tags on posttags.TagId equals t.TagId
+                                     where posttags.PostId == x.PostId
+                                     select t.TagName).ToList();
+
+                        x.Likes = (from posts in db.Likes
+                                   where posts.PostId == x.PostId
+                                   select posts.UserId).Count();
+                    }
+                    data.AddRange(record);
+                }
+                return data;
+            }  
+            if (flagTitle == 1)
+            {
+                foreach (var p in results)
+                {
+
+                    var postRecord = (from s in db.Posts
+                                      join u in db.Users on s.UserId equals u.UserId
+                                      where s.PostId == p.PostId && s.IsDeleted
+                                      select new PostRequestModel
+                                      {
+                                          PostId = s.PostId,
+                                          Title = s.Title,
+                                          Description = s.Description,
+                                          PostDate = s.PostDate,
+                                          Name = u.FirstName,
+                                          Image = s.UserImage
+
+                                      }).FirstOrDefault();
+
+                    if (postRecord != null)
+                    {
+                        postRecord.TagName = (from posttags in db.PostTags
+                                              join tag in db.Tags on posttags.TagId equals tag.TagId
+                                              where posttags.PostId == postRecord.PostId
+                                              select tag.TagName).ToList();
+
+
+
+                        postRecord.Likes = (from posts in db.Likes
+                                            where posts.PostId == postRecord.PostId
+                                            select posts.UserId).Count();
+
+                        data.Add(postRecord);
+                    }
+
+                }
+                return data;
+            }
+            else
+            {
+                return data;
+            }
+
+          
         }
 
     }

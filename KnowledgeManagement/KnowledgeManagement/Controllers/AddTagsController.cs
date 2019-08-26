@@ -9,6 +9,9 @@ using System.Net.Http;
 using System.Runtime.Remoting.Messaging;
 using System.Web.Http;
 using KnowledgeManagement.Business_Layer.Interface;
+using KnowledgeManagement.Filter;
+using System.Web;
+using NLog;
 
 namespace KnowledgeManagement.Controllers
 {
@@ -16,7 +19,7 @@ namespace KnowledgeManagement.Controllers
     {
         // TagsService addTags = new TagsService();
         //AddTagsByModeratorService atbm = new AddTagsByModeratorService();
-
+        private static Logger logger = NLog.LogManager.GetCurrentClassLogger();
         private IAddTagsService _at;
 
         public AddTagsController(IAddTagsService value)
@@ -26,44 +29,71 @@ namespace KnowledgeManagement.Controllers
 
 
 
-        [CustomAuthorize]
+        [JwtAuthentication]
         public IHttpActionResult Get( )
         {
+            try
+            {
+                
+                string username = string.Empty;
+                string userId = string.Empty;
+                var token = HttpContext.Current.Request.Headers["Authorization"].Split(' ')[1];
+                JwtAuthenticationAttribute.ValidateToken(token, out username, out userId);
+                int userid = Int32.Parse(userId);
+                logger.Info("AddTags controller and reurning result");
 
-            var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
-            var userid = userInfo.UserId;
-            return Ok(_at.GetTags(userid));
+                return Ok(_at.GetTags(userid));
+            }
+            catch(Exception ex)
+            {
+                logger.Error("AddTags#Get!!BadRequest" + ex);
+                return BadRequest("Exception - " + ex);
+            }
 
         }
 
 
-        [CustomAuthorize]
+        [JwtAuthentication]
         public IHttpActionResult Post([FromBody]TagsModel tag)
         {
-            
-            if (tag.TagName.Equals(null))
+            try
             {
-                return BadRequest("Enter TagName");
-            }
-            
-            
-            else
-            {
-                 var f= _at.AddTags(tag);
-                if (f == true)
+
+                string username = string.Empty;
+                string userId = string.Empty;
+                var token = HttpContext.Current.Request.Headers["Authorization"].Split(' ')[1];
+                JwtAuthenticationAttribute.ValidateToken(token, out username, out userId);
+                int userid = Int32.Parse(userId);
+                logger.Info("AddTags controller and reurning result");
+
+                if (tag.TagName.Equals(null))
                 {
-
-
-                    return Ok(tag.TagId);
-                    // return Json(tag.TagId);
-       
-                    
+                    return BadRequest("Enter TagName");
                 }
+
+
                 else
                 {
-                    return BadRequest("Tag already exist");
+                    var f = _at.AddTags(tag);
+                    if (f == true)
+                    {
+
+
+                        return Ok(tag);
+
+
+                    }
+                    else
+                    {
+                        return BadRequest("Tag already exist");
+                    }
+
                 }
-                
+            }
+            catch(Exception ex)
+            {
+                logger.Error("AddTags#Post!!BadRequest" + ex);
+                return BadRequest("Exception - " + ex);
             }
         }
        

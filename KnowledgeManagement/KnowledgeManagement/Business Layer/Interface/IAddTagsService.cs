@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace KnowledgeManagement.Business_Layer.Interface
 {
-  public  interface IAddTagsService
+  public interface IAddTagsService
     {
         Boolean AddTags(TagsModel tags);
         IEnumerable<TagsModel> GetTags(int UserId);
