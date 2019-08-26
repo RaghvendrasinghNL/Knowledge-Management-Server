@@ -18,14 +18,15 @@ namespace KnowledgeManagement.Controllers
         /// </summary>
         /// <param name="id">this will take category id as parameter and will fetch posts according to that </param>
         /// <returns>A list of posts  according to categoryid </returns>
-        [CustomAuthorize]
+    //    [CustomAuthorize]
         public IHttpActionResult Get(int id)
         {
+
             var logger = NLog.LogManager.GetCurrentClassLogger();
             logger.Info("entering into the categories");
-            var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
-            var userId = userInfo.UserId;
-            var data = Ps.SeeRecentPost(id,userId); 
+           // var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
+           // var userId = userInfo.UserId;
+            var data = Ps.SeeRecentPost(id,1); 
             
             var logger1 = NLog.LogManager.GetCurrentClassLogger();
             logger1.Info("Back to Post controller and returing result");
