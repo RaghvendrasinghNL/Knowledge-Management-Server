@@ -9,13 +9,16 @@ using System.Net.Http;
 using System.Runtime.Remoting.Messaging;
 using System.Web.Http;
 using KnowledgeManagement.Business_Layer.Interface;
+using KnowledgeManagement.Filter;
+using System.Web;
+using NLog;
 
 namespace KnowledgeManagement.Controllers
 {
     public class SpamController : ApiController
     {
         //private SpamServices sp = new SpamServices();
-
+        private static Logger logger = NLog.LogManager.GetCurrentClassLogger();
         private readonly ISpamService _spam;
 
         public SpamController(ISpamService value)
@@ -29,11 +32,19 @@ namespace KnowledgeManagement.Controllers
         /// </summary>
         /// <returns>It will return the list of the posts</returns>
 
-        
+        [JwtAuthentication]
         public IHttpActionResult Get()
         {
-        
-            return Ok(_spam.GetPost());
+            try
+            {
+                logger.Info("Spam controller and returning result");
+                return Ok(_spam.GetPost());
+            }
+            catch(Exception ex)
+            {
+                logger.Error("Spam#Get!!BadRequest" + ex);
+                return BadRequest("Exception - " + ex);
+            }
         }
 
         /// <summary>
@@ -42,13 +53,30 @@ namespace KnowledgeManagement.Controllers
         /// <param name="addspam">addspam is the object of the model and will 
         /// take all the attributes in the model </param>
         /// <returns>this will return the status code 200</returns>
-        [CustomAuthorize]
+        [JwtAuthentication]
         public IHttpActionResult Post([FromBody]SpamModel addspam)
         {
-            var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
-            addspam.UserId = userInfo.UserId;
-            _spam.AddNewSpam(addspam);
-            return Ok();
+            //var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
+            //addspam.UserId = userInfo.UserId;
+            try
+            {
+               
+                string username = string.Empty;
+                string userId = string.Empty;
+                var token = HttpContext.Current.Request.Headers["Authorization"].Split(' ')[1];
+                JwtAuthenticationAttribute.ValidateToken(token, out username, out userId);
+                int userid = Int32.Parse(userId);
+                addspam.UserId = userid;
+                logger.Info("Spam controller and returning result");
+                _spam.AddNewSpam(addspam);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                logger.Error("Spam#Post!!BadRequest" + ex);
+                return BadRequest("Exception - " + ex);
+
+            }
 
         }
 
@@ -58,13 +86,27 @@ namespace KnowledgeManagement.Controllers
         /// </summary>
         /// <param name="id">It will take post Id as the parameter to remove entry from the post table </param>
         /// <returns>It will return the status code 200</returns>
-        [CustomAuthorize]
+        [JwtAuthentication]
         public IHttpActionResult Delete(int id) 
         {
-            var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
 
-            _spam.DeleteRecentPost(id);
-            return Ok();
+            //var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
+            try
+            {
+                string username = string.Empty;
+                string userId = string.Empty;
+                var token = HttpContext.Current.Request.Headers["Authorization"].Split(' ')[1];
+                JwtAuthenticationAttribute.ValidateToken(token, out username, out userId);
+                int userid = Int32.Parse(userId);
+                logger.Info("Spam controller and delete spam");
+                _spam.DeleteRecentPost(id);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                logger.Error("Spam#Delete!!BadRequest" + ex);
+                return BadRequest("Exception - " + ex);
+            }
 
         }
     }

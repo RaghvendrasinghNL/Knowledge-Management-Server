@@ -13,6 +13,14 @@
           <Property Name="TagId" Type="int" Nullable="false" />
           <Property Name="AssociatedId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="AssociatedTags">
+          <Key>
+            <PropertyRef Name="AID" />
+          </Key>
+          <Property Name="AID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupId" Type="int" Nullable="false" />
+          <Property Name="TagId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="CategoryId" />
@@ -38,6 +46,7 @@
           <Property Name="CommentDate" Type="datetime" Nullable="false" />
           <Property Name="PostId" Type="int" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="Like">
           <Key>
@@ -138,6 +147,18 @@
               <PropertyRef Name="TagId" />
             </Principal>
             <Dependent Role="AssociatedTag">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Associate__TagId__41B8C09B">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+          <End Role="AssociatedTags" Type="Self.AssociatedTags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="TagId" />
+            </Principal>
+            <Dependent Role="AssociatedTags">
               <PropertyRef Name="TagId" />
             </Dependent>
           </ReferentialConstraint>
@@ -355,6 +376,7 @@
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="KnowledgeManagementDevModelStoreContainer">
           <EntitySet Name="AssociatedTag" EntityType="Self.AssociatedTag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AssociatedTags" EntityType="Self.AssociatedTags" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CommentReport" EntityType="Self.CommentReport" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
@@ -373,6 +395,10 @@
           <AssociationSet Name="FK__Associate__TagId__19AACF41" Association="Self.FK__Associate__TagId__19AACF41">
             <End Role="Tag" EntitySet="Tag" />
             <End Role="AssociatedTag" EntitySet="AssociatedTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Associate__TagId__41B8C09B" Association="Self.FK__Associate__TagId__41B8C09B">
+            <End Role="Tag" EntitySet="Tag" />
+            <End Role="AssociatedTags" EntitySet="AssociatedTags" />
           </AssociationSet>
           <AssociationSet Name="FK__Comments__PostId__4AB81AF0" Association="Self.FK__Comments__PostId__4AB81AF0">
             <End Role="Post" EntitySet="Post" />
@@ -459,6 +485,7 @@
           <NavigationProperty Name="Post" Relationship="KnowledgeManagementDevModel.FK__Comments__PostId__4AB81AF0" FromRole="Comment" ToRole="Post" />
           <NavigationProperty Name="User" Relationship="KnowledgeManagementDevModel.FK__Comments__UserId__10566F31" FromRole="Comment" ToRole="User" />
           <NavigationProperty Name="CommentReports" Relationship="KnowledgeManagementDevModel.FK_CommentReport_Comments" FromRole="Comment" ToRole="CommentReport" />
+          <Property Name="IsDeleted" Type="Boolean" />
         </EntityType>
         <EntityType Name="PostTag">
           <Key>
@@ -503,6 +530,7 @@
           <NavigationProperty Name="Tag2" Relationship="Self.FK_Tag_Tag" FromRole="Tag1" ToRole="Tag" />
           <NavigationProperty Name="AssociatedTags" Relationship="KnowledgeManagementDevModel.FK__Associate__Assoc__1A9EF37A" FromRole="Tag" ToRole="AssociatedTag" />
           <NavigationProperty Name="AssociatedTags1" Relationship="KnowledgeManagementDevModel.FK__Associate__TagId__19AACF41" FromRole="Tag" ToRole="AssociatedTag" />
+          <NavigationProperty Name="AssociatedTags2" Relationship="KnowledgeManagementDevModel.FK__Associate__TagId__41B8C09B" FromRole="Tag" ToRole="AssociatedTag1" />
           </EntityType>
         <Association Name="FK_PostTags_Tag">
           <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
@@ -638,6 +666,11 @@
           <AssociationSet Name="FK__Associate__TagId__19AACF41" Association="KnowledgeManagementDevModel.FK__Associate__TagId__19AACF41">
             <End Role="Tag" EntitySet="Tags" />
             <End Role="AssociatedTag" EntitySet="AssociatedTags" />
+          </AssociationSet>
+          <EntitySet Name="AssociatedTags1" EntityType="KnowledgeManagementDevModel.AssociatedTag1" />
+          <AssociationSet Name="FK__Associate__TagId__41B8C09B" Association="KnowledgeManagementDevModel.FK__Associate__TagId__41B8C09B">
+            <End Role="Tag" EntitySet="Tags" />
+            <End Role="AssociatedTag1" EntitySet="AssociatedTags1" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Notification">
@@ -913,6 +946,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="AssociatedTag1">
+          <Key>
+            <PropertyRef Name="AID" />
+          </Key>
+          <Property Name="AID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <Property Name="TagId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tag" Relationship="KnowledgeManagementDevModel.FK__Associate__TagId__41B8C09B" FromRole="AssociatedTag1" ToRole="Tag" />
+        </EntityType>
+        <Association Name="FK__Associate__TagId__41B8C09B">
+          <End Type="KnowledgeManagementDevModel.Tag" Role="Tag" Multiplicity="1" />
+          <End Type="KnowledgeManagementDevModel.AssociatedTag1" Role="AssociatedTag1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="TagId" />
+            </Principal>
+            <Dependent Role="AssociatedTag1">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -930,6 +984,7 @@
           <EntitySetMapping Name="Comments">
             <EntityTypeMapping TypeName="KnowledgeManagementDevModel.Comment">
               <MappingFragment StoreEntitySet="Comments">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="CommentId" ColumnName="CommentId" />
                 <ScalarProperty Name="Content" ColumnName="Content" />
                 <ScalarProperty Name="CommentDate" ColumnName="CommentDate" />
@@ -1065,6 +1120,15 @@
                 <ScalarProperty Name="AssociatedId" ColumnName="AssociatedId" />
                 <ScalarProperty Name="TagId" ColumnName="TagId" />
                 <ScalarProperty Name="AId" ColumnName="AId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssociatedTags1">
+            <EntityTypeMapping TypeName="KnowledgeManagementDevModel.AssociatedTag1">
+              <MappingFragment StoreEntitySet="AssociatedTags">
+                <ScalarProperty Name="TagId" ColumnName="TagId" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="AID" ColumnName="AID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

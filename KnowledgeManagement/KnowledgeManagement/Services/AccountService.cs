@@ -14,7 +14,7 @@ namespace KnowledgeManagement.Services
             db = new KnowledgeManagementDevEntities();
         }
 
-        public bool AddUserLoginToken(LoginRequestModel loginRequestModel)
+       /* public bool AddUserLoginToken(LoginRequestModel loginRequestModel)
         {
             var user = db.Users.Where(w => w.EmailId == loginRequestModel.EmailId).FirstOrDefault();
 
@@ -24,11 +24,11 @@ namespace KnowledgeManagement.Services
             }
 
             loginRequestModel.isModerator = user.isModerator;
-            user.Token = loginRequestModel.LoginToken;
+            user.Token = loginRequestModel.token;
             db.Entry(user).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
             return true;
-        }
+        }*/
 
     }
 }

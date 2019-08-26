@@ -10,7 +10,7 @@ namespace KnowledgeManagement.Services
     {
         KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
 
-        public void AddAssociatedTags(AssociatedTagModel associated)
+       /* public void AddAssociatedTags(AssociatedTagModel associated)
         {
           
                 AssociatedTag at = new AssociatedTag();
@@ -24,9 +24,8 @@ namespace KnowledgeManagement.Services
                     }
                 }
                
-            
+            */
         }
 
 
     }
-}

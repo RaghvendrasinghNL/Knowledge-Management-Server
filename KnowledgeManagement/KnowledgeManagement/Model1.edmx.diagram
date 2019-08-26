@@ -34,6 +34,8 @@
         <EntityTypeShape EntityType="KnowledgeManagementDevModel.AssociatedTag" Width="1.5" PointX="13.25" PointY="10.5" />
         <AssociationConnector Association="KnowledgeManagementDevModel.FK__Associate__Assoc__1A9EF37A" />
         <AssociationConnector Association="KnowledgeManagementDevModel.FK__Associate__TagId__19AACF41" />
+        <EntityTypeShape EntityType="KnowledgeManagementDevModel.AssociatedTag1" Width="1.5" PointX="13.25" PointY="13.625" />
+        <AssociationConnector Association="KnowledgeManagementDevModel.FK__Associate__TagId__41B8C09B" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

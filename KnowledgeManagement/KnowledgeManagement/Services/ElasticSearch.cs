@@ -10,8 +10,8 @@ namespace KnowledgeManagement.Services
     {
         KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
         private readonly string Url = "http://localhost:9200";
-        private readonly string IndexName = "new";
-        private readonly string TypePost = "value";
+        private readonly string IndexName = "knowledgemanagement";
+        private readonly string TypePost = "records";
 
 
         /// <summary>
@@ -35,7 +35,14 @@ namespace KnowledgeManagement.Services
         /// <param name="post">it is an object which have all the atributes to be added</param>
         public void InsertData(string indexName, string typeName, ElasticSearchModel post)
         {
+            try
+            {
             var res = GetElasticClient().Index(post, p => p.Index(indexName).Type(typeName).Id(post.PostId));
+
+            } catch(Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+            }
         }
 
         /// <summary>

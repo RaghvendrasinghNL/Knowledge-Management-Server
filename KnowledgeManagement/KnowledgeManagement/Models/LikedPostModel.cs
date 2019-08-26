@@ -10,5 +10,7 @@
         /// Id of the Post
         /// </summary>
         public int PostId { get; set; }
+        public int countLikes { get; set; }
+        public int IsLiked { get; set; }
     }
 }

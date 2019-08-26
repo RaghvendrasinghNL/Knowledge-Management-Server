@@ -11,20 +11,15 @@ namespace KnowledgeManagement.Repository.Service
     {
         private readonly KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
 
-        public bool AddUserLoginToken(LoginRequestModel loginRequestModel)
+        public void AddUserLoginToken(LoginRequestModel loginRequestModel)
         {
-            var user = db.Users.Where(w => w.EmailId == loginRequestModel.EmailId).FirstOrDefault();
 
-            if (user == null)
-            {
-                return false;
-            }
+            
 
-            loginRequestModel.isModerator = user.isModerator;
-            user.Token = loginRequestModel.LoginToken;
-            db.Entry(user).State = System.Data.Entity.EntityState.Modified;
-            db.SaveChanges();
-            return true;
+            
+             //db.Users.Add(loginRequest);
+             //return true;
+           
         }
 
         public void LogOut(int UserId)

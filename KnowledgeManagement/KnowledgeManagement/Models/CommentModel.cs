@@ -26,5 +26,7 @@ namespace KnowledgeManagement.Models
         /// </summary>
         public int Count { get; set; }
 
+        public bool IsDeleted { get; set; }
+
     }
 }

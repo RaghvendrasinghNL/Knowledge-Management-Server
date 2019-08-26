@@ -30,6 +30,7 @@ namespace KnowledgeManagement.Repository.Service
                 db.SaveChanges();
 
                 tags.TagId = obj.TagId;
+                tags.TagName = obj.TagName;
                 return true;
             }
             else

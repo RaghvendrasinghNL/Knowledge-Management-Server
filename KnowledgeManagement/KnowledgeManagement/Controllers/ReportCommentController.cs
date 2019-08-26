@@ -10,7 +10,7 @@ using System.Net.Http;
 using System.Runtime.Remoting.Messaging;
 using System.Web.Http;
 using KnowledgeManagement.Business_Layer.Service;
-
+using NLog;
 
 namespace KnowledgeManagement.Controllers
 {
@@ -18,6 +18,8 @@ namespace KnowledgeManagement.Controllers
     {
         KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
         // CommentService cs = new CommentService();
+        private static Logger logger = NLog.LogManager.GetCurrentClassLogger();
+
 
         public readonly IReportCommentService _data;
 
@@ -30,10 +32,21 @@ namespace KnowledgeManagement.Controllers
         [CustomAuthorize]
         public IHttpActionResult Post([FromBody]ReportCommentModel report)
         {
-            var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
-            report.UserId = userInfo.UserId;
-            _data.EditMyComment(report);
-            return Ok();
+            try
+            {
+                // var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
+                //report.UserId = userInfo.UserId;
+                logger.Info("Report controller and Report comment");
+
+                _data.EditMyComment(report);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+
+                logger.Error("ReportCommentt#Post!!BadRequest" + ex);
+                return BadRequest("Exception - " + ex);
+            }
 
         }
 

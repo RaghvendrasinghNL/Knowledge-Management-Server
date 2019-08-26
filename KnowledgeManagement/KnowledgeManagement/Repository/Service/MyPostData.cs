@@ -1,7 +1,9 @@
 ﻿using KnowledgeManagement.App_Start;
+using KnowledgeManagement.Business_Layer.Interface;
 using KnowledgeManagement.Business_Layer.Service;
 using KnowledgeManagement.Models;
 using KnowledgeManagement.Repository.Interface;
+using Nest;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +15,8 @@ namespace KnowledgeManagement.Repository.Service
     public class MyPostData : IMyPostData
     {
         KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
+         private ElasticSearchData es;
+       
 
         /// <summary>
         /// This will fetch recent post assosiated with a particular user and will show 
@@ -23,8 +27,11 @@ namespace KnowledgeManagement.Repository.Service
         /// <returns>A List of posts with all the parameters </returns>
         public IEnumerable<MyPostModel> MySeeRecentPost(int UserId)
         {
-            var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
+            //var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
 
+            var username = (from h in db.Users
+                            where UserId == h.UserId
+                            select h.FirstName).FirstOrDefault();
 
             var result = (from l in db.Posts
                           join p in db.PostTags on l.PostId equals p.PostId
@@ -37,13 +44,14 @@ namespace KnowledgeManagement.Repository.Service
                           let Title = query.Post
                           let Description = query.Post
                           let PostDate = query.Post
+                          
 
 
 
                           ///select list of tagid from PostTags where t.postid==l.postid
                           select new MyPostModel
                           {
-                              FirstName = userInfo.FirstName,
+                              FirstName = username,
                               PostId = PostId.PostId,
                               Title = Title.Title,
                               Description = Description.Description,
@@ -127,7 +135,7 @@ namespace KnowledgeManagement.Repository.Service
         /// </summary>
         /// <param name="PostId">It will take postId as the parameter and will change the value of isdeleted 
         /// field coresponding to that </param>
-        [CustomAuthorize]
+        
         public void DeleteRecentPost(int PostId)
         {
             var postdelete = db.Posts.Where(s => s.PostId == PostId).FirstOrDefault();
@@ -136,7 +144,7 @@ namespace KnowledgeManagement.Repository.Service
 
         }
 
-        private ElasticSearchData es;
+        
         public void AddNewPost(AddPostRequestModel AddPost)
         {
 
@@ -162,7 +170,8 @@ namespace KnowledgeManagement.Repository.Service
                 db.SaveChanges();
             }
 
-            es.GetSqlData();
+             es.GetSqlData();
+
         }
     }
 }

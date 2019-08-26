@@ -15,8 +15,8 @@ namespace KnowledgeManagement.App_Start
 
         public override void OnAuthorization(HttpActionContext actionContext)
         {
-
-            var tokenListFromHeader = actionContext.Request.Headers.Where(w => w.Key == "token").
+            
+           var tokenListFromHeader = actionContext.Request.Headers.Where(w => w.Key == "token").
                 FirstOrDefault();
             var tokenFromHeader = tokenListFromHeader.Value.FirstOrDefault();
             Console.WriteLine("attribute called " + tokenFromHeader);
@@ -53,4 +53,5 @@ namespace KnowledgeManagement.App_Start
 
         }
     }
-}
+        }
+   

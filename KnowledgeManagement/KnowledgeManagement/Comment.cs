@@ -25,6 +25,7 @@ namespace KnowledgeManagement
         public System.DateTime CommentDate { get; set; }
         public int PostId { get; set; }
         public int UserId { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
     
         public virtual Post Post { get; set; }
         public virtual User User { get; set; }

@@ -10,11 +10,11 @@ namespace KnowledgeManagement.Models
         /// <summary>
         /// Login Token created at the time of login
         /// </summary>
-        public string LoginToken { get; set; }
+        public string token { get; set; }
         /// <summary>
         /// EmailId
         /// </summary>
-        public string EmailId { get; set; }
+      //  public string EmailId { get; set; }
         /// <summary>
         /// Id of user
         /// </summary>
@@ -23,6 +23,8 @@ namespace KnowledgeManagement.Models
         /// To see where user is Moderator or not
         /// </summary>
         public int? isModerator { get; set; }
+
+       
 
     }
 }

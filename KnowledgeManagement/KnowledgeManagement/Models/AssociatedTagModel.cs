@@ -7,7 +7,11 @@ namespace KnowledgeManagement.Models
 {
     public class AssociatedTagModel
     {
-        public int TagId { get; set; }
-        public List<int> AssociatedId { get; set; }
+        // public int TagId { get; set; }
+        //public List<int> AssociatedId { get; set; }
+
+        public List<int> TagId { get; set; }
+      
+
     }
 }
