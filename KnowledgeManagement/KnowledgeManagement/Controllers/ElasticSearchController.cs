@@ -1,12 +1,5 @@
-﻿using Elasticsearch.Net;
-using KnowledgeManagement.Business_Layer.Interface;
-using KnowledgeManagement.Business_Layer.Service;
-using Nest;
+﻿using KnowledgeManagement.Business_Layer.Interface;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace KnowledgeManagement.Controllers
@@ -29,27 +22,24 @@ namespace KnowledgeManagement.Controllers
         /// <returns></returns>
         public IHttpActionResult Get(string query)
         {
-            var uri = new Uri(Url);
-            //var elasticClient = new ElasticSearch();
-            // return Ok(elasticClient.GetSearchedResult(query));
             return Ok(_elasticClient.GetSearchedResult(query));
         }
 
-       
 
-       /// <summary>
-       /// This will migrate the data from sql DB to elasticsearch DB
-       /// </summary>
+
+        /// <summary>
+        /// This will migrate the data from sql DB to elasticsearch DB
+        /// </summary>
         public void Post()
         {
             // var elasticClient = new ElasticSearch();
             // elasticClient.GetSqlData();
             _elasticClient.GetSqlData();
             Console.WriteLine("Data Uploaded");
-           
+
 
         }
 
-       
+
     }
 }

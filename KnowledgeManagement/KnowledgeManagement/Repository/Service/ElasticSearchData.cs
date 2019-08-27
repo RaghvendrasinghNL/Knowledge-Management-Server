@@ -4,14 +4,13 @@ using Nest;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace KnowledgeManagement.Repository.Service
 {
     public class ElasticSearchData : IElasticSearchData
     {
         KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
-        private readonly string Url = "http://localhost:9200";
+        private readonly string Url = "http://127.0.0.1:9200";
         private readonly string IndexName = "knowledgemanagement";
         private readonly string TypePost = "records";
 
@@ -76,20 +75,16 @@ namespace KnowledgeManagement.Repository.Service
         /// </summary>
         /// <param name="query">The phrase on which the search need to be performed</param>
         /// <returns>this will return the list of posts with tags , title and postid </returns>
-        public List<ElasticSearchModel> GetAllRecords(string query)
+        private List<ElasticSearchModel> GetAllRecords(string query, List<string> tags)
         {
             string wildCardQuery = "*" + query + "*";
             var res = GetElasticClient().Search<ElasticSearchModel>(s => s.Index(IndexName)
             .Type(TypePost).From(0).Size(20)
             .Query(q => q.DisMax(c => c
-            .Name("tags")
             .Queries(
-                qq => qq.Wildcard(w => w.Title , wildCardQuery),
-                qq => qq.Wildcard(m => m.Tags, wildCardQuery)
-    ))));
-           // .Query(q => q.MultiMatch(c => c.Fields(f => f.Field(p => p.Title).Fields(w => w.Tags)).Query(query))));
-            
-
+                qq => qq.Wildcard(w => w.Title, wildCardQuery),
+                qq => qq.Terms(m => m.Field(f => f.Tags).Terms(tags))
+                     ))));
 
             var records = new List<ElasticSearchModel>();
 
@@ -100,169 +95,43 @@ namespace KnowledgeManagement.Repository.Service
             return records;
         }
 
-        /// <summary>
-        /// All the post that are fetched from the elasticsearch db will be looped one by one 
-        /// and all other details for them will be fetched from sql db 
-        /// </summary>
-        /// <param name="query">the phrase on which the searchmis performed</param>
-        /// <returns>this will return a list of posts with matching postIDs</returns>
-        public List<PostRequestModel> GetSearchedResult(string query)
+
+        private List<string> GetAssociatedTagTillTwoLevel(string tagName)
         {
 
-            var results = GetAllRecords(query);
-
-           
-            int flagTitle = 0, flagTag = 0;
-            List<PostRequestModel> data = new List<PostRequestModel>();
-            foreach (var p in results)
-            {
-                if (p.Title.ToUpper().Contains(query.ToUpper()))
-                {
-
-                   flagTitle = 1;
-                   
-                    
-                }
-                if(p.Tags.ConvertAll(x=> x.ToUpper()).Contains(query.ToUpper()))
-                {
-                    flagTag = 1;
-                    
-                   
-                } 
-            }
-
-            // finally create model of PostRequestModel
-
-           if((flagTag ==1&& flagTitle == 1)|| flagTag ==1)
-           {
-                int tagid;
-                List<int> groupid = new List<int>();
-                List<int> taglist = new List<int>();
-
-                tagid = (from s in db.Tags
-                                 where s.TagName == query
-                                 select s.TagId).FirstOrDefault();
-
-                groupid = (from j in db.AssociatedTags1
-                                   where j.TagId == tagid
-                                   select j.GroupId
-                               ).ToList();
-                if (groupid != null)
-                {
-                    foreach (var gid in groupid)
-                    {
-                        taglist = (from w in db.AssociatedTags1
-                                   where w.GroupId == gid
-                                   select w.TagId).ToList();
-
-
-                        foreach (int tagslists in taglist)
-                        {
-                            var record = (from i in db.Posts
-                                          join a in db.PostTags on i.PostId equals a.PostId
-                                          join u in db.Users on i.UserId equals u.UserId
-                                          where a.TagId == tagslists && i.IsDeleted
-                                          select new PostRequestModel
-                                          {
-                                              PostId = i.PostId,
-                                              Title = i.Title,
-                                              Description = i.Description,
-                                              PostDate = i.PostDate,
-                                              Name = u.FirstName,
-                                              Image = i.UserImage
-
-                                          }).ToList();
-                            foreach (var x in record)
-                            {
-                                x.TagName = (from posttags in db.PostTags
-                                             join t in db.Tags on posttags.TagId equals t.TagId
-                                             where posttags.PostId == x.PostId
-                                             select t.TagName).ToList();
-
-                                x.Likes = (from posts in db.Likes
-                                           where posts.PostId == x.PostId
-                                           select posts.UserId).Count();
-                            }
-                            data.AddRange(record);
-
-
-                        }
-                    }
-                }else
-                {
-                    var record = (from i in db.Posts
-                                  join a in db.PostTags on i.PostId equals a.PostId
-                                  join u in db.Users on i.UserId equals u.UserId
-                                  where a.TagId == tagid && i.IsDeleted
-                                  select new PostRequestModel
-                                  {
-                                      PostId = i.PostId,
-                                      Title = i.Title,
-                                      Description = i.Description,
-                                      PostDate = i.PostDate,
-                                      Name = u.FirstName,
-                                      Image = i.UserImage
-
-                                  }).ToList();
-                    foreach (var x in record)
-                    {
-                        x.TagName = (from posttags in db.PostTags
-                                     join t in db.Tags on posttags.TagId equals t.TagId
-                                     where posttags.PostId == x.PostId
-                                     select t.TagName).ToList();
-
-                        x.Likes = (from posts in db.Likes
-                                   where posts.PostId == x.PostId
-                                   select posts.UserId).Count();
-                    }
-                    data.AddRange(record);
-                }
-                return data;
-            }  
-            if (flagTitle == 1)
-            {
-                foreach (var p in results)
-                {
-
-                    var postRecord = (from s in db.Posts
-                                      join u in db.Users on s.UserId equals u.UserId
-                                      where s.PostId == p.PostId && s.IsDeleted
-                                      select new PostRequestModel
-                                      {
-                                          PostId = s.PostId,
-                                          Title = s.Title,
-                                          Description = s.Description,
-                                          PostDate = s.PostDate,
-                                          Name = u.FirstName,
-                                          Image = s.UserImage
-
-                                      }).FirstOrDefault();
-
-                    if (postRecord != null)
-                    {
-                        postRecord.TagName = (from posttags in db.PostTags
-                                              join tag in db.Tags on posttags.TagId equals tag.TagId
-                                              where posttags.PostId == postRecord.PostId
-                                              select tag.TagName).ToList();
+            return (from associatedObj1 in db.AssociatedTags1
+                    join associatedObj2 in db.AssociatedTags1 on associatedObj1.GroupId equals associatedObj2.GroupId
+                    join tag in db.Tags on associatedObj2.TagId equals tag.TagId
+                    join tagActual in db.Tags on associatedObj1.TagId equals tagActual.TagId
+                    where tagActual.TagName == tagName
+                    select tag.TagName.ToLower()
+                        ).Distinct().ToList();
+        }
 
 
 
-                        postRecord.Likes = (from posts in db.Likes
-                                            where posts.PostId == postRecord.PostId
-                                            select posts.UserId).Count();
+        public List<PostRequestModel> GetSearchResult(string query)
+        {
 
-                        data.Add(postRecord);
-                    }
+            var results = GetAllRecords(query, GetAssociatedTagTillTwoLevel(query));
+            var postIds = results.Select(s => s.PostId).ToList();
+            var record = (from postObj in db.Posts
+                          join userObj in db.Users on postObj.UserId equals userObj.UserId
+                          where postIds.Contains(postObj.PostId)
+                          select new PostRequestModel
+                          {
+                              PostId = postObj.PostId,
+                              Title = postObj.Title,
+                              Description = postObj.Description,
+                              PostDate = postObj.PostDate,
+                              Name = userObj.FirstName,
+                              Image = postObj.UserImage,
+                              TagName = db.PostTags.Where(w => w.PostId == postObj.PostId)
+                              .Select(s => s.Tag.TagName).ToList(),
+                              Likes = db.Likes.Where(w => w.PostId == postObj.PostId).Count()
 
-                }
-                return data;
-            }
-            else
-            {
-                return data;
-            }
-
-          
+                          }).ToList();
+            return record;
         }
 
     }

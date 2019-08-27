@@ -1,15 +1,11 @@
 ﻿using KnowledgeManagement.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KnowledgeManagement.Repository.Interface
 {
-  public interface IElasticSearchData
+    public interface IElasticSearchData
     {
         void GetSqlData();
-        List<PostRequestModel> GetSearchedResult(string query);
+        List<PostRequestModel> GetSearchResult(string query);
     }
 }

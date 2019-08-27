@@ -24,12 +24,8 @@ namespace KnowledgeManagement.Business_Layer.Service
 
         public List<PostRequestModel> GetSearchedResult(string query)
         {
-            return _data.GetSearchedResult(query);
+            return _data.GetSearchResult(query);
         }
-
-
-
-
 
     }
 }

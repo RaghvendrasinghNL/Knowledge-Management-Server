@@ -22,6 +22,7 @@ namespace KnowledgeManagement.Controllers
         public IHttpActionResult Get(int id)
         {
 
+
             var logger = NLog.LogManager.GetCurrentClassLogger();
             logger.Info("entering into the categories");
            // var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
