@@ -10,6 +10,7 @@ using System.Web;
 using KnowledgeManagement.Filter;
 using System;
 using NLog;
+using System.Security.Claims;
 
 namespace KnowledgeManagement.Controllers
 {
@@ -68,11 +69,9 @@ namespace KnowledgeManagement.Controllers
         {
             // var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
             // var UserId = userInfo.UserId;
-            string username = string.Empty;
-            string userId = string.Empty;
-            var token = HttpContext.Current.Request.Headers["Authorization"].Split(' ')[1];
-            JwtAuthenticationAttribute.ValidateToken(token, out username, out userId);
-            int userid = Int32.Parse(userId);
+            var identity = (ClaimsIdentity)User.Identity;
+            var userIdClaim = identity.FindFirst(ClaimTypes.UserData);
+            int userid = Int32.Parse(userIdClaim?.Value);
             _ls.LogOut(userid);
             return Ok();
         }

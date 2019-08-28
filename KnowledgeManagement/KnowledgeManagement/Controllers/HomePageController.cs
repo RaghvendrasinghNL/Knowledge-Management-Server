@@ -14,6 +14,8 @@ using System.Web.Http.Controllers;
 using System.Web;
 using KnowledgeManagement.Web;
 using NLog;
+using System.Security.Claims;
+
 namespace KnowledgeManagement.Controllers
 {
     public class HomePageController : ApiController
@@ -36,16 +38,9 @@ namespace KnowledgeManagement.Controllers
            
             try
             {
-                string username = string.Empty;
-                
-                logger.Info("entering into the categories");
-
-                string userId = string.Empty;
-
-                var token = HttpContext.Current.Request.Headers["Authorization"].Split(' ')[1];
-
-                JwtAuthenticationAttribute.ValidateToken(token, out username, out userId);
-                int userid = Int32.Parse(userId);
+                var identity = (ClaimsIdentity)User.Identity;
+                var userIdClaim = identity.FindFirst(ClaimTypes.UserData);
+                int userid = Int32.Parse(userIdClaim?.Value);
                 //SortingType sortingType = sortingTypesortingtype
                 //var data = _hp.HomePagePost(userid, CategoryId, sortingtype, filtertype, pageNumber);
                 var data = _hp.HomePagePost(userid, CategoryId, sortingtype, filtertype);

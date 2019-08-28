@@ -22,5 +22,10 @@ namespace KnowledgeManagement.Business_Layer.Service
             _data.AddAssociatedTags(associated);
         }
 
+        public IEnumerable<AssociatedModel> GetAssociatedTags(int UserId)
+        {
+           return _data.GetAssociatedTags(UserId);
+        }
+
     }
 }

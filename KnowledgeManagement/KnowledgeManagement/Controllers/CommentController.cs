@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Runtime.Remoting.Messaging;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Http;
 
@@ -38,11 +39,9 @@ namespace KnowledgeManagement.Controllers
         {
             try
             {
-                string username = string.Empty;
-                string userId = string.Empty;
-                var token = HttpContext.Current.Request.Headers["Authorization"].Split(' ')[1];
-                JwtAuthenticationAttribute.ValidateToken(token, out username, out userId);
-                int userid = Int32.Parse(userId);
+                var identity = (ClaimsIdentity)User.Identity;
+                var userIdClaim = identity.FindFirst(ClaimTypes.UserData);
+                int userid = Int32.Parse(userIdClaim?.Value);
                 logger.Info("Comment controller and list of comment for that post");
                 var result = _commentService.GetCommentById(id);
                 return Request.CreateResponse(HttpStatusCode.OK, result) ;
@@ -64,11 +63,9 @@ namespace KnowledgeManagement.Controllers
         {
             try
             {
-                string username = string.Empty;
-                string userId = string.Empty;
-                var token = HttpContext.Current.Request.Headers["Authorization"].Split(' ')[1];
-                JwtAuthenticationAttribute.ValidateToken(token, out username, out userId);
-                int userid = Int32.Parse(userId);
+                var identity = (ClaimsIdentity)User.Identity;
+                var userIdClaim = identity.FindFirst(ClaimTypes.UserData);
+                int userid = Int32.Parse(userIdClaim?.Value);
                 logger.Info("Comment controller and add comment");
                 comment.UserId = userid;
 
@@ -99,11 +96,9 @@ namespace KnowledgeManagement.Controllers
         {
             try
             {
-                string username = string.Empty;
-                string userId = string.Empty;
-                var token = HttpContext.Current.Request.Headers["Authorization"].Split(' ')[1];
-                JwtAuthenticationAttribute.ValidateToken(token, out username, out userId);
-                int userid = Int32.Parse(userId);
+                var identity = (ClaimsIdentity)User.Identity;
+                var userIdClaim = identity.FindFirst(ClaimTypes.UserData);
+                int userid = Int32.Parse(userIdClaim?.Value);
                 logger.Info("Comment controller and modify comment");
 
                 var newComment = _commentService.EditMyComment(editComment);

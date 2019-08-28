@@ -5,15 +5,10 @@ using System.Web;
 
 namespace KnowledgeManagement.Models
 {
-    public class AssociatedTagModel
+    public class AssociatedModel
     {
-        // public int TagId { get; set; }
-        //public List<int> AssociatedId { get; set; }
-
         public List<int> TagId { get; set; }
-
+        public int GroupId { get; set; }
         
-
-
     }
 }

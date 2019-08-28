@@ -12,13 +12,13 @@ using KnowledgeManagement.Business_Layer.Interface;
 using KnowledgeManagement.Filter;
 using System.Web;
 using NLog;
+using System.Security.Claims;
 
 namespace KnowledgeManagement.Controllers
 {
     public class AddTagsController : ApiController
     {
-        // TagsService addTags = new TagsService();
-        //AddTagsByModeratorService atbm = new AddTagsByModeratorService();
+        
         private static Logger logger = NLog.LogManager.GetCurrentClassLogger();
         private IAddTagsService _at;
 
@@ -34,12 +34,10 @@ namespace KnowledgeManagement.Controllers
         {
             try
             {
-                
-                string username = string.Empty;
-                string userId = string.Empty;
-                var token = HttpContext.Current.Request.Headers["Authorization"].Split(' ')[1];
-                JwtAuthenticationAttribute.ValidateToken(token, out username, out userId);
-                int userid = Int32.Parse(userId);
+
+                var identity = (ClaimsIdentity)User.Identity;
+                var userIdClaim = identity.FindFirst(ClaimTypes.UserData);
+                int userid = Int32.Parse(userIdClaim?.Value);
                 logger.Info("AddTags controller and reurning result");
 
                 return Ok(_at.GetTags(userid));
@@ -58,12 +56,9 @@ namespace KnowledgeManagement.Controllers
         {
             try
             {
-
-                string username = string.Empty;
-                string userId = string.Empty;
-                var token = HttpContext.Current.Request.Headers["Authorization"].Split(' ')[1];
-                JwtAuthenticationAttribute.ValidateToken(token, out username, out userId);
-                int userid = Int32.Parse(userId);
+                var identity = (ClaimsIdentity)User.Identity;
+                var userIdClaim = identity.FindFirst(ClaimTypes.UserData);
+                int userid = Int32.Parse(userIdClaim?.Value);
                 logger.Info("AddTags controller and reurning result");
 
                 if (tag.TagName.Equals(null))

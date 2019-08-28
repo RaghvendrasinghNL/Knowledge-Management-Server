@@ -483,6 +483,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\AddPostRequestModel.cs" />
+    <Compile Include="Models\AssociatedModel.cs" />
     <Compile Include="Models\AssociatedTagModel.cs" />
     <Compile Include="Models\CommentModel.cs" />
     <Compile Include="Models\EditPostModel.cs" />

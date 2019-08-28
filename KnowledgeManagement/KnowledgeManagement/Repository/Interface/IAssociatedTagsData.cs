@@ -10,5 +10,6 @@ namespace KnowledgeManagement.Repository.Interface
     public interface IAssociatedTagsData
     {
         void AddAssociatedTags(AssociatedTagModel associated);
+         IEnumerable<AssociatedModel> GetAssociatedTags(int UserId);
     }
 }

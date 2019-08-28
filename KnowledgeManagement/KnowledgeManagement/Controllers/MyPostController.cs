@@ -8,6 +8,7 @@ using KnowledgeManagement.Filter;
 using System.Web;
 using System;
 using NLog;
+using System.Security.Claims;
 
 namespace KnowledgeManagement.Controllers
 {
@@ -82,14 +83,14 @@ namespace KnowledgeManagement.Controllers
             // var userInfo =  CallContext.GetData("UserInfo") as UserDetailsModel;
             try
             {
-              
-                string username = string.Empty;
-                string userId = string.Empty;
-                var token = HttpContext.Current.Request.Headers["Authorization"].Split(' ')[1];
-                JwtAuthenticationAttribute.ValidateToken(token, out username, out userId);
-                int userid = Int32.Parse(userId);
+                
+                var identity =(ClaimsIdentity) User.Identity;
+                var userIdClaim = identity.FindFirst(ClaimTypes.UserData);
+                int userId = Int32.Parse(userIdClaim?.Value);
+                // int userId = Int32.Parse(User.Identity.Name);
+               
                 logger.Info("MyPost controller and returing result");
-                return Ok(_myPost.MySeeRecentPost(userid));
+                return Ok(_myPost.MySeeRecentPost(userId));
             }
             catch(Exception ex)
             {
@@ -106,12 +107,10 @@ namespace KnowledgeManagement.Controllers
         {
             try
             {
-               
-                string username = string.Empty;
-                string userId = string.Empty;
-                var token = HttpContext.Current.Request.Headers["Authorization"].Split(' ')[1];
-                JwtAuthenticationAttribute.ValidateToken(token, out username, out userId);
-                int userid = Int32.Parse(userId);
+
+                var identity = (ClaimsIdentity)User.Identity;
+                var userIdClaim = identity.FindFirst(ClaimTypes.UserData);
+                int userid = Int32.Parse(userIdClaim?.Value);
                 // var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
                 //editPost.UserId = userInfo.UserId;
                 editPost.UserId = userid;
@@ -144,12 +143,10 @@ namespace KnowledgeManagement.Controllers
             // var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
             try
             {
-                
-                string username = string.Empty;
-                string userId = string.Empty;
-                var token = HttpContext.Current.Request.Headers["Authorization"].Split(' ')[1];
-                JwtAuthenticationAttribute.ValidateToken(token, out username, out userId);
-                int userid = Int32.Parse(userId);
+
+                var identity = (ClaimsIdentity)User.Identity;
+                var userIdClaim = identity.FindFirst(ClaimTypes.UserData);
+                int userId = Int32.Parse(userIdClaim?.Value);
                 logger.Info("MyPost controller and deleting existing post");
                 _myPost.DeleteRecentPost(id);
                 return Ok();

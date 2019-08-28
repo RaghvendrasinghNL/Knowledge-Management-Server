@@ -23,6 +23,7 @@ namespace KnowledgeManagement.Repository.Service
             var result = (from c in db.Comments
                           join u in db.Users on c.UserId equals u.UserId
                           where c.PostId == id && c.IsDeleted == false
+                          
                           select new CommentModel
                           {
                               PostId = c.PostId,

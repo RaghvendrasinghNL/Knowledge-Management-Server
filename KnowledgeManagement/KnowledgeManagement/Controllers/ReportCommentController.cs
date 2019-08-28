@@ -11,6 +11,7 @@ using System.Runtime.Remoting.Messaging;
 using System.Web.Http;
 using KnowledgeManagement.Business_Layer.Service;
 using NLog;
+using System.Security.Claims;
 
 namespace KnowledgeManagement.Controllers
 {
@@ -34,8 +35,9 @@ namespace KnowledgeManagement.Controllers
         {
             try
             {
-                // var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
-                //report.UserId = userInfo.UserId;
+                var identity = (ClaimsIdentity)User.Identity;
+                var userIdClaim = identity.FindFirst(ClaimTypes.UserData);
+                int userid = Int32.Parse(userIdClaim?.Value);
                 logger.Info("Report controller and Report comment");
 
                 _data.EditMyComment(report);

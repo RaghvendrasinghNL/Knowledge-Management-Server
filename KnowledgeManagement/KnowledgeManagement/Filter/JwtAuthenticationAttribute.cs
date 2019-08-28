@@ -33,7 +33,7 @@ namespace KnowledgeManagement.Filter
             }
 
             var token = authorization.Parameter;
-            var principal = await AuthenticateJwtToken(token);
+            var principal = await AuthenticateJwtToken(token,context);
 
             if (principal == null)
                 context.ErrorResult = new AuthenticationFailureResult("Invalid token", request);
@@ -64,7 +64,7 @@ namespace KnowledgeManagement.Filter
             UserId = userIdClaim?.Value;
 
             int userIdInt = Int32.Parse(UserId);
-          //  CallContext.SetData("UserId", UserId);
+         
 
 
             if (string.IsNullOrEmpty(username))
@@ -78,7 +78,7 @@ namespace KnowledgeManagement.Filter
 
         
 
-        protected Task<IPrincipal> AuthenticateJwtToken(string token)
+        protected Task<IPrincipal> AuthenticateJwtToken(string token, HttpAuthenticationContext context)
         {
             string username="";
             string userId = "";
@@ -91,7 +91,10 @@ namespace KnowledgeManagement.Filter
                     new Claim(ClaimTypes.UserData, userId)
                     // Add more claims if needed: Roles, ...
                 };
-               
+
+                
+
+                context.Request.Properties.Add("userId",userId);
 
                 var identity = new ClaimsIdentity(claims, "Jwt");
                 IPrincipal user = new ClaimsPrincipal(identity);
