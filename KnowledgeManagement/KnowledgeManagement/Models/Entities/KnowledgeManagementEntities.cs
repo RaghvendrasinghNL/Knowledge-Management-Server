@@ -13,7 +13,8 @@ namespace KnowledgeManagement.Models.Entities
 
         public KnowledgeManagementEntities() : base("name=KnowledgeManagementEntities")
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<KnowledgeManagementEntities,Configuration>());
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<KnowledgeManagementEntities,Configuration>());
+            Database.SetInitializer(new DropCreateDatabaseAlways<KnowledgeManagementEntities>());
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

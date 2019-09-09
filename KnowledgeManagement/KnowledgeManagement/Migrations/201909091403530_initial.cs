@@ -3,7 +3,7 @@ namespace KnowledgeManagement.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initial : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {
@@ -16,7 +16,7 @@ namespace KnowledgeManagement.Migrations
                         TagId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.AID)
-                .ForeignKey("dbo.Tags", t => t.TagId, cascadeDelete: true)
+                .ForeignKey("dbo.Tags", t => t.TagId)
                 .Index(t => t.TagId);
             
             CreateTable(
@@ -32,16 +32,15 @@ namespace KnowledgeManagement.Migrations
                 "dbo.PostTags",
                 c => new
                     {
-                        PostId = c.Int(nullable: false, identity: true),
+                        Id = c.Int(nullable: false, identity: true),
+                        PostId = c.Int(nullable: false),
                         TagId = c.Int(nullable: false),
-                        Id = c.Int(nullable: false),
-                        Post_PostId = c.Int(),
                     })
-                .PrimaryKey(t => t.PostId)
-                .ForeignKey("dbo.Posts", t => t.Post_PostId)
-                .ForeignKey("dbo.Tags", t => t.TagId, cascadeDelete: true)
-                .Index(t => t.TagId)
-                .Index(t => t.Post_PostId);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Posts", t => t.PostId)
+                .ForeignKey("dbo.Tags", t => t.TagId)
+                .Index(t => t.PostId)
+                .Index(t => t.TagId);
             
             CreateTable(
                 "dbo.Posts",
@@ -57,8 +56,8 @@ namespace KnowledgeManagement.Migrations
                         UserImage = c.String(),
                     })
                 .PrimaryKey(t => t.PostId)
-                .ForeignKey("dbo.Categories", t => t.CategoryId, cascadeDelete: true)
-                .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.Categories", t => t.CategoryId)
+                .ForeignKey("dbo.Users", t => t.UserId)
                 .Index(t => t.UserId)
                 .Index(t => t.CategoryId);
             
@@ -83,8 +82,8 @@ namespace KnowledgeManagement.Migrations
                         IsDeleted = c.Boolean(),
                     })
                 .PrimaryKey(t => t.CommentId)
-                .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: false)
-                .ForeignKey("dbo.Posts", t => t.PostId, cascadeDelete: false)
+                .ForeignKey("dbo.Users", t => t.UserId)
+                .ForeignKey("dbo.Posts", t => t.PostId)
                 .Index(t => t.PostId)
                 .Index(t => t.UserId);
             
@@ -98,8 +97,8 @@ namespace KnowledgeManagement.Migrations
                         CommentId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ReportId)
-                .ForeignKey("dbo.Comments", t => t.CommentId, cascadeDelete: false)
-                .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: false)
+                .ForeignKey("dbo.Comments", t => t.CommentId)
+                .ForeignKey("dbo.Users", t => t.UserId)
                 .Index(t => t.UserId)
                 .Index(t => t.CommentId);
             
@@ -127,8 +126,8 @@ namespace KnowledgeManagement.Migrations
                         UserId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.LikeId)
-                .ForeignKey("dbo.Posts", t => t.PostId, cascadeDelete: false)
-                .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: false)
+                .ForeignKey("dbo.Posts", t => t.PostId)
+                .ForeignKey("dbo.Users", t => t.UserId)
                 .Index(t => t.PostId)
                 .Index(t => t.UserId);
             
@@ -143,8 +142,8 @@ namespace KnowledgeManagement.Migrations
                         UserId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.NotificationId)
-                .ForeignKey("dbo.Posts", t => t.PostId, cascadeDelete: false)
-                .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: false)
+                .ForeignKey("dbo.Posts", t => t.PostId)
+                .ForeignKey("dbo.Users", t => t.UserId)
                 .Index(t => t.PostId)
                 .Index(t => t.UserId);
             
@@ -159,8 +158,8 @@ namespace KnowledgeManagement.Migrations
                         Isread = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ReportId)
-                .ForeignKey("dbo.Posts", t => t.PostId, cascadeDelete: false)
-                .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: false)
+                .ForeignKey("dbo.Posts", t => t.PostId)
+                .ForeignKey("dbo.Users", t => t.UserId)
                 .Index(t => t.PostId)
                 .Index(t => t.UserId);
             
@@ -169,7 +168,7 @@ namespace KnowledgeManagement.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.PostTags", "TagId", "dbo.Tags");
-            DropForeignKey("dbo.PostTags", "Post_PostId", "dbo.Posts");
+            DropForeignKey("dbo.PostTags", "PostId", "dbo.Posts");
             DropForeignKey("dbo.Comments", "PostId", "dbo.Posts");
             DropForeignKey("dbo.Reports", "UserId", "dbo.Users");
             DropForeignKey("dbo.Reports", "PostId", "dbo.Posts");
@@ -195,8 +194,8 @@ namespace KnowledgeManagement.Migrations
             DropIndex("dbo.Comments", new[] { "PostId" });
             DropIndex("dbo.Posts", new[] { "CategoryId" });
             DropIndex("dbo.Posts", new[] { "UserId" });
-            DropIndex("dbo.PostTags", new[] { "Post_PostId" });
             DropIndex("dbo.PostTags", new[] { "TagId" });
+            DropIndex("dbo.PostTags", new[] { "PostId" });
             DropIndex("dbo.AssociatedTag1", new[] { "TagId" });
             DropTable("dbo.Reports");
             DropTable("dbo.Notifications");

@@ -465,9 +465,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909091008269_Initial.cs" />
-    <Compile Include="Migrations\201909091008269_Initial.Designer.cs">
-      <DependentUpon>201909091008269_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201909091403530_initial.cs" />
+    <Compile Include="Migrations\201909091403530_initial.Designer.cs">
+      <DependentUpon>201909091403530_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AddPostRequestModel.cs" />
@@ -643,8 +643,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201909091008269_Initial.resx">
-      <DependentUpon>201909091008269_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909091403530_initial.resx">
+      <DependentUpon>201909091403530_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

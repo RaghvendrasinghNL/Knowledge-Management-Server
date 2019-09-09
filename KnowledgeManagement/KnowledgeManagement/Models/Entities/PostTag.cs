@@ -8,9 +8,10 @@ namespace KnowledgeManagement.Models.Entities
 {
     public class PostTag
     {
-        [Key]
+        
         public int PostId { get; set; }
         public int TagId { get; set; }
+        [Key]
         public int Id { get; set; }
 
         public virtual Tag Tag { get; set; }
