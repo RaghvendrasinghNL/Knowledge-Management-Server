@@ -1,4 +1,5 @@
 ﻿using KnowledgeManagement.Models;
+using KnowledgeManagement.Models.Entities;
 using KnowledgeManagement.Repository.Interface;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ namespace KnowledgeManagement.Repository.Service
 {
     public class ModeratorNotificationData : IModeratorNotificationData
     {
-       readonly KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
+       readonly KnowledgeManagementEntities db = new KnowledgeManagementEntities();
         /// <summary>
         /// This method will select the notification if the user is moderator
         /// </summary>

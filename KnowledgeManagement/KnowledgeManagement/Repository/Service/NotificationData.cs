@@ -1,4 +1,5 @@
 ﻿using KnowledgeManagement.Models;
+using KnowledgeManagement.Models.Entities;
 using KnowledgeManagement.Repository.Interface;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ namespace KnowledgeManagement.Repository.Service
 {
     public class NotificationData : INotificationData
     {
-       readonly KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
+       readonly KnowledgeManagementEntities db = new KnowledgeManagementEntities();
         /// <summary>
         /// This will match the userId and will fetch the notification for like or comments 
         /// </summary>

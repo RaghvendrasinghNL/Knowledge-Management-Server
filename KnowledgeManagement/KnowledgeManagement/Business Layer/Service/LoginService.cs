@@ -8,6 +8,7 @@ using System.Web;
 using Google.Apis.Auth;
 using KnowledgeManagement.Web;
 using System.Threading.Tasks;
+using KnowledgeManagement.Models.Entities;
 
 namespace KnowledgeManagement.Business_Layer.Service
 {
@@ -24,7 +25,7 @@ namespace KnowledgeManagement.Business_Layer.Service
         {
             GoogleJsonWebSignature.Payload pyload = await GoogleJsonWebSignature.ValidateAsync(token);
 
-            KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
+            KnowledgeManagementEntities db = new KnowledgeManagementEntities();
 
             int h = (from n in db.Users
                      where pyload.Email == n.EmailId

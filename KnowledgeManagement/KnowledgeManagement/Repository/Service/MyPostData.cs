@@ -1,6 +1,7 @@
 ﻿using KnowledgeManagement.Business_Layer.Interface;
 using KnowledgeManagement.Business_Layer.Service;
 using KnowledgeManagement.Models;
+using KnowledgeManagement.Models.Entities;
 using KnowledgeManagement.Repository.Interface;
 using Nest;
 using System;
@@ -13,7 +14,7 @@ namespace KnowledgeManagement.Repository.Service
 {
     public class MyPostData : IMyPostData
     {
-       readonly KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
+       readonly KnowledgeManagementEntities db = new KnowledgeManagementEntities();
          private ElasticSearchData es;
        
 

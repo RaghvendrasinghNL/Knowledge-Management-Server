@@ -1,4 +1,5 @@
 ﻿using KnowledgeManagement.Models;
+using KnowledgeManagement.Models.Entities;
 using KnowledgeManagement.Repository.Interface;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ namespace KnowledgeManagement.Repository.Service
 {
     public class LikeData : ILikeData
     {
-        readonly KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
+        readonly KnowledgeManagementEntities db = new KnowledgeManagementEntities();
         public void LikePost(LikedPostModel value)
         {
             var entry = db.Likes.Where(x => x.UserId == value.UserId && x.PostId == value.PostId).FirstOrDefault();

@@ -1,4 +1,5 @@
 ﻿using KnowledgeManagement.Models;
+using KnowledgeManagement.Models.Entities;
 using KnowledgeManagement.Repository.Interface;
 using Nest;
 using System;
@@ -10,7 +11,7 @@ namespace KnowledgeManagement.Repository.Service
 {
     public class ElasticSearchData : IElasticSearchData
     {
-       readonly KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
+       readonly KnowledgeManagementEntities db = new KnowledgeManagementEntities();
         private readonly string ElasticSearchUrl = System.Configuration.ConfigurationManager.AppSettings["PFElasticSearchUrl"];
         private readonly string IndexName = "knowledgemanagement";
         private readonly string TypePost = "records";

@@ -1,5 +1,6 @@
 ﻿using KnowledgeManagement.Filter;
 using KnowledgeManagement.Models;
+using KnowledgeManagement.Models.Entities;
 using KnowledgeManagement.Repository.Interface;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace KnowledgeManagement.Repository.Service
 {
     public class CommentData : ICommentData
     {
-       readonly KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
+       readonly KnowledgeManagementEntities db = new KnowledgeManagementEntities();
 
         /// <summary>
         /// This will fetch the comment on the post by the post id 

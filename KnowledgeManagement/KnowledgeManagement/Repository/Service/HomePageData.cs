@@ -5,13 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using PagedList;
-
+using KnowledgeManagement.Models.Entities;
 
 namespace KnowledgeManagement.Repository.Service
 {
     public class HomePageData : IHomePageData
     {
-        private readonly KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
+        private readonly KnowledgeManagementEntities db = new KnowledgeManagementEntities();
         readonly private int PageSize = 5;
 
 
