@@ -9,7 +9,7 @@ namespace KnowledgeManagement.Business_Layer.Interface
 {
   public interface IAddTagsService
     {
-        Boolean AddTags(TagsModel tags);
-        IEnumerable<TagsModel> GetTags(int UserId);
+        Task<Boolean> AddTags(TagsModel tags);
+        Task<IEnumerable<TagsModel>> GetTags(int UserId);
     }
 }

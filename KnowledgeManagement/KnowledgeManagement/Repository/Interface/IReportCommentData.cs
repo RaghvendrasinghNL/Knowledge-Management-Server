@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace KnowledgeManagement.Repository.Interface
 {
-   public interface IReportCommentData
+   public interface IReportcommentData
     {
-        void EditMyComment(ReportCommentModel reportComment);
+        bool EditMyComment(ReportCommentModel reportComment);
     }
 }

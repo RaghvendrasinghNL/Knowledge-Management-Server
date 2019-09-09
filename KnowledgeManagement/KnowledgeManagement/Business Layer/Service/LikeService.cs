@@ -17,9 +17,9 @@ namespace KnowledgeManagement.Business_Layer.Service
             _data = value;
         }
 
-        public void LikePost(LikedPostModel res)
+        public void LikePost(LikedPostModel result)
         {
-             _data.LikePost(res);
+             _data.LikePost(result);
         }
     }
 }

@@ -1,8 +1,7 @@
-﻿using KnowledgeManagement.App_Start;
-using KnowledgeManagement.Business_Layer.Interface;
+﻿using KnowledgeManagement.Business_Layer.Interface;
 using KnowledgeManagement.Filter;
 using KnowledgeManagement.Models;
-using KnowledgeManagement.Services;
+using KnowledgeManagement.Business_Layer.Service;
 using NLog;
 using System;
 using System.Collections.Generic;
@@ -19,8 +18,8 @@ namespace KnowledgeManagement.Controllers
 {
     public class CommentController : ApiController
     {
-        //CommentService commentService = new CommentService();
-        public ICommentService _commentService;
+       
+       private readonly ICommentService _commentService;
         private static Logger logger = NLog.LogManager.GetCurrentClassLogger();
 
         public CommentController(ICommentService val)
@@ -39,9 +38,7 @@ namespace KnowledgeManagement.Controllers
         {
             try
             {
-                var identity = (ClaimsIdentity)User.Identity;
-                var userIdClaim = identity.FindFirst(ClaimTypes.UserData);
-                int userid = Int32.Parse(userIdClaim?.Value);
+              
                 logger.Info("Comment controller and list of comment for that post");
                 var result = _commentService.GetCommentById(id);
                 return Request.CreateResponse(HttpStatusCode.OK, result) ;
@@ -96,9 +93,7 @@ namespace KnowledgeManagement.Controllers
         {
             try
             {
-                var identity = (ClaimsIdentity)User.Identity;
-                var userIdClaim = identity.FindFirst(ClaimTypes.UserData);
-                int userid = Int32.Parse(userIdClaim?.Value);
+               
                 logger.Info("Comment controller and modify comment");
 
                 var newComment = _commentService.EditMyComment(editComment);

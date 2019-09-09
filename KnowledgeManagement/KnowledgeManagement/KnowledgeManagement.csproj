@@ -367,7 +367,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="App_Start\CustomAuthorizeAttribute.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
@@ -401,9 +400,6 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="AssociatedTag.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="AssociatedTag1.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -419,7 +415,6 @@
     <Compile Include="Business Layer\Interface\INotificationService.cs" />
     <Compile Include="Business Layer\Interface\IReportCommentService.cs" />
     <Compile Include="Business Layer\Interface\ISpamService.cs" />
-    <Compile Include="Business Layer\Service\AddPostService.cs" />
     <Compile Include="Business Layer\Service\AddTagsService.cs" />
     <Compile Include="Business Layer\Service\AssociatedTagsService.cs" />
     <Compile Include="Business Layer\Service\CommentService.cs" />
@@ -430,7 +425,7 @@
     <Compile Include="Business Layer\Service\ModeratorNotificationService.cs" />
     <Compile Include="Business Layer\Service\MyPostService.cs" />
     <Compile Include="Business Layer\Service\NotificationService.cs" />
-    <Compile Include="Business Layer\Service\ReportCommentService.cs" />
+    <Compile Include="Business Layer\Service\ReportcommentService.cs" />
     <Compile Include="Business Layer\Service\SpamService.cs" />
     <Compile Include="Category.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -445,9 +440,6 @@
     <Compile Include="Controllers\AssociatedTagsController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
-    <Compile Include="Controllers\MaxCommentController.cs" />
-    <Compile Include="Controllers\MaxLikesCommentController.cs" />
-    <Compile Include="Controllers\MaxLikesController.cs" />
     <Compile Include="Controllers\ReportCommentController.cs" />
     <Compile Include="Controllers\ElasticSearchController.cs" />
     <Compile Include="Controllers\LikeController.cs" />
@@ -455,7 +447,6 @@
     <Compile Include="Controllers\ModeratorNotificationController.cs" />
     <Compile Include="Controllers\MyPostController.cs" />
     <Compile Include="Controllers\NotificationController.cs" />
-    <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\SpamController.cs" />
     <Compile Include="Filter\AddChallengeOnUnauthorizedResult.cs" />
     <Compile Include="Filter\AuthenticationFailureResult.cs" />
@@ -524,9 +515,8 @@
     <Compile Include="Repository\Interface\IModeratorNotificationData.cs" />
     <Compile Include="Repository\Interface\IMyPostData.cs" />
     <Compile Include="Repository\Interface\INotificationData.cs" />
-    <Compile Include="Repository\Interface\IReportCommentData.cs" />
+    <Compile Include="Repository\Interface\IReportcommentData.cs" />
     <Compile Include="Repository\Interface\ISpamData.cs" />
-    <Compile Include="Repository\Service\AddPostData.cs" />
     <Compile Include="Repository\Service\AddTagsData.cs" />
     <Compile Include="Repository\Service\AssociatedTagsData.cs" />
     <Compile Include="Repository\Service\CommentData.cs" />
@@ -537,27 +527,8 @@
     <Compile Include="Repository\Service\ModeratorNotificationData.cs" />
     <Compile Include="Repository\Service\MyPostData.cs" />
     <Compile Include="Repository\Service\NotificationData.cs" />
-    <Compile Include="Repository\Service\ReposrtCommentData.cs" />
+    <Compile Include="Repository\Service\ReportcommentData.cs" />
     <Compile Include="Repository\Service\SpamData.cs" />
-    <Compile Include="Services\AccountService.cs" />
-    <Compile Include="Services\AddPostServices.cs" />
-    <Compile Include="Services\AddTagsByModeratorService.cs" />
-    <Compile Include="Services\AssociatedTagsService.cs" />
-    <Compile Include="Services\TagsService.cs" />
-    <Compile Include="Services\CommentService.cs" />
-    <Compile Include="Services\ElasticSearch.cs" />
-    <Compile Include="Services\HomePageService.cs" />
-    <Compile Include="Services\LikedPostServices.cs" />
-    <Compile Include="Services\LikesCommentService.cs" />
-    <Compile Include="Services\LikeService.cs" />
-    <Compile Include="Services\LogOutService.cs" />
-    <Compile Include="Services\MaxCommentService.cs" />
-    <Compile Include="Services\MaxLikesService.cs" />
-    <Compile Include="Services\ModeratorNotificationServices.cs" />
-    <Compile Include="Services\MyPostService.cs" />
-    <Compile Include="Services\NotificationService.cs" />
-    <Compile Include="Services\PostServices.cs" />
-    <Compile Include="Services\SpamServices.cs" />
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -740,7 +711,9 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets'))" />
   </Target>
+  <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

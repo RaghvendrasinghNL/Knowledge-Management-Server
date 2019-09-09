@@ -9,7 +9,7 @@ namespace KnowledgeManagement.Repository.Service
 {
     public class NotificationData : INotificationData
     {
-        KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
+       readonly KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
         /// <summary>
         /// This will match the userId and will fetch the notification for like or comments 
         /// </summary>

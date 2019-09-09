@@ -11,10 +11,8 @@ namespace KnowledgeManagement.Models
         /// Login Token created at the time of login
         /// </summary>
         public string token { get; set; }
-        /// <summary>
-        /// EmailId
-        /// </summary>
-      //  public string EmailId { get; set; }
+        
+      
         /// <summary>
         /// Id of user
         /// </summary>

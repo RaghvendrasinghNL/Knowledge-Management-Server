@@ -1,27 +1,19 @@
-﻿using KnowledgeManagement.App_Start;
-using KnowledgeManagement.Business_Layer.Interface;
+﻿using KnowledgeManagement.Business_Layer.Interface;
 using KnowledgeManagement.Filter;
 using KnowledgeManagement.Models;
-using KnowledgeManagement.Services;
 using NLog;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Runtime.Remoting.Messaging;
 using System.Security.Claims;
-using System.Web;
 using System.Web.Http;
 
 namespace KnowledgeManagement.Controllers
 {
     public class LikeController : ApiController
     {
-        KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
+        
 
         private static Logger logger = NLog.LogManager.GetCurrentClassLogger();
-        private ILikeService _lp;
+        private readonly ILikeService _lp;
 
         public LikeController(ILikeService like)
         {

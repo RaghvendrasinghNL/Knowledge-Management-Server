@@ -1,5 +1,4 @@
-﻿using KnowledgeManagement.App_Start;
-using KnowledgeManagement.Models;
+﻿using KnowledgeManagement.Models;
 using KnowledgeManagement.Business_Layer.Service;
 using System;
 using System.Collections.Generic;
@@ -20,9 +19,9 @@ namespace KnowledgeManagement.Controllers
 {
     public class HomePageController : ApiController
     {
-        // private HomePageService Hp = new HomePageService();
+    
         private static Logger logger = NLog.LogManager.GetCurrentClassLogger();
-        private IHomePageService _hp;
+        private readonly IHomePageService _hp;
 
         public HomePageController(IHomePageService homePage)
         {

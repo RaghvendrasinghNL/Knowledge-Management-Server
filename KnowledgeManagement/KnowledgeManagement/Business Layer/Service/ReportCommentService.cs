@@ -8,19 +8,19 @@ using System.Web;
 
 namespace KnowledgeManagement.Business_Layer.Service
 {
-    public class ReportCommentService : IReportCommentService
+    public class ReportcommentService : IReportCommentService
 
     {
-        public readonly IReportCommentData _data;
+        public readonly IReportcommentData _data;
 
-        public ReportCommentService(IReportCommentData value)
+        public ReportcommentService(IReportcommentData value)
         {
             _data = value;
         }
 
-        public void EditMyComment(ReportCommentModel rp)
+        public bool EditMyComment(ReportCommentModel rp)
         {
-            _data.EditMyComment(rp);
+           return _data.EditMyComment(rp);
         }
     }
 }

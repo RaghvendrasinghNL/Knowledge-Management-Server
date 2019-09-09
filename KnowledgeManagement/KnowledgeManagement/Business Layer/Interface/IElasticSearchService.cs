@@ -10,6 +10,6 @@ namespace KnowledgeManagement.Business_Layer.Interface
    public interface IElasticSearchService
     {
         void GetSqlData();
-        List<PostRequestModel> GetSearchedResult(string query);
+        List<PostRequestModel> GetSearchResult(string query);
     }
 }

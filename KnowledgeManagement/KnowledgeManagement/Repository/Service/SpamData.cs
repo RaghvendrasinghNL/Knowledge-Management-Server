@@ -9,7 +9,7 @@ namespace KnowledgeManagement.Repository.Service
 {
     public class SpamData : ISpamData
     {
-        KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
+       readonly KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
         /// <summary>
         /// This will add new entry to the post table and will also add 
         /// to notification table for gentrating notifications

@@ -9,7 +9,7 @@ namespace KnowledgeManagement.Repository.Service
 {
     public class LikeData : ILikeData
     {
-        KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
+        readonly KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
         public void LikePost(LikedPostModel value)
         {
             var entry = db.Likes.Where(x => x.UserId == value.UserId && x.PostId == value.PostId).FirstOrDefault();

@@ -9,7 +9,7 @@ namespace KnowledgeManagement.Business_Layer.Interface
 {
    public interface ILikeService
     {
-           void LikePost(LikedPostModel value);
+           void LikePost(LikedPostModel result);
 
     }
 }

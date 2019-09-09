@@ -33,9 +33,7 @@ namespace KnowledgeManagement.Business_Layer.Service
            var moderator = (from k in db.Users
                      where pyload.Email == k.EmailId
                      select k.isModerator).FirstOrDefault();
-            var userId = (from k in db.Users
-                          where pyload.Email == k.EmailId
-                          select k.UserId).FirstOrDefault();
+            
 
             var jwtToken =  JwtManager.GenerateToken(pyload.Email,h);
             LoginRequestModel lrmodel = new LoginRequestModel()

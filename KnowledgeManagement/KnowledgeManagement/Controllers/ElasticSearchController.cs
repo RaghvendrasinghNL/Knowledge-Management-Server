@@ -13,7 +13,7 @@ namespace KnowledgeManagement.Controllers
 {
     public class ElasticSearchController : ApiController
     {
-        private readonly string Url = "http://localhost:9200";
+        private readonly string ElasticSearchUrl = System.Configuration.ConfigurationManager.AppSettings["PFElasticSearchUrl"];
 
         private readonly IElasticSearchService _elasticClient;
 
@@ -29,10 +29,9 @@ namespace KnowledgeManagement.Controllers
         /// <returns></returns>
         public IHttpActionResult Get(string query)
         {
-            var uri = new Uri(Url);
-            //var elasticClient = new ElasticSearch();
-            // return Ok(elasticClient.GetSearchedResult(query));
-            return Ok(_elasticClient.GetSearchedResult(query));
+            var uri = new Uri( ElasticSearchUrl);
+         
+            return Ok(_elasticClient.GetSearchResult(query));
         }
 
        
@@ -42,8 +41,7 @@ namespace KnowledgeManagement.Controllers
        /// </summary>
         public void Post()
         {
-            // var elasticClient = new ElasticSearch();
-            // elasticClient.GetSqlData();
+          
             _elasticClient.GetSqlData();
             Console.WriteLine("Data Uploaded");
            

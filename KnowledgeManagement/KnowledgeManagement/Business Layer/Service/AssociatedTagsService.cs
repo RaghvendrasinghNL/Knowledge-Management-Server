@@ -4,6 +4,7 @@ using KnowledgeManagement.Repository.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace KnowledgeManagement.Business_Layer.Service
@@ -17,14 +18,14 @@ namespace KnowledgeManagement.Business_Layer.Service
             _data = value;
         }
 
-        public void AddAssociatedTags(AssociatedTagModel associated)
+        public async Task AddAssociatedTags(AssociatedTagModel associated)
         {
-            _data.AddAssociatedTags(associated);
+           await Task.Run(() => _data.AddAssociatedTags(associated));
         }
 
-        public IEnumerable<AssociatedModel> GetAssociatedTags(int UserId)
+        public async Task<IEnumerable<AssociatedModel>> GetAssociatedTags(int UserId)
         {
-           return _data.GetAssociatedTags(UserId);
+           return await Task.Run<IEnumerable<AssociatedModel>>(() => _data.GetAssociatedTags(UserId));
         }
 
     }

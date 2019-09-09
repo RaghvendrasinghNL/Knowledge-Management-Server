@@ -1,5 +1,4 @@
-﻿using KnowledgeManagement.App_Start;
-using KnowledgeManagement.Models;
+﻿using KnowledgeManagement.Models;
 using KnowledgeManagement.Business_Layer.Service;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,7 @@ namespace KnowledgeManagement.Controllers
 {
     public class NotificationController : ApiController
     {
-        // NotificationService notificationService = new NotificationService();
+       
 
         private readonly INotificationService _notification;
         private static Logger logger = NLog.LogManager.GetCurrentClassLogger();
@@ -42,8 +41,7 @@ namespace KnowledgeManagement.Controllers
                 int userid = Int32.Parse(userIdClaim?.Value);
                 logger.Info("Notification controller and returning result");
 
-                //var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
-                //var result = _notification.GetUserNotification(userInfo.UserId);
+                
                 var result = _notification.GetUserNotification(userid);
                 return Ok(result);
             }

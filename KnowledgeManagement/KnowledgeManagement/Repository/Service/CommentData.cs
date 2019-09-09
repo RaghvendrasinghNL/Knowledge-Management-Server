@@ -10,7 +10,7 @@ namespace KnowledgeManagement.Repository.Service
 {
     public class CommentData : ICommentData
     {
-        KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
+       readonly KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
 
         /// <summary>
         /// This will fetch the comment on the post by the post id 

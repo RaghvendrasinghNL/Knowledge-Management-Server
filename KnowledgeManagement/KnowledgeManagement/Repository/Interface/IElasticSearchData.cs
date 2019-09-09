@@ -10,6 +10,6 @@ namespace KnowledgeManagement.Repository.Interface
   public interface IElasticSearchData
     {
         void GetSqlData();
-        List<PostRequestModel> GetSearchedResult(string query);
+        List<PostRequestModel> GetSearchResult(string query);
     }
 }

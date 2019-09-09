@@ -1,5 +1,4 @@
-﻿using KnowledgeManagement.App_Start;
-using KnowledgeManagement.Models;
+﻿using KnowledgeManagement.Models;
 using KnowledgeManagement.Business_Layer.Service;
 using System.Runtime.Remoting.Messaging;
 using System.Web.Http;
@@ -35,8 +34,7 @@ namespace KnowledgeManagement.Controllers
         [JwtAuthentication]
         public IHttpActionResult Post([FromBody]AddPostRequestModel AddPost)
         {
-            // var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
-            // AddPost.UserId = userInfo.UserId;
+         
             try
             {
                 
@@ -70,7 +68,7 @@ namespace KnowledgeManagement.Controllers
                 return BadRequest("Exception - " + ex);
             }
         }
-        // private MyPostService Mp = new MyPostService();
+       
 
 
         /// <summary>
@@ -80,14 +78,14 @@ namespace KnowledgeManagement.Controllers
         [JwtAuthentication]
         public IHttpActionResult Get()
         {
-            // var userInfo =  CallContext.GetData("UserInfo") as UserDetailsModel;
+        
             try
             {
                 
                 var identity =(ClaimsIdentity) User.Identity;
                 var userIdClaim = identity.FindFirst(ClaimTypes.UserData);
                 int userId = Int32.Parse(userIdClaim?.Value);
-                // int userId = Int32.Parse(User.Identity.Name);
+            
                
                 logger.Info("MyPost controller and returing result");
                 return Ok(_myPost.MySeeRecentPost(userId));
@@ -111,8 +109,7 @@ namespace KnowledgeManagement.Controllers
                 var identity = (ClaimsIdentity)User.Identity;
                 var userIdClaim = identity.FindFirst(ClaimTypes.UserData);
                 int userid = Int32.Parse(userIdClaim?.Value);
-                // var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
-                //editPost.UserId = userInfo.UserId;
+              
                 editPost.UserId = userid;
                 logger.Info("MyPost controller and modifying existing post");
                 var editpost = _myPost.EditMyPost(editPost);
@@ -140,13 +137,11 @@ namespace KnowledgeManagement.Controllers
         [JwtAuthentication]
         public IHttpActionResult Delete(int id)
         {
-            // var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
+            
             try
             {
 
-                var identity = (ClaimsIdentity)User.Identity;
-                var userIdClaim = identity.FindFirst(ClaimTypes.UserData);
-                int userId = Int32.Parse(userIdClaim?.Value);
+                
                 logger.Info("MyPost controller and deleting existing post");
                 _myPost.DeleteRecentPost(id);
                 return Ok();

@@ -12,7 +12,7 @@ namespace KnowledgeManagement.Repository.Service
     public class HomePageData : IHomePageData
     {
         private readonly KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
-        private int PageSize = 5;
+        readonly private int PageSize = 5;
 
 
 
@@ -21,8 +21,8 @@ namespace KnowledgeManagement.Repository.Service
         {
             var result = (from l in db.Posts
                           join a in db.Users on l.UserId equals a.UserId
-                          where l.CategoryId == CategoryId && l.IsDeleted == true && !(db.Reports.Any(r=> r.PostId == l.PostId && r.UserId == UserId))
-        
+                          where l.CategoryId == CategoryId && l.IsDeleted && !(db.Reports.Any(r => r.PostId == l.PostId && r.UserId == UserId))
+
                           orderby l.PostDate descending
 
                           select new PostRequestModel
@@ -35,6 +35,10 @@ namespace KnowledgeManagement.Repository.Service
                               Image = l.UserImage,
 
                               //  }).Skip((pageNumber - 1) * PageSize).Take(PageSize).ToList();
+                              TagName = db.PostTags.Where(w => w.PostId == l.PostId)
+                              .Select(s => s.Tag.TagName).ToList(),
+                              Likes = db.Likes.Where(w => w.PostId == l.PostId).Count(),
+                              Count = db.Comments.Where(w => w.PostId == l.PostId).Count()
                           }).ToList();
 
 
@@ -48,50 +52,31 @@ namespace KnowledgeManagement.Repository.Service
             }
 
 
-            foreach (PostRequestModel p in result)
-            {
-                p.Likes = (from posts in db.Likes
-                           where posts.PostId == p.PostId
-                           select posts.UserId).Count();
+          return  GetResultFilteredAndSorting(UserId, filtertype, sortingtype, result);
 
-            }
+        }
 
-            foreach (var posts in result)
-            {
-                posts.Count = (from c in db.Comments
-                               where c.PostId == posts.PostId
-                               select c.PostId).Count();
+        private IEnumerable<PostRequestModel> GetResultFilteredAndSorting(int userId, FilterType filterType, SortingType sortingType, List<PostRequestModel> result)
+        {
 
-            }
-            foreach (var x in result)
-            {
-                x.TagName = (from posttags in db.PostTags
-                             join tag in db.Tags on posttags.TagId equals tag.TagId
-                             where posttags.PostId == x.PostId
-                             select tag.TagName).ToList();
-            }
-
-            if (filtertype == FilterType.RecentPost)
+            if (filterType == FilterType.RecentPost)
             {
 
-                if (sortingtype == SortingType.MaxLikes)
+                if (sortingType == SortingType.MaxLikes)
                 {
                     return result.OrderByDescending(r => r.Likes).ToList();
-                    
                 }
-                else if (sortingtype == SortingType.MaxComments)
+                else if (sortingType == SortingType.MaxComments)
                 {
                     return result.OrderByDescending(r => r.Count).ToList();
                 }
                 return result;
-
             }
-            else if (filtertype == FilterType.ByLikedPost)
+            else if (filterType == FilterType.ByLikedPost)
             {
 
-
                 var LikedPost = (from l in db.Likes
-                                 where l.UserId == UserId
+                                 where l.UserId == userId
                                  select l
                                  ).ToList();
                 List<PostRequestModel> MyPost = new List<PostRequestModel>();
@@ -104,24 +89,18 @@ namespace KnowledgeManagement.Repository.Service
                     MyPost.AddRange(LikedPosts);
                 }
 
-                if (sortingtype == SortingType.MaxLikes)
+                if (sortingType == SortingType.MaxLikes)
                 {
                     return MyPost.OrderByDescending(r => r.Likes).ToList();
                 }
-                else if (sortingtype == SortingType.MaxComments)
+                else if (sortingType == SortingType.MaxComments)
                 {
                     return MyPost.OrderByDescending(r => r.Count).ToList();
                 }
 
                 return MyPost;
             }
-
-            else
-            {
-                return null;
-            }
-
+            return result;
         }
     }
 }
-   

@@ -1,5 +1,4 @@
-﻿using KnowledgeManagement.App_Start;
-using KnowledgeManagement.Models;
+﻿using KnowledgeManagement.Models;
 using KnowledgeManagement.Business_Layer.Service;
 using System;
 using System.Collections.Generic;
@@ -13,6 +12,7 @@ using KnowledgeManagement.Filter;
 using System.Web;
 using NLog;
 using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace KnowledgeManagement.Controllers
 {
@@ -20,7 +20,7 @@ namespace KnowledgeManagement.Controllers
     {
         
         private static Logger logger = NLog.LogManager.GetCurrentClassLogger();
-        private IAddTagsService _at;
+        private readonly IAddTagsService _at;
 
         public AddTagsController(IAddTagsService value)
         {
@@ -30,7 +30,7 @@ namespace KnowledgeManagement.Controllers
 
 
         [JwtAuthentication]
-        public IHttpActionResult Get( )
+        public async Task<IHttpActionResult> Get()
         {
             try
             {
@@ -39,8 +39,8 @@ namespace KnowledgeManagement.Controllers
                 var userIdClaim = identity.FindFirst(ClaimTypes.UserData);
                 int userid = Int32.Parse(userIdClaim?.Value);
                 logger.Info("AddTags controller and reurning result");
-
-                return Ok(_at.GetTags(userid));
+                var data = await _at.GetTags(userid);
+                return Ok(data);
             }
             catch(Exception ex)
             {
@@ -52,13 +52,11 @@ namespace KnowledgeManagement.Controllers
 
 
         [JwtAuthentication]
-        public IHttpActionResult Post([FromBody]TagsModel tag)
+        public async Task<IHttpActionResult> Post([FromBody]TagsModel tag)
         {
             try
             {
-                var identity = (ClaimsIdentity)User.Identity;
-                var userIdClaim = identity.FindFirst(ClaimTypes.UserData);
-                int userid = Int32.Parse(userIdClaim?.Value);
+             
                 logger.Info("AddTags controller and reurning result");
 
                 if (tag.TagName.Equals(null))
@@ -69,18 +67,19 @@ namespace KnowledgeManagement.Controllers
 
                 else
                 {
-                    var f = _at.AddTags(tag);
-                    if (f == true)
+                    var f = await _at.AddTags(tag);
+                    if (f!=true)
                     {
 
 
-                        return Ok(tag);
+                        return BadRequest("Tag already exist");
 
 
                     }
                     else
                     {
-                        return BadRequest("Tag already exist");
+                        return Ok(tag);
+                    
                     }
 
                 }

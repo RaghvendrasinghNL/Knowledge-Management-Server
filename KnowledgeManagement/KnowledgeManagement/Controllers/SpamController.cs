@@ -1,5 +1,4 @@
-﻿using KnowledgeManagement.App_Start;
-using KnowledgeManagement.Models;
+﻿using KnowledgeManagement.Models;
 using KnowledgeManagement.Business_Layer.Service;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,7 @@ namespace KnowledgeManagement.Controllers
 {
     public class SpamController : ApiController
     {
-        //private SpamServices sp = new SpamServices();
+        
         private static Logger logger = NLog.LogManager.GetCurrentClassLogger();
         private readonly ISpamService _spam;
 
@@ -57,8 +56,7 @@ namespace KnowledgeManagement.Controllers
         [JwtAuthentication]
         public IHttpActionResult Post([FromBody]SpamModel addspam)
         {
-            //var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
-            //addspam.UserId = userInfo.UserId;
+          
             try
             {
 
@@ -89,12 +87,10 @@ namespace KnowledgeManagement.Controllers
         public IHttpActionResult Delete(int id) 
         {
 
-            //var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
+        
             try
             {
-                var identity = (ClaimsIdentity)User.Identity;
-                var userIdClaim = identity.FindFirst(ClaimTypes.UserData);
-                int userid = Int32.Parse(userIdClaim?.Value);
+                
                 logger.Info("Spam controller and delete spam");
                 _spam.DeleteRecentPost(id);
                 return Ok();

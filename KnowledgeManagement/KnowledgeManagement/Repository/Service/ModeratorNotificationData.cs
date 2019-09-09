@@ -9,7 +9,7 @@ namespace KnowledgeManagement.Repository.Service
 {
     public class ModeratorNotificationData : IModeratorNotificationData
     {
-        KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
+       readonly KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
         /// <summary>
         /// This method will select the notification if the user is moderator
         /// </summary>

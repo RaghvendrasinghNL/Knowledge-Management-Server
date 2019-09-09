@@ -1,5 +1,4 @@
-﻿using KnowledgeManagement.App_Start;
-using KnowledgeManagement.Business_Layer.Interface;
+﻿using KnowledgeManagement.Business_Layer.Interface;
 using KnowledgeManagement.Business_Layer.Service;
 using KnowledgeManagement.Models;
 using KnowledgeManagement.Repository.Interface;
@@ -14,7 +13,7 @@ namespace KnowledgeManagement.Repository.Service
 {
     public class MyPostData : IMyPostData
     {
-        KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
+       readonly KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
          private ElasticSearchData es;
        
 
@@ -27,8 +26,7 @@ namespace KnowledgeManagement.Repository.Service
         /// <returns>A List of posts with all the parameters </returns>
         public IEnumerable<MyPostModel> MySeeRecentPost(int UserId)
         {
-            //var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
-
+          
             var username = (from h in db.Users
                             where UserId == h.UserId
                             select h.FirstName).FirstOrDefault();
@@ -36,7 +34,7 @@ namespace KnowledgeManagement.Repository.Service
             var result = (from l in db.Posts
                           join p in db.PostTags on l.PostId equals p.PostId
                           join ta in db.Tags on p.TagId equals ta.TagId
-                          where l.UserId == UserId && l.IsDeleted == true
+                          where l.UserId == UserId && l.IsDeleted 
                           orderby l.PostDate descending
                           group p by p.PostId into g
                           let query = g.FirstOrDefault()
@@ -65,28 +63,24 @@ namespace KnowledgeManagement.Repository.Service
                 x.Image = (from l in db.Posts
                            where l.PostId == x.PostId
                            select l.UserImage).FirstOrDefault();
-            }
+            
 
-            foreach (MyPostModel y in result)
-            {
-                y.Likes = (from k in db.Likes
-                           where k.PostId == y.PostId
+           
+                x.Likes = (from k in db.Likes
+                           where k.PostId == x.PostId
                            select k.UserId).Count();
-            }
+            
 
-            foreach (var c in result)
-            {
-                c.Count = (from m in db.Comments
-                           where m.PostId == c.PostId
+            
+                x.Count = (from m in db.Comments
+                           where m.PostId == x.PostId
                            select m.PostId).Count();
-            }
-            foreach (var item in result)
-            {
-                var data = db.Likes.FirstOrDefault(l => l.UserId == UserId && l.PostId == item.PostId);
+           
+                var data = db.Likes.FirstOrDefault(l => l.UserId == UserId && l.PostId == x.PostId);
                 if (data == null)
-                    item.IsLiked = 0;
+                    x.IsLiked = 0;
                 else
-                    item.IsLiked = 1;
+                    x.IsLiked = 1;
             }
             return result;
         }
@@ -119,8 +113,7 @@ namespace KnowledgeManagement.Repository.Service
                     db.PostTags.Add(posttags);
                     db.SaveChanges();
                 }
-                else
-                    continue;
+                
             }
 
             return true;

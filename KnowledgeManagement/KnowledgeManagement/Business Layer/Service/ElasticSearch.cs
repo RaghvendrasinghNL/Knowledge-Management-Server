@@ -22,9 +22,9 @@ namespace KnowledgeManagement.Business_Layer.Service
             _data.GetSqlData();
         }
 
-        public List<PostRequestModel> GetSearchedResult(string query)
+        public List<PostRequestModel> GetSearchResult(string query)
         {
-            return _data.GetSearchedResult(query);
+            return _data.GetSearchResult(query);
         }
 
 

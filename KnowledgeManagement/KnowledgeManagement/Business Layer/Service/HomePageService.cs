@@ -1,5 +1,4 @@
-﻿using KnowledgeManagement.App_Start;
-using KnowledgeManagement.Business_Layer.Interface;
+﻿using KnowledgeManagement.Business_Layer.Interface;
 using KnowledgeManagement.Models;
 using KnowledgeManagement.Repository.Interface;
 using KnowledgeManagement.Repository.Service;

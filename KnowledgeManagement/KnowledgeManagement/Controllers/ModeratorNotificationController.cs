@@ -1,5 +1,4 @@
-﻿using KnowledgeManagement.App_Start;
-using KnowledgeManagement.Models;
+﻿using KnowledgeManagement.Models;
 using KnowledgeManagement.Business_Layer.Service;
 using System;
 using System.Collections.Generic;
@@ -41,8 +40,7 @@ namespace KnowledgeManagement.Controllers
                 var userIdClaim = identity.FindFirst(ClaimTypes.UserData);
                 int userid = Int32.Parse(userIdClaim?.Value);
                 logger.Info("ModeratorNotification controller and returning result");
-                //   var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
-                // var result = _moderatorNotification.GetModeratorNotification(userInfo.UserId);
+               
                 var result = _moderatorNotification.GetModeratorNotification(userid);
                 return Ok(result);
             }

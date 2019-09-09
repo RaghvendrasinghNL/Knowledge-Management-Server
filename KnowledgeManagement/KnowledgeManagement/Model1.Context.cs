@@ -38,7 +38,6 @@ namespace KnowledgeManagement
         public virtual DbSet<Like> Likes { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<CommentReport> CommentReports { get; set; }
-        public virtual DbSet<AssociatedTag> AssociatedTags { get; set; }
         public virtual DbSet<AssociatedTag1> AssociatedTags1 { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)

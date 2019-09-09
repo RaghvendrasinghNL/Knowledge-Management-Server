@@ -2,17 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace KnowledgeManagement.Business_Layer.Interface
 {
-    public class IReportCommentService
+  public interface IReportCommentService
     {
-        public void EditMyComment(ReportCommentModel rp)
-        {
-        }
-        
-
-
+        bool EditMyComment(ReportCommentModel rp);
     }
 }

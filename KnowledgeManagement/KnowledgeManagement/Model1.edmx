@@ -5,14 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="KnowledgeManagementDevModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="AssociatedTag">
-          <Key>
-            <PropertyRef Name="AId" />
-          </Key>
-          <Property Name="AId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TagId" Type="int" Nullable="false" />
-          <Property Name="AssociatedId" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="AssociatedTags">
           <Key>
             <PropertyRef Name="AID" />
@@ -127,30 +119,6 @@
           <Property Name="isModerator" Type="int" />
           <Property Name="Token" Type="varchar" MaxLength="250" />
         </EntityType>
-        <Association Name="FK__Associate__Assoc__1A9EF37A">
-          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
-          <End Role="AssociatedTag" Type="Self.AssociatedTag" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tag">
-              <PropertyRef Name="TagId" />
-            </Principal>
-            <Dependent Role="AssociatedTag">
-              <PropertyRef Name="AssociatedId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Associate__TagId__19AACF41">
-          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
-          <End Role="AssociatedTag" Type="Self.AssociatedTag" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tag">
-              <PropertyRef Name="TagId" />
-            </Principal>
-            <Dependent Role="AssociatedTag">
-              <PropertyRef Name="TagId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Associate__TagId__41B8C09B">
           <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
           <End Role="AssociatedTags" Type="Self.AssociatedTags" Multiplicity="*" />
@@ -375,7 +343,6 @@
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="KnowledgeManagementDevModelStoreContainer">
-          <EntitySet Name="AssociatedTag" EntityType="Self.AssociatedTag" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AssociatedTags" EntityType="Self.AssociatedTags" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CommentReport" EntityType="Self.CommentReport" Schema="dbo" store:Type="Tables" />
@@ -388,14 +355,6 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tag" EntityType="Self.Tag" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Associate__Assoc__1A9EF37A" Association="Self.FK__Associate__Assoc__1A9EF37A">
-            <End Role="Tag" EntitySet="Tag" />
-            <End Role="AssociatedTag" EntitySet="AssociatedTag" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Associate__TagId__19AACF41" Association="Self.FK__Associate__TagId__19AACF41">
-            <End Role="Tag" EntitySet="Tag" />
-            <End Role="AssociatedTag" EntitySet="AssociatedTag" />
-          </AssociationSet>
           <AssociationSet Name="FK__Associate__TagId__41B8C09B" Association="Self.FK__Associate__TagId__41B8C09B">
             <End Role="Tag" EntitySet="Tag" />
             <End Role="AssociatedTags" EntitySet="AssociatedTags" />
@@ -528,8 +487,6 @@
           <NavigationProperty Name="PostTags" Relationship="Self.FK_PostTags_Tag" FromRole="Tag" ToRole="PostTags" />
           <NavigationProperty Name="Tag1" Relationship="Self.FK_Tag_Tag" FromRole="Tag" ToRole="Tag1" />
           <NavigationProperty Name="Tag2" Relationship="Self.FK_Tag_Tag" FromRole="Tag1" ToRole="Tag" />
-          <NavigationProperty Name="AssociatedTags" Relationship="KnowledgeManagementDevModel.FK__Associate__Assoc__1A9EF37A" FromRole="Tag" ToRole="AssociatedTag" />
-          <NavigationProperty Name="AssociatedTags1" Relationship="KnowledgeManagementDevModel.FK__Associate__TagId__19AACF41" FromRole="Tag" ToRole="AssociatedTag" />
           <NavigationProperty Name="AssociatedTags2" Relationship="KnowledgeManagementDevModel.FK__Associate__TagId__41B8C09B" FromRole="Tag" ToRole="AssociatedTag1" />
           </EntityType>
         <Association Name="FK_PostTags_Tag">
@@ -658,15 +615,6 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <EntitySet Name="AssociatedTags" EntityType="KnowledgeManagementDevModel.AssociatedTag" />
-          <AssociationSet Name="FK__Associate__Assoc__1A9EF37A" Association="KnowledgeManagementDevModel.FK__Associate__Assoc__1A9EF37A">
-            <End Role="Tag" EntitySet="Tags" />
-            <End Role="AssociatedTag" EntitySet="AssociatedTags" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Associate__TagId__19AACF41" Association="KnowledgeManagementDevModel.FK__Associate__TagId__19AACF41">
-            <End Role="Tag" EntitySet="Tags" />
-            <End Role="AssociatedTag" EntitySet="AssociatedTags" />
-          </AssociationSet>
           <EntitySet Name="AssociatedTags1" EntityType="KnowledgeManagementDevModel.AssociatedTag1" />
           <AssociationSet Name="FK__Associate__TagId__41B8C09B" Association="KnowledgeManagementDevModel.FK__Associate__TagId__41B8C09B">
             <End Role="Tag" EntitySet="Tags" />
@@ -912,40 +860,6 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-        <EntityType Name="AssociatedTag">
-          <Key>
-            <PropertyRef Name="AId" />
-          </Key>
-          <Property Name="AId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TagId" Type="Int32" Nullable="false" />
-          <Property Name="AssociatedId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Tag" Relationship="KnowledgeManagementDevModel.FK__Associate__Assoc__1A9EF37A" FromRole="AssociatedTag" ToRole="Tag" />
-          <NavigationProperty Name="Tag1" Relationship="KnowledgeManagementDevModel.FK__Associate__TagId__19AACF41" FromRole="AssociatedTag" ToRole="Tag" />
-        </EntityType>
-        <Association Name="FK__Associate__Assoc__1A9EF37A">
-          <End Type="KnowledgeManagementDevModel.Tag" Role="Tag" Multiplicity="1" />
-          <End Type="KnowledgeManagementDevModel.AssociatedTag" Role="AssociatedTag" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tag">
-              <PropertyRef Name="TagId" />
-            </Principal>
-            <Dependent Role="AssociatedTag">
-              <PropertyRef Name="AssociatedId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Associate__TagId__19AACF41">
-          <End Type="KnowledgeManagementDevModel.Tag" Role="Tag" Multiplicity="1" />
-          <End Type="KnowledgeManagementDevModel.AssociatedTag" Role="AssociatedTag" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tag">
-              <PropertyRef Name="TagId" />
-            </Principal>
-            <Dependent Role="AssociatedTag">
-              <PropertyRef Name="TagId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="AssociatedTag1">
           <Key>
             <PropertyRef Name="AID" />
@@ -1114,15 +1028,6 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="KnowledgeManagementDevModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="KnowledgeManagementDevModel.Store.sp_upgraddiagrams" />
-          <EntitySetMapping Name="AssociatedTags">
-            <EntityTypeMapping TypeName="KnowledgeManagementDevModel.AssociatedTag">
-              <MappingFragment StoreEntitySet="AssociatedTag">
-                <ScalarProperty Name="AssociatedId" ColumnName="AssociatedId" />
-                <ScalarProperty Name="TagId" ColumnName="TagId" />
-                <ScalarProperty Name="AId" ColumnName="AId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="AssociatedTags1">
             <EntityTypeMapping TypeName="KnowledgeManagementDevModel.AssociatedTag1">
               <MappingFragment StoreEntitySet="AssociatedTags">

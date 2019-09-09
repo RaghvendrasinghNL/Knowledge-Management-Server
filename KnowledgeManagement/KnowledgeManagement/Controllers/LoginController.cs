@@ -1,5 +1,4 @@
-﻿using KnowledgeManagement.App_Start;
-using KnowledgeManagement.Models;
+﻿using KnowledgeManagement.Models;
 using KnowledgeManagement.Business_Layer.Service;
 using System.Runtime.Remoting.Messaging;
 using System.Web.Http;
@@ -16,11 +15,9 @@ namespace KnowledgeManagement.Controllers
 {
     public class LoginController : ApiController
     {
-        KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
-        // private AccountService accountService = new AccountService();
-        //private LogOutService ls = new LogOutService();
+  
         private static Logger logger = NLog.LogManager.GetCurrentClassLogger();
-        public ILoginService _ls;
+        private readonly ILoginService _ls;
        
 
         public LoginController(ILoginService lp)
@@ -67,8 +64,7 @@ namespace KnowledgeManagement.Controllers
        
         public IHttpActionResult Delete()
         {
-            // var userInfo = CallContext.GetData("UserInfo") as UserDetailsModel;
-            // var UserId = userInfo.UserId;
+         
             var identity = (ClaimsIdentity)User.Identity;
             var userIdClaim = identity.FindFirst(ClaimTypes.UserData);
             int userid = Int32.Parse(userIdClaim?.Value);

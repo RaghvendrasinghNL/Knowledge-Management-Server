@@ -63,7 +63,7 @@ namespace KnowledgeManagement.Filter
             username = usernameClaim?.Value;
             UserId = userIdClaim?.Value;
 
-            int userIdInt = Int32.Parse(UserId);
+            
          
 
 

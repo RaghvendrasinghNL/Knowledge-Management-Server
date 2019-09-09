@@ -11,16 +11,7 @@ namespace KnowledgeManagement.Repository.Service
     {
         private readonly KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
 
-        public void AddUserLoginToken(LoginRequestModel loginRequestModel)
-        {
-
-            
-
-            
-             //db.Users.Add(loginRequest);
-             //return true;
-           
-        }
+        
 
         public void LogOut(int UserId)
         {

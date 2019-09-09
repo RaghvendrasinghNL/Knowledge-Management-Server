@@ -9,7 +9,7 @@ namespace KnowledgeManagement.Repository.Service
 {
     public class AddTagsData : IAddTagsData
     {
-        KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
+       readonly KnowledgeManagementDevEntities db = new KnowledgeManagementDevEntities();
 
         public Boolean AddTags(TagsModel tags)
         {
