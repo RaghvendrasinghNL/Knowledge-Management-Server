@@ -36,18 +36,5 @@ namespace KnowledgeManagement.Controllers
         }
 
 
-
-        [JwtAuthentication]
-        public async Task<IHttpActionResult> Get()
-        {
-            string username = string.Empty;
-            string userId = string.Empty;
-            var token = HttpContext.Current.Request.Headers["Authorization"].Split(' ')[1];
-            JwtAuthenticationAttribute.ValidateToken(token, out username, out userId);
-            int userid = Int32.Parse(userId);
-            await _at.GetAssociatedTags(userid);
-            return Ok();
-
-        }
     }
 }

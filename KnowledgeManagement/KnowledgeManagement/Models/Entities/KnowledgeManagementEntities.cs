@@ -13,17 +13,19 @@ namespace KnowledgeManagement.Models.Entities
 
         public KnowledgeManagementEntities() : base("name=KnowledgeManagementEntities")
         {
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<KnowledgeManagementEntities,Configuration>());
-            Database.SetInitializer(new DropCreateDatabaseAlways<KnowledgeManagementEntities>());
+           Database.SetInitializer(new MigrateDatabaseToLatestVersion<KnowledgeManagementEntities,Configuration>());
+           // Database.SetInitializer(new DropCreateDatabaseAlways<KnowledgeManagementEntities>());
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
-          
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            base.OnModelCreating(modelBuilder);
+
         }
 
-        public DbSet<AssociatedTag1> AssociatedTags1 { get; set; }
+        public DbSet<AssociatedTag> AssociatedTags1 { get; set; }
         public DbSet<Category> Categorys { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Like> Likes { get; set; }

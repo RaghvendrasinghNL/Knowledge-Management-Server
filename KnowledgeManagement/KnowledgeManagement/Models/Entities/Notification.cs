@@ -6,7 +6,7 @@ using System.Web;
 
 namespace KnowledgeManagement.Models.Entities
 {
-    public class Notification
+    public class Notification : BaseEntity
     {
         [Key]
         public int NotificationId { get; set; }

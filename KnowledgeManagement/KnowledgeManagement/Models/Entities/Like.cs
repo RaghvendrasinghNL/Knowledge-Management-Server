@@ -6,7 +6,7 @@ using System.Web;
 
 namespace KnowledgeManagement.Models.Entities
 {
-    public class Like
+    public class Like : BaseEntity
     {
         [Key]
         public int LikeId { get; set; }

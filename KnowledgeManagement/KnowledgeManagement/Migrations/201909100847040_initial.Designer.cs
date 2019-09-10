@@ -13,7 +13,7 @@ namespace KnowledgeManagement.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201909091403530_initial"; }
+            get { return "201909100847040_initial"; }
         }
         
         string IMigrationMetadata.Source

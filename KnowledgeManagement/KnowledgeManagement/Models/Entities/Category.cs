@@ -6,7 +6,7 @@ using System.Web;
 
 namespace KnowledgeManagement.Models.Entities
 {
-    public class Category
+    public class Category : BaseEntity
     {
         [Key]
         public int CategoryId { get; set; }

@@ -6,7 +6,7 @@ using System.Web;
 
 namespace KnowledgeManagement.Models.Entities
 {
-    public partial class Comment
+    public partial class Comment : BaseEntity
     {
         [Key]
         public int CommentId { get; set; }

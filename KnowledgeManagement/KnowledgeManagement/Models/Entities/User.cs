@@ -5,7 +5,7 @@ using System.Web;
 
 namespace KnowledgeManagement.Models.Entities
 {
-    public class User
+    public class User : BaseEntity
     {
         public int UserId { get; set; }
         public string FirstName { get; set; }

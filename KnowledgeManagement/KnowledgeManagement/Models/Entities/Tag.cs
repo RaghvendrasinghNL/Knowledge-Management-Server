@@ -6,7 +6,7 @@ using System.Web;
 
 namespace KnowledgeManagement.Models.Entities
 {
-    public class Tag
+    public class Tag : BaseEntity
     {
         [Key]
         public int TagId { get; set; }
@@ -16,6 +16,6 @@ namespace KnowledgeManagement.Models.Entities
         public virtual ICollection<PostTag> PostTags { get; set; }
        
        
-        public virtual ICollection<AssociatedTag1> AssociatedTags2 { get; set; }
+        public virtual ICollection<AssociatedTag> AssociatedTags2 { get; set; }
     }
 }

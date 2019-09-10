@@ -23,10 +23,7 @@ namespace KnowledgeManagement.Business_Layer.Service
            await Task.Run(() => _data.AddAssociatedTags(associated));
         }
 
-        public async Task<IEnumerable<AssociatedModel>> GetAssociatedTags(int UserId)
-        {
-           return await Task.Run<IEnumerable<AssociatedModel>>(() => _data.GetAssociatedTags(UserId));
-        }
+       
 
     }
 }

@@ -465,9 +465,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909091403530_initial.cs" />
-    <Compile Include="Migrations\201909091403530_initial.Designer.cs">
-      <DependentUpon>201909091403530_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201909100847040_initial.cs" />
+    <Compile Include="Migrations\201909100847040_initial.Designer.cs">
+      <DependentUpon>201909100847040_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AddPostRequestModel.cs" />
@@ -475,7 +475,8 @@
     <Compile Include="Models\AssociatedTagModel.cs" />
     <Compile Include="Models\CommentModel.cs" />
     <Compile Include="Models\EditPostModel.cs" />
-    <Compile Include="Models\Entities\AssociatedTag1.cs" />
+    <Compile Include="Models\Entities\AssociatedTag.cs" />
+    <Compile Include="Models\Entities\BaseEntity.cs" />
     <Compile Include="Models\Entities\Category.cs" />
     <Compile Include="Models\Entities\Comment.cs" />
     <Compile Include="Models\Entities\CommentReport.cs" />
@@ -643,8 +644,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201909091403530_initial.resx">
-      <DependentUpon>201909091403530_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909100847040_initial.resx">
+      <DependentUpon>201909100847040_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

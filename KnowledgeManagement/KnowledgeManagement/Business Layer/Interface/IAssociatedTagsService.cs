@@ -10,6 +10,6 @@ namespace KnowledgeManagement.Business_Layer.Interface
    public interface IAssociatedTagsService
     {
         Task AddAssociatedTags(AssociatedTagModel associated);
-        Task<IEnumerable<AssociatedModel>> GetAssociatedTags(int UserId);
+        
     }
 }

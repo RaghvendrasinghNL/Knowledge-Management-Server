@@ -6,7 +6,7 @@ using System.Web;
 
 namespace KnowledgeManagement.Models.Entities
 {
-    public class AssociatedTag1
+    public class AssociatedTag : BaseEntity
     {
         [Key]
         public int AID { get; set; }
