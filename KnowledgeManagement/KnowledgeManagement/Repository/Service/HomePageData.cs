@@ -11,7 +11,7 @@ namespace KnowledgeManagement.Repository.Service
 {
     public class HomePageData : IHomePageData
     {
-        private readonly KnowledgeManagementEntities db = new KnowledgeManagementEntities();
+        private readonly KnowledgeManagementContext db = new KnowledgeManagementContext();
         readonly private int PageSize = 5;
 
 
@@ -52,7 +52,7 @@ namespace KnowledgeManagement.Repository.Service
             }
 
 
-          return  GetResultFilteredAndSorting(UserId, filtertype, sortingtype, result);
+            return GetResultFilteredAndSorting(UserId, filtertype, sortingtype, result);
 
         }
 

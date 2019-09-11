@@ -10,14 +10,14 @@ namespace KnowledgeManagement.Repository.Service
 {
     public class AssociatedTagsData : IAssociatedTagsData
     {
-         readonly KnowledgeManagementEntities db = new KnowledgeManagementEntities();
+        readonly KnowledgeManagementContext db = new KnowledgeManagementContext();
 
-       
+
 
         public void AddAssociatedTags(AssociatedTagModel associated)
         {
-            var result = (from at in db.AssociatedTags1
-                          
+            var result = (from at in db.AssociatedTags
+
                           select at.GroupId).LastOrDefault();
 
 
@@ -29,18 +29,20 @@ namespace KnowledgeManagement.Repository.Service
                 {
                     associatedTag.TagId = x;
                     associatedTag.GroupId = result;
+                    associatedTag.CreatedAt = DateTime.Now;
+                    associatedTag.UpdatedAt = DateTime.Now;
 
-                    db.AssociatedTags1.Add(associatedTag);
+                    db.AssociatedTags.Add(associatedTag);
                     db.SaveChanges();
 
                 }
 
             }
-           
+
 
 
         }
 
-       
+
     }
 }

@@ -10,7 +10,7 @@ namespace KnowledgeManagement.Repository.Service
 {
     public class ReportcommentData : IReportcommentData
     {
-       readonly KnowledgeManagementEntities db = new KnowledgeManagementEntities();
+        readonly KnowledgeManagementContext db = new KnowledgeManagementContext();
 
         public bool EditMyComment(ReportCommentModel reportComment)
         {

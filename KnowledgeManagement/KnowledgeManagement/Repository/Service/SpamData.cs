@@ -10,7 +10,7 @@ namespace KnowledgeManagement.Repository.Service
 {
     public class SpamData : ISpamData
     {
-       readonly KnowledgeManagementEntities db = new KnowledgeManagementEntities();
+        readonly KnowledgeManagementContext db = new KnowledgeManagementContext();
         /// <summary>
         /// This will add new entry to the post table and will also add 
         /// to notification table for gentrating notifications
@@ -23,7 +23,9 @@ namespace KnowledgeManagement.Repository.Service
                 PostId = spam.PostId,
                 Comment = spam.Comment,
                 UserId = spam.UserId,
-                Isread = 0
+                Isread = 0,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now
             };
             db.Reports.Add(report);
 
@@ -32,7 +34,9 @@ namespace KnowledgeManagement.Repository.Service
                 NotificationType = 2,
                 IsRead = 0,
                 PostId = spam.PostId,
-                UserId = spam.UserId
+                UserId = spam.UserId,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now
             };
             db.Notifications.Add(notif);
             db.SaveChanges();

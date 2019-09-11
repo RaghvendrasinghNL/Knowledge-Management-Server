@@ -5,14 +5,14 @@ namespace KnowledgeManagement.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<KnowledgeManagement.Models.Entities.KnowledgeManagementEntities>
+    internal sealed class Configuration : DbMigrationsConfiguration<KnowledgeManagement.Models.Entities.KnowledgeManagementContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(KnowledgeManagement.Models.Entities.KnowledgeManagementEntities context)
+        protected override void Seed(KnowledgeManagement.Models.Entities.KnowledgeManagementContext context)
         {
             //  This method will be called after migrating to the latest version.
 

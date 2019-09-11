@@ -2118,7 +2118,7 @@
 
 % ,
 
-1 7ÿ
+1 7¿
 ôC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Business Layer\Interface\IAssociatedTagsService.cs
 
 
@@ -2127,11 +2127,7 @@
 
  
 
-2 <
-
-+ <
-
-A GÈ
+2 <È
 íC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Business Layer\Interface\ICommentService.cs
 
 
@@ -2272,20 +2268,17 @@
 5 9? C
 
 2 9
-> DO Uµ
+> DO Uâ
 ñC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Business Layer\Service\AssociatedTagsService.cs
 
- &(
-, 1   %E J
+ &
+, 1   %
 
  $
 9 > 
 
  +
-? I8 B
-
-8 I
-N T] c⁄
+? I8 B⁄
 èC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Business Layer\Service\CommentService.cs
 
  2
@@ -2339,23 +2332,23 @@
 , 2 "Œ
 çC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Business Layer\Service\LoginService.cs
 
- 
-# ( 22 
+ 
+# ( 33 
 
- 
-' , 
+ 
+' , 
 
-- >
-F K_ d(
-+ 1 !"" !&&5 ;
-+ - !!!& (
- &&B C++ 
-!! ** '
-&& ))  
-'' %-- 
+- >
+F K_ d(
++ 1 !## !''5 ;
+' ) !""& (
+ ''B C,, 
+"" ++ '
+'' **  
+(( %.. 
 
-00 
-00 %22 ê
+11 
+11 %33 ê
 ùC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Business Layer\Service\ModeratorNotificationService.cs
 
  -
@@ -2439,23 +2432,17 @@
 77- 1(
 77F I>> FF. 1QQ" %
 FF GG 
-WW YY: <ZZ3 5˘
+WW YY: <ZZ3 5Å
 éC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Controllers\AssociatedTagsController.cs
 
- )(
-0 3 "" 00 
+ )
+0 3 "" 
 
  '
 ? D 
 
 - 1
-O \""' 4
-
-))- 0
-++ ..@ H
-,, ..N T//% +
--- ..5 :
-// 00( .¸
+O \""' 4¸
 áC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Controllers\CommentController.cs
 
  "2
@@ -2743,7 +2730,143 @@ uC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagem
 
  "
 
- (€
+ („
+åC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Migrations\201909100940477_initial.cs
+
+  
+
+ <
+  " #  !$ %$ %
+ ! "
+' (, -
+  2
+   !" #$ %$ %
+!! !!! "(
+%% '' ((! "))  !
+++ ++! "
+,,( ),,- .
+--' (--, -
+.. .. 
+// // n
+33 55! "66  !77& '88# $99! "::% &;;$ %<<$ %==$ %>>$ %
+@@ @@! "
+AA, -AA1 2
+BB( )BB- .
+CC CC 
+DD DD 2
+HH JJ% &KK  !LL$ %MM$ %
+OO OO! "Z
+SS UU$ %VV" #WW& 'XX! "YY! "ZZ$ %[[$ %\\$ %
+^^ ^^! "
+__( )__- .
+``( )``- .
+aa aa 
+bb bb F
+ff hh# $ii" #jj! "kk$ %ll$ %mm$ %
+oo oo! "
+pp+ ,pp0 1
+qq( )qq- .
+rr rr 
+ss ss t
+ww yy! "zz$ %{{# $||" #}}# $~~# $& '
+ÄÄ  !
+ÅÅ$ %
+ÇÇ$ %
+
+ÑÑ 
+ÑÑ! "H
+
+àà 
+ää! "
+ãã! "
+åå! "
+çç$ %
+éé$ %
+
+êê 
+êê! "
+
+ëë( )
+ëë- .
+
+íí( )
+íí- .
+
+ìì 
+ìì 
+
+îî 
+îî `
+
+òò 
+öö) *
+õõ+ ,
+úú! "
+ùù! "
+ûû! "
+üü$ %
+††$ %
+
+¢¢ 
+¢¢! "
+
+££( )
+££- .
+
+§§( )
+§§- .
+
+•• 
+•• 
+
+¶¶ 
+¶¶ `
+
+™™ 
+¨¨# $
+≠≠" #
+ÆÆ! "
+ØØ! "
+∞∞! "
+±±$ %
+≤≤$ %
+
+¥¥ 
+¥¥! "
+
+µµ( )
+µµ- .
+
+∂∂( )
+∂∂- .
+
+∑∑ 
+∑∑ 
+
+∏∏ 
+∏∏ 
+
+ºº !€
+àC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Migrations\201909101014332_new.cs
+
+ 
+
+ 
+
+ !
+. /3 4
+. /3 4µ
+ÇC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Migrations\Configuration.cs
+
+ '
+
+
+
+ 
+
+  $
+
+d k€
 ÑC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\AddPostRequestModel.cs
 
  $
@@ -2800,7 +2923,238 @@ uC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagem
 
  
 
- œ
+ ∆
+áC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\Entities\AssociatedTag.cs
+
+		 
+
+ 
+
+ 
+
+ 
+
+ ´
+ÑC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\Entities\BaseEntity.cs
+
+ 
+
+
+
+ !
+
+ !µ
+ÇC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\Entities\Category.cs
+
+		 
+
+ 
+
+ 
+
+) .¸
+ÅC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\Entities\Comment.cs
+
+		  
+
+ 
+
+ 
+
+ *
+
+ 
+
+ 
+
+ '
+
+  
+
+  
+
+2 @ﬁ
+áC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\Entities\CommentReport.cs
+
+		 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ '
+
+  ¸
+ìC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\Context\KnowledgeManagementContext.cs
+ +F `
+
+ )
+
+  /2
+? K   ! -
+
+$ 2
+
+ )
+
+ &
+
+  
+
+  # 0
+
+!!  
+
+"" &
+
+## $
+
+$$ 
+
+%%  
+
+&&$ 2»
+~C:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\Entities\Like.cs
+
+		 
+
+ 
+
+ 
+
+ 
+
+  
+
+  È
+ÜC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\Entities\Notification.cs
+
+		 
+
+ !
+
+ #
+
+ 
+
+ 
+
+ 
+
+  
+
+  ¿
+~C:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\Entities\Post.cs
+
+		 
+
+ 
+
+ 
+
+ !
+
+ '
+
+ 
+
+ 
+
+ 
+
+ 
+
+  (
+
+, 4
+
+1 >
+
++ 2
+
+, 4
+
+) .
+
+    Ã
+ÅC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\Entities\PostTag.cs
+
+		 
+
+ 
+
+ 
+
+ 
+
+ 
+
+  „
+ÄC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\Entities\Report.cs
+
+		 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+  
+
+  ª
+}C:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\Entities\Tag.cs
+
+		 
+
+ 
+
+ 
+
+, 4
+
+2 A¥
+~C:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\Entities\User.cs
+
+ 
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ &
+
+ (
+
+ 
+
+, 4
+
+) .
+
+1 >
+
+) .
+
++ 2
+
+2 @œ
 ÑC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\GetPostRequestModel.cs
   
 
@@ -3015,7 +3369,7 @@ zC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagem
 
  &
 
-+ 1—
++ 1π
 íC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Interface\IAssociatedTagsData.cs
 
 
@@ -3024,11 +3378,7 @@ zC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagem
 
  
 
-2 <
-
-& 7
-
-< B‚
+2 <‚
 ãC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Interface\ICommentData.cs
 
 
@@ -3155,135 +3505,122 @@ zC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagem
 ( /É
 àC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\AddTagsData.cs
 
-
-
- 2
-/ 1   //$ &
+ 2
+, .   00$ &
 
- 2
-) -$ ( "   !! 
-   (
-      !! "
+ 2
+) -$ ( "!! "" 
+   (
+  !!  "" "
 
-,,& -
+--& -
 
-,,2 8
-// :: Ó
+--2 8
+00 ;; ﬁ
 èC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\AssociatedTagsData.cs
 
-
-
- #<
-1 3% '   !! ..$ &33( *
+ #(
+, .% '## $$ 
 
- %
-9 C" ,
-  - 3(
- ) " "  + 9
- + ,
-
-++, =
-
-++B H
-.. 11 $
-00" -== ?? 
-11 441 2
-33 ==% +
-;;3 4;;8 9’
+ %
+9 C" ,
+  , 2<
+ ' ! !   !!! !##* 7
+ * +È
 àC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\CommentData.cs
 
- d
-/ 1$ &$ &%%) +@@ JJ KK QQ  YY ZZ 
+ d
+, .$ &$ &&&) +CC PP QQ WW  aa bb 
 
-" 0
-5 7, .
- ##' -** 
-##" #%% &&1 2
+" 0
+5 7, .
+ $$' -++ 
+$$" #&& ''1 2
 
-66 <
-66, 3::  ;; !==  GG  HH  
-88 @@ 
-CC JJ! %
+77 <
+77, 3;;  << !>>  JJ  KK  
+99 CC 
+FF PP! %
 
-OO !(
-OO/ 6QQA HRR& -WW" )2
-QQ RR WW XX YY  
-QQ0 1QQ5 6£
+UU !(
+UU/ 6WWA HXX& -]]" )F
+WW XX ]] ^^ __ `` aa  
+WW0 1WW5 6£
 
 éC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\ElasticSearchData.cs
 
- "|
-/ 111& (22' )33' )gg+ -hh+ -ii  "jj& (ww* ,xx* ,
-ÇÇ( *
-ÑÑ& (
-  0 .
-  )FF9 BRRQ Z
-  (FFI QSS (
- .(( FF  RR &
- = @
- (  
+ "|
+, .22& (33' )44' )hh+ -ii+ -jj  "kk& (xx* ,yy* ,
+ÉÉ( *
+ÖÖ& (
+  0 .
+  )GG9 BSSQ Z
+  (GGI QTT (
+ .)) GG  SS &
+ = @
+ (  
 
-&& 
-&&& /((7 @
-&&8 @((G O
-&&U Y(($ (((T X
-((* +((/ 0
+'' 
+''& /))8 A
+''8 @))H P
+''U Y))% )))U Y
+))+ ,))0 1
 
-.. 
-11 ;;" +
-;; DD !
-@@, -@@1 2
-AA+ ,AA0 1
-DD FF) *FFV W
-FF, -FF1 2
-OO) 6uu '
-OO> CQQ) .
-OOR VWW? C
-QQ  VV0 =
-RR \\! $
-RRD ERRI J
-TT TT 
-TT! "TT& '
-VV VV 
-VV" #VV' (
+// 
+22 <<" +
+<< EE !
+AA, -AA1 2
+BB+ ,BB0 1
+EE GG) *GGV W
+GG, -GG1 2
+PP) 6vv '
+PP> CRR) .
+PPR VXX? C
+RR  WW0 =
+SS ]]! $
+SSD ESSI J
+UU UU 
+UU! "UU& '
 WW WW 
-WW  WW$ %
-WW, -WW1 2
-ZZ ^^ `` 
-\\ ^^  
-dd 9uu/ K
-ddA Hkk/ 6
+WW" #WW' (
+XX XX 
+XX  XX$ %
+XX, -XX1 2
+[[ __ aa 
+]] __  
+ee 9vv/ K
+eeA Hll/ 6
 
-rr& 5
-rr= Buu( -uuL Q
-uu vv !
-vv yy  '
-vv) *vv. /
-ww 
-áá 
+ss& 5
+ss= Bvv( -vvL Q
+vv ww !
+ww zz  '
+ww) *ww. /
+xx 
+àà 
 
-ÇÇ: ;
-ÇÇ? @
+ÉÉ: ;
+ÉÉ? @
 
-ÉÉ& '
-ÉÉ+ ,
+ÑÑ& '
+ÑÑ+ ,
 
-ÑÑ5 6
-ÑÑ: ;Ç
+ÖÖ5 6
+ÖÖ: ;Ç
 âC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\HomePageData.cs
 
  Z
-8 :$ &$ &O Q&&( *((& ())& (// NN+ -
+4 6$ &$ &O Q&&( *((& ())& (// NN+ -
 
  %
 
 - 9*
 > D
-á ç//D J77. 4
+á ç//D J77/ 5
 J T0 :
-b m77B M
-	z Ñ776 @
- --! '77O U
+b m77C N
+	z Ñ777 A
+ --! '77P V
 ^ _c d{ |
 &&: ;&&? @
 ''& '''+ ,
@@ -3292,7 +3629,7 @@ zC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagem
 -- //Z ^11 33 
 // 00 
 //3 4//8 9//N O
-;;. I77 -
+;;. I77 .
 ;;N TOO3 9
 ;;a k>> KK 3
 	;;y ÑAA EE $\\ `` $>
@@ -3305,160 +3642,148 @@ zC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagem
 TT WW, -
 VV "YY$ .
 ^^4 5^^9 :
-bb4 5bb9 :Ó
+bb4 5bb9 :™
 ÖC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\LikeData.cs
 
-
-
- Ç
-0 2     . 0(( )) 00 11 22- /77 
+ Ç
+, .       . 0-- .. 77 88 99. 0>> 
 
- ™
-, 18 =T Y # # 6 ;&&# (''# (.. #// #22 33C H77C H77_ d99 ;; 
-    %
-' (, -H I<
- !    % )(
-%% && '' (( &<
-++ !,, -- .. // 00% )
-77 88 
-772 3777 877S Tó
+ ™
+, 18 =T Y # #   !!6 ;))# (**# (33 #44 #99 ::6 ;>>D I>>` e@@ BB 
+    %
+' (, -H IP
+ !      % )<
+(( )) ** ++ ,, -- &P
+00 !11 22 33 44 55 66 77% )
+>> ?? 
+>>3 4>>8 9>>T Uó
 ÜC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\LoginData.cs
 
-
-
- (
-8 :    
+ (
+4 6    
 
- 
- %> D
-    
-- .2 3ù
+ 
+ %> D
+    
+- .2 3ù
 ñC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\ModeratorNotificationData.cs
 
-
-
- *2
-/ 1 # %/ 1  / 1
+ *2
+, . # %  / 1!!/ 1
 
-' ?
-D J@ F
- + /
-/ 04 5J K
-  #
-$ *,, .. 
- !!7 8%%4 5
- !,,  -ì
+' ?
+D J@ F
+ + /
+/ 04 5J K
+  #
+$ *-- // 
+ ""7 8&&4 5
+   !--  -ß
 
 áC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\MyPostData.cs
 
- ﬁ
-/ 1& (""$ &##$ &$$% '??% 'EE% 'KK% 'OO \\ ee ff kk  "qq rr 
-ÜÜ 
-àà 
-öö 
-õõ 
-¢¢ 
-££ 
-# %
-¶¶ 
+ ﬁ
+, .& (##$ &$$$ &%%% '@@% 'FF% 'LL% 'PP ]] hh ii nn  "tt uu 
+ââ 
+ãã 
+üü 
+†† 
+®® 
+©© 
+" $
+¨¨ 
 
-( 7(
-< B" (%%, 2OOD J
- 44* 2
-"" == $UU 
-88/ 0884 5
-991 2996 7d
-== ?? @@- .EE FF- .KK LL- .OOZ [QQ SS 
-OO PP 
-OO3 4OO8 9OON O
+( 7(
+< B  " (&&, 2PPD J
+ 55* 2
+## >> $VV 
+99/ 0994 5
+::1 2::6 7d
+>> @@ AA- .FF GG- .LL MM- .PPZ [RR TT 
+PP QQ 
+PP3 4PP8 9PPN O
 
-YY F
-YY- 5\\; C]]# +cc# +hh &kkS [oo& .2
-\\ ]] cc dd ee 
-\\* +\\/ 0
-hh kkB Cpp% &(
-jj  oo pp qq$ ,
-kk mm 
-kk2 3kk7 8kkG H
+ZZ F
+ZZ- 5]]; C^^# +dd# +kk &nnS [rr& .F
+]] ^^ dd ee ff gg hh 
+]]* +]]/ 0
+kk nnB Css% &(
+mm  rr ss tt$ ,
+nn pp 
+nn2 3nn7 8nnG H
 
-ÑÑ $
+áá $
 
-ÑÑ) /
-ÜÜ= C
+áá) /
+ââ= C
 
-ÜÜ 
-áá 
+ââ 
+ää 
 
-ÜÜ, -
-ÜÜ1 2
+ââ, -
+ââ1 2
 
-çç T
+êê T
 
-çç3 :
-íí 
-îî %
-ïï  
-ññ $
-òò #
-ùù  '$
+êê3 :
+ïï 
+óó %
+òò  
+ôô $
+ùù #
+¢¢  '$
 
-êê 
-öö 
-††" &
+ìì 
+üü 
+••" &
 
-ùù 
-°°! $0
+¢¢ 
+¶¶! $0
 
-üü  
-†† 
-°° 
-¢¢  (ä
+§§  
+•• 
+¶¶ 
+®®  (ä
 çC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\NotificationData.cs
 
-
-
- !2
-/ 1 # %/ 1  / 1
+ !2
+, . # %  / 1!!/ 1
 
-' :
-? E@ F
- + /
-/ 04 5
-  #
-$ *++ -- 
- !!7 8&&4 5
- !++  -ˇ
+' :
+? E@ F
+ + /
+/ 04 5
+  #
+$ *,, .. 
+ ""7 8''4 5
+   !,,  -ˇ
 éC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\ReportcommentData.cs
 
-
-
- "
-/ 1 
+ "
+, . 
 
- !
-5 B$ 1& 3
- '  ñ
+ !
+5 B$ 1& 3
+ '  ñ
 ÖC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\SpamData.cs
 
-
-
- d
-/ 1 $$ %% .. 00 22 <<! #>>! #??! #
+ d
+, . )) ** 33 55 77 AA! #CC! #DD! #
 
- <
-) -   !! "" 
-  !
- $$! &
+ <
+) -   $$ %% 
+  !
+   ))! &
 
-,, $
-,,) /..8 >00= C
-.. // 
-..' (.., -
-00 11 
-00, -001 2
+11 $
+11) /338 >55= C
+33 44 
+33' (33, -
+55 66 
+55, -551 2
 
-99/ 6
-<< MM º
+>>/ 6
+AA RR º
 xC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Web\JwtManager.cs
 
  

@@ -11,7 +11,7 @@ namespace KnowledgeManagement.Repository.Service
 {
     public class CommentData : ICommentData
     {
-       readonly KnowledgeManagementEntities db = new KnowledgeManagementEntities();
+        readonly KnowledgeManagementContext db = new KnowledgeManagementContext();
 
         /// <summary>
         /// This will fetch the comment on the post by the post id 
@@ -24,12 +24,12 @@ namespace KnowledgeManagement.Repository.Service
             var result = (from c in db.Comments
                           join u in db.Users on c.UserId equals u.UserId
                           where c.PostId == id && c.IsDeleted == false
-                          
+
                           select new CommentModel
                           {
                               PostId = c.PostId,
                               Content = c.Content,
-                             UserId = c.UserId,
+                              UserId = c.UserId,
                               Name = u.FirstName,
                               CommentDate = c.CommentDate
                           }).ToList();
@@ -50,7 +50,7 @@ namespace KnowledgeManagement.Repository.Service
         /// </summary>
         /// <param name="comment">comment is the object for CommentModel 
         /// and require Content, userid, date, postid, name and count  </param>
-        
+
 
         public void AddComment(CommentModel comment)
         {
@@ -60,6 +60,8 @@ namespace KnowledgeManagement.Repository.Service
                 Content = comment.Content,
                 CommentDate = DateTime.Now,
                 PostId = comment.PostId,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now,
                 IsDeleted = false
             };
             db.Comments.Add(obj);
@@ -70,7 +72,10 @@ namespace KnowledgeManagement.Repository.Service
                 NotificationType = 0,
                 IsRead = 0,
                 PostId = comment.PostId,
-                UserId = comment.UserId
+                UserId = comment.UserId,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now
+
             };
             db.Notifications.Add(obj1);
             db.SaveChanges();
@@ -87,6 +92,8 @@ namespace KnowledgeManagement.Repository.Service
 
             commentedit.Content = comment.Content;
             commentedit.CommentDate = DateTime.Now;
+            commentedit.CreatedAt = DateTime.Now;
+            commentedit.UpdatedAt = DateTime.Now;
             db.Entry(commentedit).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
             return true;

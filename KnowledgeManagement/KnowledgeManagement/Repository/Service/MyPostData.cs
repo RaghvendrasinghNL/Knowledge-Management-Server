@@ -14,9 +14,9 @@ namespace KnowledgeManagement.Repository.Service
 {
     public class MyPostData : IMyPostData
     {
-       readonly KnowledgeManagementEntities db = new KnowledgeManagementEntities();
-         private ElasticSearchData es;
-       
+        readonly KnowledgeManagementContext db = new KnowledgeManagementContext();
+        private ElasticSearchData es;
+
 
         /// <summary>
         /// This will fetch recent post assosiated with a particular user and will show 
@@ -27,7 +27,7 @@ namespace KnowledgeManagement.Repository.Service
         /// <returns>A List of posts with all the parameters </returns>
         public IEnumerable<MyPostModel> MySeeRecentPost(int UserId)
         {
-          
+
             var username = (from h in db.Users
                             where UserId == h.UserId
                             select h.FirstName).FirstOrDefault();
@@ -35,7 +35,7 @@ namespace KnowledgeManagement.Repository.Service
             var result = (from l in db.Posts
                           join p in db.PostTags on l.PostId equals p.PostId
                           join ta in db.Tags on p.TagId equals ta.TagId
-                          where l.UserId == UserId && l.IsDeleted 
+                          where l.UserId == UserId && l.IsDeleted
                           orderby l.PostDate descending
                           group p by p.PostId into g
                           let query = g.FirstOrDefault()
@@ -43,7 +43,7 @@ namespace KnowledgeManagement.Repository.Service
                           let Title = query.Post
                           let Description = query.Post
                           let PostDate = query.Post
-                          
+
 
 
 
@@ -64,19 +64,19 @@ namespace KnowledgeManagement.Repository.Service
                 x.Image = (from l in db.Posts
                            where l.PostId == x.PostId
                            select l.UserImage).FirstOrDefault();
-            
 
-           
+
+
                 x.Likes = (from k in db.Likes
                            where k.PostId == x.PostId
                            select k.UserId).Count();
-            
 
-            
+
+
                 x.Count = (from m in db.Comments
                            where m.PostId == x.PostId
                            select m.PostId).Count();
-           
+
                 var data = db.Likes.FirstOrDefault(l => l.UserId == UserId && l.PostId == x.PostId);
                 if (data == null)
                     x.IsLiked = 0;
@@ -99,6 +99,8 @@ namespace KnowledgeManagement.Repository.Service
 
             postedit.Description = editPost.Description;
             postedit.PostDate = DateTime.Now;
+            postedit.CreatedAt = DateTime.Now;
+            postedit.UpdatedAt = DateTime.Now;
             db.Entry(postedit).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
 
@@ -114,7 +116,7 @@ namespace KnowledgeManagement.Repository.Service
                     db.PostTags.Add(posttags);
                     db.SaveChanges();
                 }
-                
+
             }
 
             return true;
@@ -129,7 +131,7 @@ namespace KnowledgeManagement.Repository.Service
         /// </summary>
         /// <param name="PostId">It will take postId as the parameter and will change the value of isdeleted 
         /// field coresponding to that </param>
-        
+
         public void DeleteRecentPost(int PostId)
         {
             var postdelete = db.Posts.Where(s => s.PostId == PostId).FirstOrDefault();
@@ -138,7 +140,7 @@ namespace KnowledgeManagement.Repository.Service
 
         }
 
-        
+
         public void AddNewPost(AddPostRequestModel AddPost)
         {
 
@@ -150,6 +152,8 @@ namespace KnowledgeManagement.Repository.Service
                 UserId = AddPost.UserId,
                 CategoryId = AddPost.CategoryId,
                 IsDeleted = true,
+                UpdatedAt = DateTime.Now,
+                CreatedAt = DateTime.Now,
                 UserImage = AddPost.Image
             };
             db.Posts.Add(post);
@@ -160,11 +164,12 @@ namespace KnowledgeManagement.Repository.Service
                 PostTag posttags = new PostTag();
                 posttags.PostId = post.PostId;
                 posttags.TagId = res;
+
                 db.PostTags.Add(posttags);
                 db.SaveChanges();
             }
 
-             es.GetSqlData();
+            es.GetSqlData();
 
         }
     }

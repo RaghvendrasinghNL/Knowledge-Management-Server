@@ -69,9 +69,9 @@
 ëC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Areas\HelpPage\XmlDocumentationProvider.cs8 (08@HR 0=0;5=0;10=0;20=1;30=0;60=0;90=0Z1=5;2=6;4=1;6=0;8=0;10=0;12=0jéìörü
  !"#$&'()*,-./023456789:;<=>?@ACDFGHIJLMNOPQRSUVWXY[\]^_`abdeghijklmnoqrtuvwxyz{|}ÄÇÉÑÖÜáâäãåçèêëîïñóòôõúûü†°xÇC #()./578:;<>CHINOPQRWX^`adijkmnqvxy{ÑÖÜãåèêëîïñòõûÏ
 íC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Business Layer\Interface\IAddTagsService.cs(0R 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=0;2=0;4=0;6=0;8=0;10=0;12=0r	
-Û
-ôC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Business Layer\Interface\IAssociatedTagsService.cs(0R 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=0;2=0;4=0;6=0;8=0;10=0;12=0r	
-Ì
+Ú
+ôC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Business Layer\Interface\IAssociatedTagsService.cs(0R 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=0;2=0;4=0;6=0;8=0;10=0;12=0r	
+Ì
 íC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Business Layer\Interface\ICommentService.cs(0R 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=0;2=0;4=0;6=0;8=0;10=0;12=0r	
 Ú
 òC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Business Layer\Interface\IElasticSearchService.cs(0R 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=0;2=0;4=0;6=0;8=0;10=0;12=0r	
@@ -93,9 +93,9 @@
 èC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Business Layer\Interface\ISpamService.cs(0R 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=0;2=0;4=0;6=0;8=0;10=0;12=0r	
 Ü
 èC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Business Layer\Service\AddTagsService.cs (08@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=3;2=0;4=0;6=0;8=0;10=0;12=0r
-Çç
-ñC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Business Layer\Service\AssociatedTagsService.cs (08@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=3;2=0;4=0;6=0;8=0;10=0;12=0r
- Çä
+Çà
+ñC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Business Layer\Service\AssociatedTagsService.cs (08@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=2;2=0;4=0;6=0;8=0;10=0;12=0r
+Çä
 èC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Business Layer\Service\CommentService.cs (08@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=4;2=0;4=0;6=0;8=0;10=0;12=0r	
  !"#Ç Ñ
 éC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Business Layer\Service\ElasticSearch.cs (08@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=3;2=0;4=0;6=0;8=0;10=0;12=0r	
@@ -103,9 +103,9 @@
 êC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Business Layer\Service\HomePageService.cs (08@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=2;2=0;4=0;6=0;8=0;10=0;12=0jr	
 "&')*+Ç'˝
 åC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Business Layer\Service\LikeService.cs (08@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=2;2=0;4=0;6=0;8=0;10=0;12=0r	
-Çù
-çC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Business Layer\Service\LoginService.cs	 (08@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=3;2=0;4=0;6=0;8=0;10=0;12=0r,	
-!"#&'()*+,-.012345Ç!"#&-2é
+Çû
+çC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Business Layer\Service\LoginService.cs	 (08@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=3;2=0;4=0;6=0;8=0;10=0;12=0r-	
+ "#$'()*+,-./123456Ç "#$'.3é
 ùC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Business Layer\Service\ModeratorNotificationService.cs (08@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=2;2=0;4=0;6=0;8=0;10=0;12=0r	
 Çè
 éC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Business Layer\Service\MyPostService.cs (08@HR 0=0;5=1;10=0;20=0;30=0;60=0;90=0Z1=5;2=0;4=0;6=0;8=0;10=0;12=0r#
@@ -117,11 +117,9 @@
 åC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Business Layer\Service\SpamService.cs (08@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=4;2=0;4=0;6=0;8=0;10=0;12=0r	
  !"#Ç ø
 áC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Controllers\AddTagsController.cs (08@HR 0=0;5=1;10=0;20=0;30=0;60=0;90=0Z1=1;2=2;4=0;6=0;8=0;10=0;12=0rJ	
- !"#$&'()*+,-./0136789:<>?@ADEFGHKNOPQSUVWXYZ[\bdxÇ&'()*+/0<>@FGKQYZõ
-éC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Controllers\AssociatedTagsController.cs
- (08@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=3;2=0;4=0;6=0;8=0;10=0;12=0r*	
- "#$()*+,-./01345Ç
-"#+,-./01„
+ !"#$&'()*+,-./0136789:<>?@ADEFGHKNOPQSUVWXYZ[\bdxÇ&'()*+/0<>@FGKQYZâ
+éC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Controllers\AssociatedTagsController.cs (08@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=2;2=0;4=0;6=0;8=0;10=0;12=0r	
+ "#$'(Ç"#„
 áC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Controllers\CommentController.cs (08@HR 0=0;5=1;10=0;20=0;30=0;60=0;90=0Z1=2;2=1;4=1;6=0;8=0;10=0;12=0j
  !"#56789rZ	
 $%&'(*+,-./0123:;<=>?@ABCEFGHIJKLMNOPQRSTUVWY[\]^_acdefghijklmnoprsxÇ*+,01?@ABCEGIKOPUVacdfimn¢
@@ -158,7 +156,15 @@
  !#$&')*+/01234679:<=?@FGLMQRSTUVXYZ[]acdfgijlmnoprstvwyz}~x
 Ç& #$&'*1234679:<=?@FGLUZ[afinovwyÍ
 uC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Global.asax.cs (08@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=1;2=0;4=0;6=0;8=0;10=0;12=0r
-Çı
+Ç™
+åC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Migrations\201909100940477_initial.cs4 (08@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=2;2=0;4=0;6=0;8=0;10=0;12=0r¡	
+ !#$%&'()*+,-./123456789:;<=>?@ABCDFGHIJKLMNOQRSTUVWXYZ[\]^_`abdefghijklmnopqrsuvwxyz{|}~ÄÅÇÉÑÜáàâäãåçéèêëíìîñóòôöõúùûü†°¢£§•¶®©™´¨≠ÆØ∞±≤≥¥µ∂∑∏∫ºΩæø¿¡¬√ƒ≈∆«»… ÀÃÕŒœ–—“”‘’÷◊ÿŸ⁄€‹›ﬁﬂ‡·‚„‰ÂÊÁËÈÇÇ
+!#%'()+,-./1356789:;<=>@ABCDFHJKLMOQSUVWXYZ[\^_`abdfhijklmopqrsuwyz{|}~ÄÅÇÑÜàäãåçéêëíìîñòöõúùûü†¢£§•¶®™¨≠ÆØ∞±≤¥µ∂∑∏æø¿¡¬√ƒ≈∆«»… ÀÃÕŒœ–—“”‘’÷◊ÿŸ⁄€‹›ﬁﬂ‡·‚„‰ÂÊ˜
+àC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Migrations\201909101014332_new.cs (08@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=2;2=0;4=0;6=0;8=0;10=0;12=0r	
+Ç
+Ó
+ÇC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Migrations\Configuration.cs 8@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=2;2=0;4=0;6=0;8=0;10=0;12=0jr	
+Çı
 ÑC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\AddPostRequestModel.cs (08@HR 0=0;5=0;10=1;20=0;30=0;60=0;90=0Z1=12;2=0;4=0;6=0;8=0;10=0;12=0j	r	
 ‡
 ÄC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\AssociatedModel.cs (08@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=4;2=0;4=0;6=0;8=0;10=0;12=0r	
@@ -167,7 +173,43 @@ uC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagem
 }C:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\CommentModel.cs (08@HR 0=0;5=0;10=1;20=0;30=0;60=0;90=0Z1=14;2=0;4=0;6=0;8=0;10=0;12=0j
 r	 Í
 ~C:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\EditPostModel.cs (08@HR 0=0;5=1;10=0;20=0;30=0;60=0;90=0Z1=8;2=0;4=0;6=0;8=0;10=0;12=0j	
-r	Û
+r	Î
+áC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\Entities\AssociatedTag.cs (08@HR 0=0;5=1;10=0;20=0;30=0;60=0;90=0Z1=8;2=0;4=0;6=0;8=0;10=0;12=0r	
+‰
+ÑC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\Entities\BaseEntity.cs (08@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=4;2=0;4=0;6=0;8=0;10=0;12=0r	
+Â
+ÇC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\Entities\Category.cs (08@HR 0=0;5=1;10=0;20=0;30=0;60=0;90=0Z1=6;2=0;4=0;6=0;8=0;10=0;12=0r	
+Î
+ÅC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\Entities\Comment.cs (
+0
+8@HR 0=0;5=0;10=1;20=0;30=0;60=0;90=0Z1=18;2=0;4=0;6=0;8=0;10=0;12=0r	
+Ó
+áC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\Entities\CommentReport.cs (08@HR 0=0;5=0;10=1;20=0;30=0;60=0;90=0Z1=12;2=0;4=0;6=0;8=0;10=0;12=0r	
+ò
+ìC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\Context\KnowledgeManagementContext.cs (08@HR 0=0;5=0;10=0;20=1;30=0;60=0;90=0Z1=24;2=0;4=0;6=0;8=0;10=0;12=0jr#	
+ !"#$%&()Ç„
+~C:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\Entities\Like.cs 
+(08
+@
+H
+R 0=0;5=0;10=1;20=0;30=0;60=0;90=0Z1=10;2=0;4=0;6=0;8=0;10=0;12=0r	
+Ó
+ÜC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\Entities\Notification.cs (08@HR 0=0;5=0;10=1;20=0;30=0;60=0;90=0Z1=14;2=0;4=0;6=0;8=0;10=0;12=0r	
+Ì
+~C:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\Entities\Post.cs (08@HR 0=0;5=0;10=0;20=0;30=1;60=0;90=0Z1=30;2=0;4=0;6=0;8=0;10=0;12=0r	
+ !"Á
+ÅC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\Entities\PostTag.cs 
+(08
+@
+H
+R 0=0;5=0;10=1;20=0;30=0;60=0;90=0Z1=10;2=0;4=0;6=0;8=0;10=0;12=0r	
+Ë
+ÄC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\Entities\Report.cs (08@HR 0=0;5=0;10=1;20=0;30=0;60=0;90=0Z1=14;2=0;4=0;6=0;8=0;10=0;12=0r	
+‡
+}C:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\Entities\Tag.cs (08@HR 0=0;5=1;10=0;20=0;30=0;60=0;90=0Z1=8;2=0;4=0;6=0;8=0;10=0;12=0r	
+Í
+~C:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\Entities\User.cs (08@HR 0=0;5=0;10=0;20=1;30=0;60=0;90=0Z1=28;2=0;4=0;6=0;8=0;10=0;12=0r	
+ Û
 ÑC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\GetPostRequestModel.cs (	0	8@HR 0=0;5=0;10=1;20=0;30=0;60=0;90=0Z1=12;2=0;4=0;6=0;8=0;10=0;12=0r	
  "#‰
 C:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Models\LikedPostModel.cs (08@HR 0=0;5=1;10=0;20=0;30=0;60=0;90=0Z1=8;2=0;4=0;6=0;8=0;10=0;12=0j	
@@ -201,9 +243,9 @@ zC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagem
 ÅC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Properties\AssemblyInfo.csR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=0;2=0;4=0;6=0;8=0;10=0;12=0j !r	
 "#Â
 ãC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Interface\IAddTagsData.cs(0R 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=0;2=0;4=0;6=0;8=0;10=0;12=0r	
-Ï
-íC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Interface\IAssociatedTagsData.cs(0R 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=0;2=0;4=0;6=0;8=0;10=0;12=0r	
-Ê
+Î
+íC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Interface\IAssociatedTagsData.cs(0R 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=0;2=0;4=0;6=0;8=0;10=0;12=0r	
+Ê
 ãC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Interface\ICommentData.cs(0R 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=0;2=0;4=0;6=0;8=0;10=0;12=0r	
 Î
 ëC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Interface\IElasticSearchData.cs(0R 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=0;2=0;4=0;6=0;8=0;10=0;12=0r	
@@ -223,30 +265,32 @@ zC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagem
 ëC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Interface\IReportcommentData.cs(0R 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=0;2=0;4=0;6=0;8=0;10=0;12=0r	
 „
 àC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Interface\ISpamData.cs(0R 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=0;2=0;4=0;6=0;8=0;10=0;12=0r	
-°
-àC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\AddTagsData.cs (08@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=1;2=1;4=0;6=0;8=0;10=0;12=0r/	
- !"#$%&'*,-/012346:;>?xÇ !"&/23:Ø
-èC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\AssociatedTagsData.cs (08@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=0;2=2;4=0;6=0;8=0;10=0;12=0r2	
- !#%)+,./0123456789:;<=>?@ABxÇ !./134567;=?‘
-àC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\CommentData.cs (08@HR 0=0;5=1;10=0;20=0;30=0;60=0;90=0Z1=1;2=2;4=0;6=0;8=0;10=0;12=0j-./0123rE	
- !"#$%&')*+6789:;<=>?@CDEFGHIJKMOPQRSTUWXYZ[\^_xÇ !#%&'*:;<=@GHJKQRTWXYZ[ù
-éC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\ElasticSearchData.cs (08	@	H	R 0=0;5=1;10=0;20=0;30=0;60=0;90=0Z1=3;2=3;4=0;6=0;8=0;10=0;12=0j !"#$%+,-JKLMNrm	
-&'()./123456789;<=>?@ABDEFGHOPQRSTUVWXZ\]^_`adeghijklmnrsuvwxyz{|}~ÄÅÇÉÑÜáàãçxÇ2(123678;<?@ADFRTVW\^`ghijkluvwxy|}~ÄÅÇÉÑá„
-âC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\HomePageData.cs (08@HR 0=0;5=0;10=1;20=0;30=0;60=0;90=0Z1=0;2=0;4=0;6=1;8=1;10=0;12=0j%rT
- !"#&'()*-./0123479;<>?ABCDEFGHIJKLNOPQRTUVWXYZ\]^_`abcefghijxÇ' !"#&'()-/0137>ACEGIKNOTVWY\^`beg∑
-ÖC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\LikeData.cs (08@HR 0=0;5=1;10=0;20=0;30=0;60=0;90=0Z1=0;2=0;4=1;6=0;8=0;10=0;12=0r9	
- "#$%&'()+,-./012345789:;>ADExÇ&'(),-./01234789;˜
-ÜC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\LoginData.cs (08@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=1;2=0;4=0;6=0;8=0;10=0;12=0r	
-Çß
-ñC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\ModeratorNotificationData.cs (08@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=0;2=1;4=0;6=0;8=0;10=0;12=0jr#	
- !"#$%&(,-./01xÇ !$%&,.ﬂ
-áC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\MyPostData.cs( (08@HR 0=0;5=0;10=1;20=0;30=0;60=0;90=0Z1=1;2=1;4=2;6=0;8=0;10=0;12=0j1~ÄÅÇrñ	
- "#$%&'()*+,23456789:;=>?@AEFGKLMOPQRSTUVYZ\]^_`cdefhijkmnopqrsuwxÑÖÜáàäçéêëíìîïñóòôöõùûü†°¢£§¶®©™xÇT "#$%&'()*+,56789:=?@AEFGKLMOPQSU\]_cdefhkmopqrwÜáàíìîïñòöõù†°¢£¶°
-çC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\NotificationData.cs (08@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=0;2=1;4=0;6=0;8=0;10=0;12=0jr$	
- !"#$%&'(+,-/01xÇ !$%&'+-Ä
-éC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\ReportcommentData.cs (08@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=1;2=0;4=0;6=0;8=0;10=0;12=0r	
-Ç√
-ÖC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\SpamData.cs (08@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=3;2=0;4=0;6=0;8=0;10=0;12=0j()*+5678r<	
- !"#$%&,-./01239:<=>?ABCDEFGHIJKMOPQÇ!"$%./012<=>?ADEFGHIJMû
+¢
+àC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\AddTagsData.cs (08@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=1;2=1;4=0;6=0;8=0;10=0;12=0r0	
+!"#$%&'(+-.0123457;<?@xÇ!"#'034;î
+èC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\AssociatedTagsData.cs
+ (08@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=0;2=1;4=0;6=0;8=0;10=0;12=0r 	
+ !#$&(,/0xÇ
+ !#$·
+àC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\CommentData.cs (08@HR 0=0;5=1;10=0;20=0;30=0;60=0;90=0Z1=1;2=2;4=0;6=0;8=0;10=0;12=0j./01234rL
+ !"#$%&'(*+,789:;<=>?@ABCFGHIJKLMOPQSUVWXYZ[]^_`abcdfgxÇ$ !"$&'(+;<=>?@CJKLMPQWXZ]^_`abc†
+éC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\ElasticSearchData.cs (08	@	H	R 0=0;5=1;10=0;20=0;30=0;60=0;90=0Z1=3;2=3;4=0;6=0;8=0;10=0;12=0j !"#$%&,-.KLMNOro
+'()*/023456789:<=>?@ABCEFGHIPQRSTUVWXY[]^_`abefhijklmnostvwxyz{|}~ÄÅÇÉÑÖáàâåéxÇ3)234789<=@ABEGSUWX]_ahijklmvwxyz}~ÄÅÇÉÑÖà‰
+âC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\HomePageData.cs (08@HR 0=0;5=0;10=1;20=0;30=0;60=0;90=0Z1=0;2=0;4=0;6=1;8=1;10=0;12=0j%rU
+ !"#&'()*-./0123479;<>?ABCDEFGHIJKLNOPQRTUVWXYZ\]^_`abcefghijxÇ' !"#&'()-/0137>ACEGIKNOTVWY\^`begƒ
+ÖC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\LikeData.cs# (08@HR 0=0;5=1;10=0;20=0;30=0;60=0;90=0Z1=0;2=0;4=1;6=0;8=0;10=0;12=0r@	
+ !"#%&'()*+,-.0123456789:;<>?@ABEHKLxÇ$ !")*+,-.123456789:;>?@B¯
+ÜC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\LoginData.cs (08@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=1;2=0;4=0;6=0;8=0;10=0;12=0r	
+Ç®
+ñC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\ModeratorNotificationData.cs (08@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=0;2=1;4=0;6=0;8=0;10=0;12=0jr$	
+ !"#$%&')-./012xÇ !"%&'-/Ó
+áC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\MyPostData.cs* (08@HR 0=0;5=0;10=1;20=0;30=0;60=0;90=0Z1=1;2=1;4=2;6=0;8=0;10=0;12=0j2ÅÇÉÑÖrù	
+ !#$%&'()*+,-3456789:;<>?@ABFGHLMNPQRSTUVWZ[]^_`adefghiklmnpqrstuvxz{áàâäãçêëìîïñóòôöõúùûü†¢£§•¶®©™¨ÆØ∞xÇZ !#$%&'()*+,-6789:;>@ABFGHLMNPQRTV]^`defghiknprstuzâäãïñóòôõúùü†¢•¶®©¨¢
+çC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\NotificationData.cs (08@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=0;2=1;4=0;6=0;8=0;10=0;12=0jr%	
+ !"#$%&'(),-.012xÇ !"%&'(,.Å
+éC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\ReportcommentData.cs (08@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=1;2=0;4=0;6=0;8=0;10=0;12=0r	
+ÇÃ
+ÖC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Repository\Service\SpamData.cs (08@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=3;2=0;4=0;6=0;8=0;10=0;12=0j-./0:;<=rA	
+ !"#$%&'()*+12345678>?ABCDFGHIJKLMNOPRTUVÇ$%&')*34567ABCDFIJKLMNORû
 xC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Web\JwtManager.cs (08@HR 0=1;5=0;10=0;20=0;30=0;60=0;90=0Z1=1;2=1;4=0;6=0;8=0;10=0;12=0r;
 !#$*+-.01234578:<=>?@ABDEGHJKLMNOPxÇ!#*+-578:EGL

@@ -465,9 +465,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909100847040_initial.cs" />
-    <Compile Include="Migrations\201909100847040_initial.Designer.cs">
-      <DependentUpon>201909100847040_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201909100940477_initial.cs" />
+    <Compile Include="Migrations\201909100940477_initial.Designer.cs">
+      <DependentUpon>201909100940477_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909101014332_new.cs" />
+    <Compile Include="Migrations\201909101014332_new.Designer.cs">
+      <DependentUpon>201909101014332_new.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AddPostRequestModel.cs" />
@@ -480,7 +484,7 @@
     <Compile Include="Models\Entities\Category.cs" />
     <Compile Include="Models\Entities\Comment.cs" />
     <Compile Include="Models\Entities\CommentReport.cs" />
-    <Compile Include="Models\Entities\KnowledgeManagementEntities.cs" />
+    <Compile Include="Models\Context\KnowledgeManagementContext.cs" />
     <Compile Include="Models\Entities\Like.cs" />
     <Compile Include="Models\Entities\Notification.cs" />
     <Compile Include="Models\Entities\Post.cs" />
@@ -644,8 +648,11 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201909100847040_initial.resx">
-      <DependentUpon>201909100847040_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909100940477_initial.resx">
+      <DependentUpon>201909100940477_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909101014332_new.resx">
+      <DependentUpon>201909101014332_new.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -663,7 +670,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>54355</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

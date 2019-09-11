@@ -8,12 +8,12 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace KnowledgeManagement.Models.Entities
 {
-    public class KnowledgeManagementEntities : DbContext
+    public class KnowledgeManagementContext : DbContext
     {
 
-        public KnowledgeManagementEntities() : base("name=KnowledgeManagementEntities")
+        public KnowledgeManagementContext() : base("name=KnowledgeManagementEntities")
         {
-           Database.SetInitializer(new MigrateDatabaseToLatestVersion<KnowledgeManagementEntities,Configuration>());
+           Database.SetInitializer(new MigrateDatabaseToLatestVersion<KnowledgeManagementContext,Configuration>());
            // Database.SetInitializer(new DropCreateDatabaseAlways<KnowledgeManagementEntities>());
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -25,8 +25,8 @@ namespace KnowledgeManagement.Models.Entities
 
         }
 
-        public DbSet<AssociatedTag> AssociatedTags1 { get; set; }
-        public DbSet<Category> Categorys { get; set; }
+        public DbSet<AssociatedTag> AssociatedTags { get; set; }
+        public DbSet<Category> Categories { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Like> Likes { get; set; }
         public DbSet<Notification> Notifications { get; set; }

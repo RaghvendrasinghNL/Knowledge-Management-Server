@@ -11,7 +11,7 @@ namespace KnowledgeManagement.Repository.Service
 {
     public class ElasticSearchData : IElasticSearchData
     {
-       readonly KnowledgeManagementEntities db = new KnowledgeManagementEntities();
+        readonly KnowledgeManagementContext db = new KnowledgeManagementContext();
         private readonly string ElasticSearchUrl = System.Configuration.ConfigurationManager.AppSettings["PFElasticSearchUrl"];
         private readonly string IndexName = "knowledgemanagement";
         private readonly string TypePost = "records";
@@ -38,7 +38,7 @@ namespace KnowledgeManagement.Repository.Service
         /// <param name="post">it is an object which have all the atributes to be added</param>
         public void InsertData(string indexName, string typeName, ElasticSearchModel post)
         {
-           GetElasticClient().Index(post, p => p.Index(indexName).Type(typeName).Id(post.PostId));
+            GetElasticClient().Index(post, p => p.Index(indexName).Type(typeName).Id(post.PostId));
         }
 
         /// <summary>
@@ -101,8 +101,8 @@ namespace KnowledgeManagement.Repository.Service
         private List<string> GetAssociatedTagTillTwoLevel(string tagName)
         {
 
-            return (from associatedObj1 in db.AssociatedTags1
-                    join associatedObj2 in db.AssociatedTags1 on associatedObj1.GroupId equals associatedObj2.GroupId
+            return (from associatedObj1 in db.AssociatedTags
+                    join associatedObj2 in db.AssociatedTags on associatedObj1.GroupId equals associatedObj2.GroupId
                     join tag in db.Tags on associatedObj2.TagId equals tag.TagId
                     join tagActual in db.Tags on associatedObj1.TagId equals tagActual.TagId
                     where tagActual.TagName == tagName
@@ -136,7 +136,7 @@ namespace KnowledgeManagement.Repository.Service
             return record;
         }
 
-      
-    }
 
     }
+
+}

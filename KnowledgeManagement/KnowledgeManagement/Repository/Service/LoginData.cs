@@ -10,9 +10,9 @@ namespace KnowledgeManagement.Repository.Service
 {
     public class LoginData : ILoginData
     {
-        private readonly KnowledgeManagementEntities db = new KnowledgeManagementEntities();
+        private readonly KnowledgeManagementContext db = new KnowledgeManagementContext();
 
-        
+
 
         public void LogOut(int UserId)
         {

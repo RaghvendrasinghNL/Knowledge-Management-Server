@@ -25,7 +25,7 @@ namespace KnowledgeManagement.Business_Layer.Service
         {
             GoogleJsonWebSignature.Payload pyload = await GoogleJsonWebSignature.ValidateAsync(token);
 
-            KnowledgeManagementEntities db = new KnowledgeManagementEntities();
+            KnowledgeManagementContext db = new KnowledgeManagementContext();
 
             int h = (from n in db.Users
                      where pyload.Email == n.EmailId
