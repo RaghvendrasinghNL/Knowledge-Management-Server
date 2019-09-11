@@ -22,14 +22,6 @@ namespace KnowledgeManagement.Business_Layer.Service
 
 
 
-        /*   public IEnumerable<PostRequestModel> HomePagePost(int UserId, int CategoryId, SortingType sortingtype, FilterType filtertype, int pageNumber)
-
-
-
-          {
-            return _data.HomePagePost(UserId, CategoryId, sortingtype, filtertype, pageNumber);
-
-          }*/
 
         public IEnumerable<PostRequestModel> HomePagePost(int UserId, int CategoryId, SortingType sortingtype, FilterType filtertype)
 

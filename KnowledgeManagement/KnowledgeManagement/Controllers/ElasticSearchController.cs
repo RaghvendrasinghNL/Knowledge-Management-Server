@@ -29,25 +29,41 @@ namespace KnowledgeManagement.Controllers
         /// <returns></returns>
         public IHttpActionResult Get(string query)
         {
-            var uri = new Uri( ElasticSearchUrl);
-         
-            return Ok(_elasticClient.GetSearchResult(query));
+            try
+            {
+                var uri = new Uri(ElasticSearchUrl);
+
+                return Ok(_elasticClient.GetSearchResult(query));
+            }
+
+            catch (Exception ex)
+            {
+                return BadRequest("Exception - " + ex);
+            }
         }
 
-       
 
-       /// <summary>
-       /// This will migrate the data from sql DB to elasticsearch DB
-       /// </summary>
+
+        /// <summary>
+        /// This will migrate the data from sql DB to elasticsearch DB
+        /// </summary>
         public void Post()
         {
-          
-            _elasticClient.GetSqlData();
-            Console.WriteLine("Data Uploaded");
-           
+            try
+            {
+
+
+                _elasticClient.GetSqlData();
+                Console.WriteLine("Data Uploaded");
+            }
+            catch (Exception ex)
+            {
+                BadRequest("Exception - " + ex);
+            }
+
 
         }
 
-       
+
     }
 }

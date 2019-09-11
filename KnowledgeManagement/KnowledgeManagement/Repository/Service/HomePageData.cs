@@ -12,12 +12,12 @@ namespace KnowledgeManagement.Repository.Service
     public class HomePageData : IHomePageData
     {
         private readonly KnowledgeManagementContext db = new KnowledgeManagementContext();
-        readonly private int PageSize = 5;
+        
 
 
 
 
-        public IEnumerable<PostRequestModel> HomePagePost(int UserId, int CategoryId, SortingType sortingtype, FilterType filtertype/* int pageNumber*/)
+        public IEnumerable<PostRequestModel> HomePagePost(int UserId, int CategoryId, SortingType sortingtype, FilterType filtertype)
         {
             var result = (from l in db.Posts
                           join a in db.Users on l.UserId equals a.UserId
@@ -34,7 +34,7 @@ namespace KnowledgeManagement.Repository.Service
                               PostId = l.PostId,
                               Image = l.UserImage,
 
-                              //  }).Skip((pageNumber - 1) * PageSize).Take(PageSize).ToList();
+                             
                               TagName = db.PostTags.Where(w => w.PostId == l.PostId)
                               .Select(s => s.Tag.TagName).ToList(),
                               Likes = db.Likes.Where(w => w.PostId == l.PostId).Count(),

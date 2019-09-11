@@ -31,7 +31,7 @@ namespace KnowledgeManagement.Controllers
        
 
        [JwtAuthentication]
-        // public IHttpActionResult Get(int CategoryId,SortingType sortingtype,FilterType filtertype, int pageNumber)
+       
         public IHttpActionResult Get(int CategoryId, SortingType sortingtype, FilterType filtertype)
         {
            
@@ -40,8 +40,7 @@ namespace KnowledgeManagement.Controllers
                 var identity = (ClaimsIdentity)User.Identity;
                 var userIdClaim = identity.FindFirst(ClaimTypes.UserData);
                 int userid = Int32.Parse(userIdClaim?.Value);
-                //SortingType sortingType = sortingTypesortingtype
-                //var data = _hp.HomePagePost(userid, CategoryId, sortingtype, filtertype, pageNumber);
+               
                 var data = _hp.HomePagePost(userid, CategoryId, sortingtype, filtertype);
 
 

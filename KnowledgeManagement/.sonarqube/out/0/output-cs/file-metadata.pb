@@ -4,35 +4,7 @@
 C:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\App_Start\RouteConfig.csutf-8ã
 ÅC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\App_Start\SwaggerConfig.csutf-8à
 C:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\App_Start\UnityConfig.csutf-8ä
-ÄC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\App_Start\WebApiConfig.csutf-8õ
-ëC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Areas\HelpPage\ApiDescriptionExtensions.csutf-8õ
-ëC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Areas\HelpPage\App_Start\HelpPageConfig.csutf-8ù
-ìC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Areas\HelpPage\Controllers\HelpController.csutf-8õ
-ëC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Areas\HelpPage\HelpPageAreaRegistration.csutf-8¢
-òC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Areas\HelpPage\HelpPageConfigurationExtensions.csutf-8Ø
-•C:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Areas\HelpPage\ModelDescriptions\CollectionModelDescription.csutf-8∞
-¶C:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Areas\HelpPage\ModelDescriptions\ComplexTypeModelDescription.csutf-8Ø
-•C:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Areas\HelpPage\ModelDescriptions\DictionaryModelDescription.csutf-8≠
-£C:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Areas\HelpPage\ModelDescriptions\EnumTypeModelDescription.csutf-8©
-üC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Areas\HelpPage\ModelDescriptions\EnumValueDescription.csutf-8∞
-¶C:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Areas\HelpPage\ModelDescriptions\IModelDocumentationProvider.csutf-8±
-ßC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Areas\HelpPage\ModelDescriptions\KeyValuePairModelDescription.csutf-8•
-õC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Areas\HelpPage\ModelDescriptions\ModelDescription.csutf-8Æ
-§C:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Areas\HelpPage\ModelDescriptions\ModelDescriptionGenerator.csutf-8ß
-ùC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Areas\HelpPage\ModelDescriptions\ModelNameAttribute.csutf-8§
-öC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Areas\HelpPage\ModelDescriptions\ModelNameHelper.csutf-8®
-ûC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Areas\HelpPage\ModelDescriptions\ParameterAnnotation.csutf-8©
-üC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Areas\HelpPage\ModelDescriptions\ParameterDescription.csutf-8Ø
-•C:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Areas\HelpPage\ModelDescriptions\SimpleTypeModelDescription.csutf-8ö
-êC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Areas\HelpPage\Models\HelpPageApiModel.csutf-8´
-°C:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Areas\HelpPage\SampleGeneration\HelpPageSampleGenerator.csutf-8•
-õC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Areas\HelpPage\SampleGeneration\HelpPageSampleKey.csutf-8ü
-ïC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Areas\HelpPage\SampleGeneration\ImageSample.csutf-8°
-óC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Areas\HelpPage\SampleGeneration\InvalidSample.csutf-8£
-ôC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Areas\HelpPage\SampleGeneration\ObjectGenerator.csutf-8£
-ôC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Areas\HelpPage\SampleGeneration\SampleDirection.csutf-8û
-îC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Areas\HelpPage\SampleGeneration\TextSample.csutf-8õ
-ëC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Areas\HelpPage\XmlDocumentationProvider.csutf-8ú
+ÄC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\App_Start\WebApiConfig.csutf-8ú
 íC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Business Layer\Interface\IAddTagsService.csutf-8£
 ôC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Business Layer\Interface\IAssociatedTagsService.csutf-8ú
 íC:\Users\NINELEAPS\Desktop\project\Knowledge-Management-Server\KnowledgeManagement\KnowledgeManagement\Business Layer\Interface\ICommentService.csutf-8¢

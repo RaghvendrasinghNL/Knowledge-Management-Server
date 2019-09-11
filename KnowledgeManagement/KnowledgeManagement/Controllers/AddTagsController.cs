@@ -68,7 +68,7 @@ namespace KnowledgeManagement.Controllers
                 else
                 {
                     var f = await _at.AddTags(tag);
-                    if (f!=true)
+                    if (!f)
                     {
 
 

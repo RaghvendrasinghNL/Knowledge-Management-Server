@@ -9,7 +9,7 @@ namespace KnowledgeManagement.Business_Layer.Interface
 {
     public interface IHomePageService
     {
-        //IEnumerable<PostRequestModel> HomePagePost(int UserId, int CategoryId, SortingType sortingtype, FilterType filtertype, int pageNumber);
+       
         IEnumerable<PostRequestModel> HomePagePost(int UserId, int CategoryId, SortingType sortingtype, FilterType filtertype);
     }
 

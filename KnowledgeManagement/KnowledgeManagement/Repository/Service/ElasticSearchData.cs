@@ -23,6 +23,8 @@ namespace KnowledgeManagement.Repository.Service
         /// <returns> It will return the object if the connection is successful</returns>
         public IElasticClient GetElasticClient()
         {
+
+
             var uri = new Uri(ElasticSearchUrl);
             IElasticClient elasticClient = new ElasticClient(uri);
             return elasticClient;

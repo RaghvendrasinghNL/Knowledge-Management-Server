@@ -10,7 +10,7 @@ namespace KnowledgeManagement.Repository.Interface
     public interface IHomePageData
     {
          IEnumerable<PostRequestModel> HomePagePost(int UserId, int CategoryId, SortingType sortingtype, FilterType filtertype);
-       // IEnumerable<PostRequestModel> HomePagePost(int UserId, int CategoryId, SortingType sortingtype, FilterType filtertype, int pageNumber);
+       
 
     }
 }

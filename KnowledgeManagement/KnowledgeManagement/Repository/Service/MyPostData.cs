@@ -15,7 +15,7 @@ namespace KnowledgeManagement.Repository.Service
     public class MyPostData : IMyPostData
     {
         readonly KnowledgeManagementContext db = new KnowledgeManagementContext();
-        private ElasticSearchData es;
+     
 
 
         /// <summary>
@@ -169,7 +169,7 @@ namespace KnowledgeManagement.Repository.Service
                 db.SaveChanges();
             }
 
-            es.GetSqlData();
+          
 
         }
     }
