@@ -1,31 +1,55 @@
 ﻿using KnowledgeManagement.Models;
-using KnowledgeManagement.Services;
+using KnowledgeManagement.Business_Layer.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Runtime.Remoting.Messaging;
 using System.Web.Http;
+using KnowledgeManagement.Business_Layer.Interface;
+using KnowledgeManagement.Filter;
+using System.Web;
+using NLog;
+using System.Security.Claims;
 
 namespace KnowledgeManagement.Controllers
 {
     public class NotificationController : ApiController
     {
-        NotificationService notificationService = new NotificationService();
        
 
-    
-        public NotificationModel Get(int Id)
-        {
-            var result = notificationService.GetNotificationById(Id);
+        private readonly INotificationService _notification;
+        private static Logger logger = NLog.LogManager.GetCurrentClassLogger();
 
-            return result;
+
+        public NotificationController(INotificationService res)
+        {
+            _notification = res;
         }
-
-        public IHttpActionResult Get(string token)
+        /// <summary>
+        /// This will fetch the notification of the user according to their userid 
+        /// </summary>
+        /// <returns>A list of notifications along with the status code 200</returns>
+        [JwtAuthentication]
+        public IHttpActionResult Get()
         {
-            var result = notificationService.GetUserNotification(token);
-            return Ok(result);
+            try
+            {
+                var identity = (ClaimsIdentity)User.Identity;
+                var userIdClaim = identity.FindFirst(ClaimTypes.UserData);
+                int userid = Int32.Parse(userIdClaim?.Value);
+                logger.Info("Notification controller and returning result");
+
+                
+                var result = _notification.GetUserNotification(userid);
+                return Ok(result);
+            }
+            catch(Exception ex)
+            {
+                logger.Error("Notification#Post!!BadRequest" + ex);
+                return BadRequest("Exception - " + ex);
+            }
         }
         
     }

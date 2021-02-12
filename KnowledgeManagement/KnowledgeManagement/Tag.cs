@@ -18,6 +18,7 @@ namespace KnowledgeManagement
         public Tag()
         {
             this.PostTags = new HashSet<PostTag>();
+            this.AssociatedTags2 = new HashSet<AssociatedTag1>();
         }
     
         public int TagId { get; set; }
@@ -27,5 +28,7 @@ namespace KnowledgeManagement
         public virtual ICollection<PostTag> PostTags { get; set; }
         public virtual Tag Tag1 { get; set; }
         public virtual Tag Tag2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AssociatedTag1> AssociatedTags2 { get; set; }
     }
 }

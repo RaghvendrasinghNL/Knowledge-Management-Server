@@ -1,0 +1,141 @@
+2019-04-15 15:24:06.4681|INFO|KnowledgeManagement.Controllers.PostController|Hello World
+2019-04-15 15:47:01.2641|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-04-15 15:47:01.3063|INFO|KnowledgeManagement.Services.PostServices|in service
+2019-04-15 15:49:06.8861|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-04-15 15:49:06.9265|INFO|KnowledgeManagement.Services.PostServices|in service
+2019-04-15 15:57:30.9768|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-04-15 15:57:31.0340|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-04-15 15:57:32.2567|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-04-15 15:57:32.2656|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result
+2019-04-17 11:11:48.0434|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-04-17 11:11:48.0909|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-04-17 11:11:48.6809|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-04-17 11:11:48.6881|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result
+2019-04-19 15:26:30.2593|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-04-19 15:26:31.3196|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-04-19 15:26:37.5391|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-04-19 15:26:37.5467|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result
+2019-04-19 15:27:16.9947|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-04-19 15:27:17.0034|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-04-19 15:27:17.4052|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-04-19 15:27:17.4052|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result
+2019-04-19 15:27:22.6314|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-04-19 15:27:22.6314|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-04-19 15:27:22.9926|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-04-19 15:27:22.9974|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result
+2019-04-20 12:39:13.1353|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-04-20 12:39:13.2065|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-04-20 12:39:14.4585|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-04-20 12:39:14.4672|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result
+2019-04-20 14:01:51.4045|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-04-20 14:02:27.8179|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-04-20 14:02:28.8768|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-04-20 14:02:28.8768|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result
+2019-04-20 14:03:26.4298|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-04-20 14:03:28.1860|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-04-20 14:03:28.7558|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-04-20 14:03:28.7558|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result
+2019-04-20 17:05:44.0076|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-04-20 17:05:46.8207|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-04-20 17:05:47.4158|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-04-20 17:05:47.4158|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result
+2019-04-20 17:18:28.6883|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-04-20 17:18:30.6236|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-04-20 17:18:31.7297|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-04-20 17:18:31.7359|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result
+2019-04-30 12:23:02.2407|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-04-30 12:23:04.9984|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-04-30 12:23:06.3529|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-04-30 12:23:06.3676|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result
+2019-05-01 13:30:10.3560|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-05-01 13:30:13.8875|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-05-01 13:30:13.9084|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-05-01 13:30:13.9084|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result
+2019-05-01 13:30:29.6373|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-05-01 13:30:29.6438|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-05-01 13:30:29.6581|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-05-01 13:30:29.6581|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result
+2019-05-01 13:30:31.4980|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-05-01 13:30:31.4980|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-05-01 13:30:31.4980|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-05-01 13:30:31.5177|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result
+2019-05-01 13:32:41.3242|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-05-01 13:32:41.3327|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-05-01 13:32:41.4376|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-05-01 13:32:41.4376|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result
+2019-05-01 13:33:21.2705|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-05-01 13:33:21.2705|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-05-01 13:33:21.2898|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-05-01 13:33:21.2971|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result
+2019-05-01 13:54:05.7837|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-05-01 13:54:05.7837|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-05-01 13:54:05.8401|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-05-01 13:54:05.8450|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result
+2019-05-01 14:25:34.5441|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-05-01 14:25:34.5506|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-05-01 14:25:34.5822|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-05-01 14:25:34.5822|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result
+2019-05-06 15:37:02.5254|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-05-06 15:37:02.5786|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-05-06 15:37:02.8955|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-05-06 15:37:02.9077|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result
+2019-05-07 16:56:14.1331|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-05-07 16:56:15.6282|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-05-07 16:56:16.0499|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-05-07 16:56:16.0672|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result
+2019-05-07 16:57:34.0838|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-05-07 16:57:35.0719|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-05-07 16:57:35.4060|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-05-07 16:57:35.4200|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result
+2019-05-07 17:00:42.2302|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-05-07 17:00:43.6742|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-05-07 17:00:43.7529|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-05-07 17:00:43.7529|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result
+2019-05-07 17:01:42.9441|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-05-07 17:01:43.6669|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-05-07 17:01:44.1618|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-05-07 17:01:44.1771|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result
+2019-05-07 17:03:11.7564|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-05-07 17:03:12.2675|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-05-07 17:03:12.6630|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-05-07 17:03:12.6769|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result
+2019-05-07 17:03:49.0481|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-05-07 17:03:49.7493|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-05-07 17:03:50.2010|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-05-07 17:03:50.2136|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result
+2019-05-07 18:01:14.7961|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-05-07 18:01:15.9478|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-05-07 18:01:16.3088|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-05-07 18:01:16.3088|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result
+2019-06-20 11:08:32.1277|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-06-20 11:08:32.1587|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-06-20 11:08:32.3978|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-06-20 11:08:32.4018|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result
+2019-06-20 11:11:17.8268|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-06-20 11:11:17.8388|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-06-20 11:11:18.0272|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-06-20 11:11:18.0272|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result
+2019-06-20 11:11:38.4053|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-06-20 11:11:38.4392|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-06-20 11:11:38.6616|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-06-20 11:11:38.6666|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result
+2019-06-20 11:16:38.5468|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-06-20 11:16:38.5558|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-06-20 11:16:38.7263|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-06-20 11:16:38.7303|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result
+2019-06-20 11:17:20.5713|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-06-20 11:17:20.5713|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-06-20 11:17:20.7379|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-06-20 11:17:20.7429|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result
+2019-06-20 11:38:46.0344|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-06-20 11:38:46.0680|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-06-20 11:38:46.2900|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-06-20 11:38:46.2900|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result
+2019-06-20 12:26:40.8547|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-06-20 12:26:40.9195|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-06-20 12:26:41.4513|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-06-20 12:26:41.4682|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result
+2019-06-20 12:27:40.1747|INFO|KnowledgeManagement.Controllers.PostController|entering into the categories
+2019-06-20 12:27:40.1827|INFO|KnowledgeManagement.Services.PostServices|IN SEERECENTPOST Service 
+2019-06-20 12:27:40.5347|INFO|KnowledgeManagement.Services.PostServices|returning result from SEERECENTPOST Service
+2019-06-20 12:27:40.5467|INFO|KnowledgeManagement.Controllers.PostController|Back to Post controller and returing result

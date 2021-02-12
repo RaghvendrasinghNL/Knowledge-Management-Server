@@ -18,10 +18,11 @@ namespace KnowledgeManagement
         public User()
         {
             this.Comments = new HashSet<Comment>();
-            this.Notifications = new HashSet<Notification>();
-            this.Reports = new HashSet<Report>();
             this.Likes = new HashSet<Like>();
+            this.Notifications = new HashSet<Notification>();
             this.Posts = new HashSet<Post>();
+            this.Reports = new HashSet<Report>();
+            this.CommentReports = new HashSet<CommentReport>();
         }
     
         public int UserId { get; set; }
@@ -29,19 +30,21 @@ namespace KnowledgeManagement
         public string LastName { get; set; }
         public string EmailId { get; set; }
         public string Password { get; set; }
-        public string Token { get; set; }
         public Nullable<bool> isActive { get; set; }
-        public Nullable<bool> isModerator { get; set; }
+        public Nullable<int> isModerator { get; set; }
+        public string Token { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Like> Likes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Notification> Notifications { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Post> Posts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Report> Reports { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Like> Likes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Post> Posts { get; set; }
+        public virtual ICollection<CommentReport> CommentReports { get; set; }
     }
 }
